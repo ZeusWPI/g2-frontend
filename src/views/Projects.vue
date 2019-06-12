@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-btn onclick="reloadRepositories">Reload repositories</v-btn>
+        <v-btn v-on:click="reloadRepositories">Reload repositories</v-btn>
         <v-layout wrap justify-center>
             <project
                 v-for="project in projects"
