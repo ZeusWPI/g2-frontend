@@ -1,13 +1,15 @@
 <template>
     <div>
+        <v-btn v-on:click="reloadRepositories">Reload repositories</v-btn>
         <v-layout wrap justify-center>
             <project
                 v-for="project in projects"
-                :key="project.title"
-                :title="project.title"
+                :key="project.name"
+                :title="project.name"
                 :subtitle="project.subtitle"
                 :description="project.description"
                 :image="project.image"
+                :url="project.url"
             />
         </v-layout>
     </div>
@@ -38,13 +40,16 @@
         methods: {
             loadData: function(viewerUserId, posterUserId) {
                 axios
-                    .get(`${Config.backend.url}/${Config.backend.endpoints.projects}`)
+                    .get(`${Config.backend.url}${Config.backend.endpoints.projects}`)
                     .then(response => {
-                        this.projects = response.data;
+                        this.projects = response.data.repos;
                     })
                     .catch(e => {
                         console.log(e);
                     });
+            },
+            reloadRepositories: function () {
+                axios.get(`${Config.backend.url}${Config.backend.endpoints.refreshUrl}`)
             }
         }
     };

@@ -1,7 +1,7 @@
 <template>
     <v-flex xs12 md6 lg4>
         <v-card height="100%">
-            <v-img class="project__image" :src="image"></v-img>
+            <v-img v-if="image" class="project__image" :src="image"></v-img>
 
             <v-card-title primary-title>
                 <div>
@@ -13,7 +13,7 @@
             <v-card-text>{{ description }}</v-card-text>
 
             <v-card-actions class="project__actions">
-                <v-btn flat color="primary">Bekijk project</v-btn>
+                <v-btn flat color="primary" :to="url">Bekijk project</v-btn>
             </v-card-actions>
         </v-card>
     </v-flex>
@@ -26,7 +26,8 @@
             image: String,
             title: String,
             subtitle: String,
-            description: String
+            description: String,
+            url: String
         },
 
         data() {
