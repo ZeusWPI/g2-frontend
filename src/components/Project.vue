@@ -13,7 +13,7 @@
             <v-card-text>{{ description }}</v-card-text>
 
             <v-card-actions class="project__actions">
-                <v-btn flat color="primary" :to="url">Bekijk project</v-btn>
+                <v-btn flat color="primary" target="_blank" :href="url">Bekijk project</v-btn>
             </v-card-actions>
         </v-card>
     </v-flex>

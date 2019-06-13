@@ -50,7 +50,9 @@
             },
             reloadRepositories: function () {
                 axios.get(`${Config.backend.url}${Config.backend.endpoints.refreshUrl}`)
-            }
+				    .then(response => {
+					    this.loadData();
+				})}
         }
     };
 </script>
