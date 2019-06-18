@@ -1,7 +1,7 @@
 {
     "extends": [
-        "plugin:vue/essential",
-        "plugin:prettier/recommended",
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:vue/recommended",
+        "plugin:prettier/recommended"
     ]
 }
