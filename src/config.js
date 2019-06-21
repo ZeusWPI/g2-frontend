@@ -43,8 +43,8 @@ export default {
   backend: {
     url: "http://localhost:3000",
     endpoints: {
-      projects: "/repositories",
-      refreshUrl: "/repositories/sync"
+      projects: "/repository",
+      refreshUrl: "/repository/sync"
     }
   }
 };
