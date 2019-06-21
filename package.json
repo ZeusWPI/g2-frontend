@@ -27,6 +27,7 @@
         "husky": "^2.4.1",
         "lint-staged": ">=8",
         "node-sass": "^4.11.0",
+        "prettier": "^1.18.2",
         "pretty-quick": "^1.11.1",
         "sass-loader": "^7.1.0",
         "stylus": "^0.54.5",
@@ -34,20 +35,6 @@
         "vue-cli-plugin-vuetify": "^0.5.0",
         "vue-template-compiler": "^2.5.21",
         "vuetify-loader": "^1.0.5"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "rules": {},
-        "parserOptions": {
-            "parser": "babel-eslint"
-        }
     },
     "postcss": {
         "plugins": {
