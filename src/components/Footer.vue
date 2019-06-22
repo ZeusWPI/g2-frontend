@@ -9,23 +9,28 @@
         </p>
       </v-flex>
       <v-flex xs12 sm2 justify-center>
-        <v-switch v-model="toggleDark" label="Dark mode" />
+        <v-switch v-model="isDark" label="Dark mode" />
       </v-flex>
     </v-layout>
   </v-footer>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "Footer",
-  data() {
+  data: function() {
     return {
-      toggleDark: this.$store.state.isDark
+      isDark: this.$store.state.isDark
     };
   },
+  methods: {
+    ...mapMutations(["toggleDark"])
+  },
   watch: {
-    toggleDark() {
-      this.$store.state.isDark = !this.$store.state.isDark;
+    isDark: function() {
+      this.toggleDark();
     }
   }
 };

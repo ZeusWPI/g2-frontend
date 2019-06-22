@@ -15,6 +15,7 @@ import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
 
 import "vuetify/dist/vuetify.min.css";
+import { mapState } from "vuex";
 
 export default {
   name: "App",
@@ -23,9 +24,9 @@ export default {
     Footer
   },
   computed: {
-    isDark() {
-      return this.$store.state.isDark;
-    }
+    ...mapState({
+      isDark: state => state.isDark
+    })
   }
 };
 </script>
