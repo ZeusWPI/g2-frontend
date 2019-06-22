@@ -20,18 +20,19 @@ import { mapMutations } from "vuex";
 
 export default {
   name: "Footer",
-  data: function() {
-    return {
-      isDark: this.$store.state.isDark
-    };
+  computed: {
+    // this is the best way to use v-models with the vuex state
+    isDark: {
+      get() {
+        return this.$store.state.isDark;
+      },
+      set() {
+        this.toggleDark();
+      }
+    }
   },
   methods: {
     ...mapMutations(["toggleDark"])
-  },
-  watch: {
-    isDark: function() {
-      this.toggleDark();
-    }
   }
 };
 </script>
