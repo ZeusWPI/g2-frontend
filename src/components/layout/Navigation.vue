@@ -2,7 +2,10 @@
     <v-layout>
         <!-- Toolbar (TOP) -->
         <v-toolbar color="primary" dark fixed>
-            <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon
+                class="hidden-md-and-up"
+                @click.stop="drawer = !drawer"
+            ></v-app-bar-nav-icon>
 
             <v-toolbar-title>G2</v-toolbar-title>
 
@@ -14,14 +17,19 @@
                     :key="index"
                     :to="link.to"
                     text
-                >{{ link.title }}</v-btn>
+                    >{{ link.title }}</v-btn
+                >
             </v-toolbar-items>
         </v-toolbar>
 
         <!-- Drawer (SIDE) -->
         <v-navigation-drawer v-model="drawer" temporary fixed>
             <v-list nav dense>
-                <v-list-item v-for="(link, index) in links" :key="index" :to="link.to">
+                <v-list-item
+                    v-for="(link, index) in links"
+                    :key="index"
+                    :to="link.to"
+                >
                     <!-- Icon -->
                     <v-list-item-icon>
                         <v-icon>{{ link.icon }}</v-icon>
@@ -38,18 +46,18 @@
 </template>
 
 <script>
-    export default {
-        name: "Navigation",
+export default {
+    name: "Navigation",
 
-        data: () => ({
-            drawer: false,
-            links: [
-                {
-                    title: "Home",
-                    to: "/",
-                    icon: "home"
-                }
-            ]
-        })
-    };
+    data: () => ({
+        drawer: false,
+        links: [
+            {
+                title: "Home",
+                to: "/",
+                icon: "home"
+            }
+        ]
+    })
+};
 </script>
