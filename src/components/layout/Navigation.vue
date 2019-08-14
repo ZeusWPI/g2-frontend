@@ -56,12 +56,6 @@ export default {
                 title: "Home",
                 to: "/",
                 icon: "home"
-            },
-
-            {
-                title: "Test",
-                to: "/test",
-                icon: "home"
             }
         ]
     })
