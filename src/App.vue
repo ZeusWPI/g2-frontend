@@ -24,6 +24,10 @@ export default {
     components: {
         Navigation,
         Footer
+    },
+    created() {
+        // Fetch dark theme preferences.
+        this.$store.dispatch("fetchDark");
     }
 };
 </script>
