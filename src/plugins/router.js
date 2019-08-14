@@ -1,14 +1,22 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
-import Config from "../config";
+import Router from "vue-router";
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-export const router = new VueRouter({
-  mode: "history",
-  // eslint-disable-next-line no-undef
-  base: process.env.BASE_URL,
-  routes: Config.routes
+export default new Router({
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes: [
+        {
+            path: "/",
+            name: "home",
+            component: () => import("../views/Home.vue")
+        },
+
+        {
+            path: "/test",
+            name: "test",
+            component: () => import("../views/Test.vue")
+        }
+    ]
 });
-
-export default router;
