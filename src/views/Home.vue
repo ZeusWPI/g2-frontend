@@ -1,10 +1,14 @@
 <template>
     <div>
-        <!-- Loading -->
-        <div v-if="test.loading">Loading...</div>
+        <v-card>
+            <v-card-text>
+                <!-- Loading -->
+                <div v-if="test.loading">Loading...</div>
 
-        <!-- Data -->
-        <div v-else>{{ test.data }}</div>
+                <!-- Data -->
+                <div v-else>{{ test.data }}</div>
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
