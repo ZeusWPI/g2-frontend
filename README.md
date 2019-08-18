@@ -66,7 +66,7 @@ We try to follow the [BEM conventions](http://getbem.com/naming/) for naming css
 Inline styling should be avoided at all cost!
 
 ## Contact
-If you have any questions about setting up the project or about the codebase you can contact @maartenvn or @abeformatter on [mattermost](http://chat.zeus.gent)
+If you have any questions about setting up the project or about the codebase you can contact @maartenvn or @abeformatter on [mattermost](https://chat.zeus.gent)
 
 [eslint]: https://eslint.org/
 [prettier]: https://prettier.io/
