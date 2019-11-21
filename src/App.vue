@@ -5,7 +5,7 @@
             <Navigation />
 
             <!-- Content -->
-            <v-container grid-list-md>
+            <v-container grid-list-md style="margin-bottom: 130px;">
                 <router-view />
             </v-container>
 
@@ -31,3 +31,9 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+.v-card__title {
+    color: var(--v-primary-base);
+}
+</style>
