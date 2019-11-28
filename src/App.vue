@@ -5,7 +5,7 @@
             <Navigation />
 
             <!-- Content -->
-            <v-container grid-list-md style="margin-bottom: 130px;">
+            <v-container grid-list-md style="margin-bottom: 200px;">
                 <router-view />
             </v-container>
 
