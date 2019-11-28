@@ -1,16 +1,20 @@
 {
-    "root": true,
-    "env": {
-        "node": true,
-        "commonjs": true
-    },
-    "parserOptions": {
-        "parser": "babel-eslint"
-    },
-    "extends": [
-        "plugin:vue/essential",
-        "plugin:prettier/recommended",
-        "eslint:recommended"
-    ],
-    "plugins": ["vue", "prettier"]
+  "root": true,
+  "env": {
+    "node": true,
+    "commonjs": true
+  },
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "@vue/typescript"
+  ],
+  "plugins": [
+    "vue",
+    "prettier"
+  ]
 }

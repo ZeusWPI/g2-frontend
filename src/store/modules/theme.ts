@@ -6,7 +6,7 @@ export const theme = {
     },
 
     mutations: {
-        SET_DARK(state, dark) {
+        SET_DARK(state, dark: boolean) {
             state.dark = dark;
 
             // Update localstorage.
@@ -24,7 +24,7 @@ export const theme = {
             localStorage.theme = JSON.stringify(theme);
 
             // Update Vuetify dark theme.
-            Vuetify.framework.theme.isDark = dark;
+            Vuetify.framework.theme.dark = dark;
         }
     },
 

@@ -56,6 +56,12 @@ export default {
                 title: "Home",
                 to: "/",
                 icon: "home"
+            },
+
+            {
+                title: "Projecten",
+                to: "/projects",
+                icon: "list"
             }
         ]
     })
