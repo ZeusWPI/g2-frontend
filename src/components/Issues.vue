@@ -1,0 +1,67 @@
+<template>
+    <div>
+        <v-list v-if="issues && issues.length > 0">
+            <v-list-item
+                v-for="(issue, index) in issues"
+                :key="index"
+                @click="
+                    repository.data
+                        ? window.open(
+                              'http://github.com/zeuswpi/g2-frontend',
+                              '_blank'
+                          )
+                        : ''
+                "
+            >
+                <v-list-item-content>
+                    <!-- Title -->
+                    <v-list-item-title>
+                        <!-- Loading -->
+                        <template v-if="issue.loading">
+                            <v-skeleton-loader type="text" />
+                        </template>
+
+                        <!-- Data -->
+                        <template v-else-if="issue.data">
+                            {{ issue.data.name }}
+                        </template>
+                    </v-list-item-title>
+
+                    <!-- Subtitle -->
+                    <v-list-item-subtitle>
+                        <!-- Loading -->
+                        <template v-if="issue.loading">
+                            <v-skeleton-loader type="text" />
+                        </template>
+
+                        <!-- Data -->
+                        <template v-else-if="issue.data">
+                            https://github.com/zeuswpi/g2-frontend
+                        </template>
+                    </v-list-item-subtitle>
+                </v-list-item-content>
+
+                <v-list-item-icon>
+                    <v-icon>mdi-chevron-right</v-icon>
+                </v-list-item-icon>
+            </v-list-item>
+        </v-list>
+
+        <v-card-text v-else class="pt-0">
+            Geen issues gevonden.
+        </v-card-text>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "Issues",
+
+    props: {
+        issues: {
+            type: Array,
+            default: () => []
+        }
+    }
+};
+</script>

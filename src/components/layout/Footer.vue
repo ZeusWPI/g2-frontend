@@ -1,16 +1,21 @@
 <template>
     <v-footer absolute class="font-weight-medium">
-        <v-col class="text-center" cols="2"></v-col>
+        <v-col class="text-center" cols="12" md="2"></v-col>
 
         <!-- Zeus WPI -->
-        <v-col class="text-center" cols="7">
+        <v-col class="text-center" cols="12" md="7">
             Made with
             <i class="fa fa-heart footer__heart" />
             by Zeus WPI
         </v-col>
 
         <!-- Dark theme toggle -->
-        <v-col class="text-center" cols="2">
+        <v-col
+            class="text-center d-flex"
+            cols="12"
+            md="2"
+            style="justify-content: center;"
+        >
             <v-switch v-model="dark" label="Dark mode" />
         </v-col>
     </v-footer>
