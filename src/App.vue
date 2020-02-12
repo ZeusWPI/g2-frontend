@@ -11,23 +11,33 @@
 
             <!-- Footer -->
             <Footer />
+
+            <!-- Modal -->
+            <Modal />
+
+            <!-- Snackbar -->
+            <Snackbar />
         </v-content>
     </v-app>
 </template>
 
 <script>
-import Navigation from "@/components/layout/Navigation.vue";
-import Footer from "@/components/layout/Footer.vue";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
+import Modal from "@/components/Modal";
+import Snackbar from "@/components/Snackbar";
 
 export default {
     name: "App",
     components: {
         Navigation,
-        Footer
+        Footer,
+        Modal,
+        Snackbar
     },
     created() {
         // Fetch dark theme preferences.
-        this.$store.dispatch("fetchDark");
+        this.$store.dispatch("theme/fetchDark");
     }
 };
 </script>
@@ -35,5 +45,14 @@ export default {
 <style lang="scss">
 .v-card__title {
     color: var(--v-primary-base);
+}
+
+.center {
+    text-align: center;
+}
+
+.center--width {
+    text-align: center;
+    width: 100%;
 }
 </style>

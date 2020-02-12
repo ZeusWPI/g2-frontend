@@ -1,5 +1,16 @@
 <template>
     <div>
+        <!-- Action bar -->
+        <v-row>
+            <v-spacer />
+            <v-col cols="auto">
+                <v-btn color="primary" @click="openCreateProject">
+                    Nieuw project
+                    <v-icon right dark>mdi-plus-circle-outline</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
+
         <!-- Loading -->
         <v-row v-if="projects.loading">
             <!-- Projects -->
@@ -34,7 +45,12 @@
 
             <!-- No entries found -->
             <template v-else>
-                Geen projecten gevonden.
+                <div class="center--width">
+                    <h3>Geen projecten gevonden.</h3>
+                    <p>
+                        Maak een project aan om het hier weer te kunnen geven.
+                    </p>
+                </div>
             </template>
         </v-row>
 
@@ -44,7 +60,9 @@
 
 <script>
 import ProjectCard from "@/components/ProjectCard";
+import ProjectCreateModal from "@/components/modals/ProjectCreateModal";
 import { getProjects } from "../data/project";
+import { fetchQuery } from "@/util/fetch";
 
 export default {
     name: "Projects",
@@ -55,8 +73,20 @@ export default {
 
     data: function() {
         return {
-            projects: getProjects()
+            projects: fetchQuery(getProjects())
         };
+    },
+
+    methods: {
+        openCreateProject() {
+            this.$store.dispatch("modal/open", {
+                title: "Nieuw project aanmaken",
+                content:
+                    "Maak een nieuw G2 project aan. Je hebt later de mogelijkheid om repositories toe te voegen.",
+                component: ProjectCreateModal,
+                width: 700
+            });
+        }
     }
 };
 </script>

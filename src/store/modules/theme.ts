@@ -1,6 +1,8 @@
 import Vuetify from "@/plugins/vuetify";
 
 export const theme = {
+    namespaced: true,
+    
     state: {
         dark: false
     },

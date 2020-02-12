@@ -4,13 +4,13 @@ import { fetch } from "../util/fetch";
 import Query from "./structs/Query";
 import Repository from "./models/Repository";
 import { getRepository } from "./repository";
+import ProjectCreate from "./models/ProjectCreate";
 
 /**
  * Get a project by its specific identifier.
  * @param id Identifier of the project.
  */
-export function getProject(id: number): Query<Project> {
-    // Fetch the project from the server.
+export function getProject(id: number): Promise<Project | string> {
     return fetch<Project>(
         `${Config.BACKEND.URL}${Config.BACKEND.ENDPOINTS.PROJECT}/${id}`,
         () => new Project()
@@ -20,9 +20,8 @@ export function getProject(id: number): Query<Project> {
 /**
  * Get a list with all the projects.
  */
-export function getProjects(): Query<Array<Project>> {
-    console.log(`${Config.BACKEND.URL}${Config.BACKEND.ENDPOINTS.PROJECT}`);
-    return fetch<Project>(
+export function getProjects(): Promise<Array<Project> | string> {
+    return fetch<Array<Project>>(
         `${Config.BACKEND.URL}${Config.BACKEND.ENDPOINTS.PROJECT}`,
         () => new Project()
     );
@@ -44,4 +43,24 @@ export function getProjectRepositories(
     }
 
     return project.data.repo_ids.map(repo_id => getRepository(repo_id));
+}
+
+/**
+ * Create a new project
+ * @param project Project to create.
+ */
+export function createProject(
+    project: Project
+): Promise<ProjectCreate | string> {
+    return fetch<ProjectCreate>(
+        `${Config.BACKEND.URL}${Config.BACKEND.ENDPOINTS.PROJECT}`,
+        () => new ProjectCreate(),
+        "POST",
+        {
+            data: {
+                name: project.name,
+                description: project.description
+            }
+        }
+    );
 }

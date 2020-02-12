@@ -30,7 +30,7 @@ export default {
                 return this.$store.state.theme.dark;
             },
             set() {
-                this.$store.dispatch("toggleDark");
+                this.$store.dispatch("theme/toggleDark");
             }
         }
     }

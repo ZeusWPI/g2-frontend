@@ -1,40 +1,32 @@
 import Vue from "vue";
 import axios from "axios";
-import { cacheAdapterEnhancer } from "axios-extensions";
-import Query from "../data/structs/Query";
-import Project from "../data/models/Project";
-import Model, { ModelFactory } from "../data/structs/Model";
+import Model from "../data/structs/Model";
+import Query from "@/data/structs/Query";
 
-/* const http = axios.create({
-    baseURL: "/",
-    headers: { "Cache-Control": "no-cache" },
-
-    // Enable caching by default.
-    //adapter: cacheAdapterEnhancer(axios.defaults.adapter)
-}); */
+export interface FetchActions<T extends Model> {
+    onStartLoading(): void;
+    onEndLoading(): void;
+    onData(model: T): void;
+    onError(error: string): void;
+}
 
 /**
  * Fetch data from the backend.
  *
- * @param {*} url URL/endpoint to fetch.
- * @param {*} [type="GET"] Type of the request (GET | POST)
- * @param {*} [options={}] Axios options.
+ * @param url URL/endpoint to fetch.
+ * @param create Function to create a model to return when the data was fetched successfully
+ * @param method Type of the request (GET | POST)
+ * @param options Axios options.
  * @returns
  */
-export function fetch<T extends Model>(
+export function fetch<T>(
     url: string,
     create: Function,
-    type: string = "GET",
+    method: any = "GET",
     options: Object = {}
-) {
-    // Create the initial data object.
-    const query = new Query<T>();
-
-    // Set the initial query state.
-    Vue.set(query, "loading", true);
-
-    axios(url, options)
-        .then(
+): Promise<T | string> {
+    return new Promise((resolve, reject) => {
+        axios({ method, url, ...options }).then(
             response => {
                 const data = response.data;
                 let model;
@@ -53,8 +45,27 @@ export function fetch<T extends Model>(
                     model.parse(data);
                 }
 
+                resolve(model);
+            },
+            error => {
+                reject(error);
+            }
+        );
+    });
+}
+
+export function fetchQuery<T>(fetch: Promise<T | string>): Query<T> {
+    // Create the initial data object.
+    const query = new Query<T>();
+
+    // Set the initial query state.
+    Vue.set(query, "loading", true);
+
+    fetch
+        .then(
+            response => {
                 // Update the data in the query.
-                Vue.set(query, "data", model);
+                Vue.set(query, "data", response);
             },
             error => {
                 // Update the error in the query.

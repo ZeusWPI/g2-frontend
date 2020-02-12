@@ -8,9 +8,9 @@
                     align-content="center"
                     justify="center"
                 >
-                    <v-col class="subtitle-1 text-center" cols="12">
-                        Bezig met ophalen van het project
-                    </v-col>
+                    <v-col class="subtitle-1 text-center" cols="12"
+                        >Bezig met ophalen van het project</v-col
+                    >
                     <v-col cols="6">
                         <v-progress-linear indeterminate rounded height="6" />
                     </v-col>
@@ -27,15 +27,13 @@
                         <!-- <img
                             class="project__header__img"
                             src="https://zeus.gent/assets/images/Logos_Slotmachiin.svg"
-                        /> -->
+                        />-->
 
                         <div class="project__header__content">
                             <h1 style="color: var(--v-primary-base)">
                                 {{ project.data.name }}
                             </h1>
-                            <p>
-                                {{ project.data.description }}
-                            </p>
+                            <p>{{ project.data.description }}</p>
                         </div>
                     </div>
                 </v-card>
@@ -101,8 +99,9 @@
 <script>
 import Repositories from "@/components/Repositories";
 import Issues from "@/components/Issues";
-
 import { getProject, getProjectRepositories } from "../data/project";
+import { fetchQuery } from "@/util/fetch";
+
 export default {
     name: "Project",
 
@@ -113,7 +112,7 @@ export default {
 
     data: function() {
         return {
-            project: getProject(this.$route.params.id),
+            project: fetchQuery(getProject(this.$route.params.id)),
             repositories: [],
             issues: []
         };
@@ -124,7 +123,9 @@ export default {
             deep: true,
             handler: function(newVal, oldVal) {
                 if (newVal.data) {
-                    this.repositories = getProjectRepositories(this.project);
+                    this.repositories = fetchQuery(
+                        getProjectRepositories(this.project)
+                    );
                 }
             }
         }
