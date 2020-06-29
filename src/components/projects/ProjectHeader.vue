@@ -9,36 +9,18 @@
                 </div>
 
                 <!-- Description -->
-                <div class="project__description">
+                <div class="project__description text--secondary">
                     {{ project.description }}
                 </div>
-
-                <!-- Statistics -->
-                <!--<v-row class="project__statistics">
-                    <v-col cols="auto" class="d-flex">
-                        <v-icon left>mdi-source-repository</v-icon>
-                        5 repositories
-                    </v-col>
-
-                    <v-divider class="divider--vertical" vertical />
-
-                    <v-col cols="auto" class="d-flex">
-                        <v-icon left>mdi-alert-circle-outline</v-icon>
-                        25 issues
-                    </v-col>
-
-                    <v-divider class="divider--vertical" vertical />
-
-                    <v-col cols="auto" class="d-flex">
-                        <v-icon left>mdi-source-pull</v-icon>
-                        5 pull requests
-                    </v-col>
-                </v-row> -->
             </v-col>
 
             <!-- Actions -->
             <v-col cols="auto" class="d-flex align-center">
-                <v-btn color="primary" text>Hello</v-btn>
+                <v-btn color="error" text @click="openDelete">
+                    <v-icon left>mdi-delete</v-icon>
+
+                    Delete
+                </v-btn>
             </v-col>
         </v-row>
     </div>
@@ -47,6 +29,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
+import { ModalHandler } from "@/util/modal/ModalHandler";
+import ConfirmModal from "@/components/layout/modals/confirm/ConfirmModal.vue";
+import { ConfirmModalModifications } from "@/components/layout/modals/confirm/ConfirmModalModifications";
 
 @Component
 export default class ProjectHeader extends Vue {
@@ -55,6 +40,22 @@ export default class ProjectHeader extends Vue {
      */
     @Prop()
     project: Project;
+
+    /**
+     * Open the delete confirmation modal.
+     */
+    openDelete() {
+        ModalHandler.open({
+            component: ConfirmModal,
+            componentPayload: {
+                message:
+                    "Are you sure you want to delete this project? This action cannot be undone forever (very long time)",
+                action: (modifications: ConfirmModalModifications) => {
+                    modifications.loading = true;
+                }
+            }
+        });
+    }
 }
 </script>
 
@@ -62,14 +63,6 @@ export default class ProjectHeader extends Vue {
 .project {
     &__title {
         font-size: 2em;
-    }
-
-    &__description {
-        color: var(--v-secondary-base);
-    }
-
-    &__statistics {
-        margin-top: 10px;
     }
 }
 </style>

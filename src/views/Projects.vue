@@ -3,7 +3,7 @@
         <!-- Action bar -->
         <v-row justify="end">
             <v-col cols="auto">
-                <v-btn color="primary" @click="openCreate">
+                <v-btn color="primary" depressed @click="openCreate">
                     Nieuw project
                     <v-icon right dark>mdi-plus-circle-outline</v-icon>
                 </v-btn>

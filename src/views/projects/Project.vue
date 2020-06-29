@@ -57,7 +57,7 @@
                 </v-tab-item>
 
                 <!-- Repositories -->
-                <v-tab-item value="tab-repositories">
+                <v-tab-item value="tab-repositories" class="container--small">
                     <project-repositories />
                 </v-tab-item>
 
