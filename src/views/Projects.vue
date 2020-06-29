@@ -1,62 +1,68 @@
 <template>
-    <div>
-        <!-- Loading -->
-        <v-row v-if="projects.loading">
-            <!-- Projects -->
-            <v-col
-                v-for="index in 8"
-                :key="index"
-                cols="12"
-                sm="6"
-                md="4"
-                lg="3"
-            >
-                <project-card loading />
+    <v-container class="container--small">
+        <!-- Action bar -->
+        <v-row justify="end">
+            <v-col cols="auto">
+                <v-btn color="primary" @click="openCreate">
+                    Nieuw project
+                    <v-icon right dark>mdi-plus-circle-outline</v-icon>
+                </v-btn>
             </v-col>
         </v-row>
 
-        <!-- Data -->
-        <v-row v-else-if="projects.data">
-            <!-- Entries found -->
-            <template v-if="projects.data.length > 0">
-                <!-- Projects -->
-                <v-col
+        <!-- Projects -->
+        <v-row>
+            <!-- Loading -->
+            <template v-if="projects.isLoading()">
+                <project-card v-for="index of 8" :key="index" :loading="true" />
+            </template>
+
+            <!-- Data -->
+            <template v-else-if="projects.isSuccess()">
+                <project-card
                     v-for="(project, index) of projects.data"
                     :key="index"
-                    cols="12"
-                    sm="6"
-                    md="4"
-                    lg="3"
-                >
-                    <project-card :project="project" />
-                </v-col>
+                    :project="project"
+                />
             </template>
 
-            <!-- No entries found -->
-            <template v-else>
-                Geen projecten gevonden.
+            <!-- Error -->
+            <template v-else-if="projects.isError()">
+                <error-placeholder
+                    :error="projects.error"
+                    :options="{ style: 'SECTION', displayFullPage: true }"
+                />
             </template>
         </v-row>
-
-        <div v-else>{{ projects.error }}</div>
-    </div>
+    </v-container>
 </template>
 
-<script>
-import ProjectCard from "@/components/ProjectCard";
-import { getProjects } from "../data/project";
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { EchoPromise } from "echofetch";
+import { Project } from "@/api/models/Project";
+import ProjectService from "@/api/services/ProjectService";
+import ProjectCard from "@/components/projects/ProjectCard.vue";
+import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
+import { ModalHandler } from "@/util/modal/ModalHandler";
+import ProjectCreateModal from "@/components/projects/modals/ProjectCreateModal.vue";
 
-export default {
-    name: "Projects",
+@Component({
+    components: { ProjectCard, ErrorPlaceholder }
+})
+export default class ProjectsView extends Vue {
+    /**
+     * List with available projects
+     */
+    projects: EchoPromise<Project[]> = ProjectService.getAll();
 
-    components: {
-        ProjectCard
-    },
-
-    data: function() {
-        return {
-            projects: getProjects()
-        };
+    /**
+     * Open the create projects modal.
+     */
+    openCreate() {
+        ModalHandler.open({
+            component: ProjectCreateModal
+        });
     }
-};
+}
 </script>

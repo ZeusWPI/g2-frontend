@@ -1,69 +1,43 @@
 <template>
-    <v-layout>
+    <div>
         <!-- Toolbar (TOP) -->
-        <v-toolbar color="primary" dark fixed>
-            <v-app-bar-nav-icon
-                class="hidden-md-and-up"
-                @click.stop="drawer = !drawer"
-            ></v-app-bar-nav-icon>
+        <navigation-bar :drawer.sync="drawer" :links="links" />
 
-            <v-toolbar-title>G2</v-toolbar-title>
-
-            <v-spacer />
-
-            <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn
-                    v-for="(link, index) in links"
-                    :key="index"
-                    :to="link.to"
-                    text
-                    >{{ link.title }}</v-btn
-                >
-            </v-toolbar-items>
-        </v-toolbar>
-
-        <!-- Drawer (SIDE) -->
-        <v-navigation-drawer v-model="drawer" temporary fixed>
-            <v-list nav dense>
-                <v-list-item
-                    v-for="(link, index) in links"
-                    :key="index"
-                    :to="link.to"
-                >
-                    <!-- Icon -->
-                    <v-list-item-icon>
-                        <v-icon>{{ link.icon }}</v-icon>
-                    </v-list-item-icon>
-
-                    <!-- Text -->
-                    <v-list-item-content>
-                        <v-list-item-title>{{ link.title }}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
-    </v-layout>
+        <!-- Drawer (SMALL SCREENS) -->
+        <navigation-drawer :drawer.sync="drawer" :links="links" />
+    </div>
 </template>
 
-<script>
-export default {
-    name: "Navigation",
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { NavigationLink } from "@/types/NavigationLink";
+import NavigationBar from "@/components/layout/navigation/NavigationBar.vue";
+import NavigationDrawer from "@/components/layout/navigation/NavigationDrawer.vue";
 
-    data: () => ({
-        drawer: false,
-        links: [
-            {
-                title: "Home",
-                to: "/",
-                icon: "home"
-            },
+@Component({
+    components: { NavigationDrawer, NavigationBar }
+})
+export default class Navigation extends Vue {
+    /**
+     * Should the drawer be open.
+     */
+    drawer = false;
 
-            {
-                title: "Projecten",
-                to: "/projects",
-                icon: "list"
-            }
-        ]
-    })
-};
+    /**
+     * Links to display inside the navigation bar
+     */
+    links: Array<NavigationLink> = [
+        {
+            text: "Home",
+            to: "/",
+            icon: "mdi-home"
+        },
+
+        {
+            text: "Projects",
+            to: "/projects",
+            icon: "mdi-format-list-bulleted-type"
+        }
+    ];
+}
 </script>

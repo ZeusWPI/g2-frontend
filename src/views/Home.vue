@@ -1,13 +1,10 @@
 <template>
-    <div>
-        <v-card>
-            <v-card-text> </v-card-text>
-        </v-card>
-    </div>
+    <div></div>
 </template>
 
-<script>
-export default {
-    name: "Home"
-};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+@Component
+export default class Home extends Vue {}
 </script>
