@@ -1,9 +1,5 @@
 <template>
-    <v-card
-        :class="
-            `error-card ${payload.options.displayFullPage ? 'text-center' : ''}`
-        "
-    >
+    <v-card :class="`error-card ${payload.options.displayFullPage ? 'text-center' : ''}`">
         <!-- Image (only if fullscreen) -->
         <div v-if="payload.options.displayFullPage" class="error-card__image">
             <v-img height="100%" src="@/assets/img/error.svg" contain />

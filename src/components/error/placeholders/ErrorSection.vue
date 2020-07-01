@@ -1,16 +1,7 @@
 <template>
-    <div
-        :class="
-            `error-section ${
-                payload.options.displayFullPage ? 'text-center' : ''
-            }`
-        "
-    >
+    <div :class="`error-section ${payload.options.displayFullPage ? 'text-center' : ''}`">
         <!-- Image (only if fullscreen) -->
-        <div
-            v-if="payload.options.displayFullPage"
-            class="error-section__image"
-        >
+        <div v-if="payload.options.displayFullPage" class="error-section__image">
             <v-img height="100%" src="@/assets/img/error.svg" contain />
         </div>
 

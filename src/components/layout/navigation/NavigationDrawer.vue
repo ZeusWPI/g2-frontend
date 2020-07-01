@@ -1,11 +1,7 @@
 <template>
     <v-navigation-drawer v-model="_drawer" absolute temporary>
         <v-list nav dense>
-            <v-list-item
-                v-for="(link, index) in links"
-                :key="index"
-                :to="link.to"
-            >
+            <v-list-item v-for="(link, index) in links" :key="index" :to="link.to">
                 <!-- Icon -->
                 <v-list-item-icon>
                     <v-icon>{{ link.icon }}</v-icon>

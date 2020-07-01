@@ -4,21 +4,14 @@
         <v-container v-if="options.displayFullPage">
             <v-row justify="center">
                 <v-col cols="12" md="6">
-                    <component
-                        :is="errorComponent"
-                        :payload="errorComponentPayload"
-                    />
+                    <component :is="errorComponent" :payload="errorComponentPayload" />
                 </v-col>
             </v-row>
         </v-container>
 
         <!-- Regular error -->
         <div v-else>
-            <component
-                v-if="errorComponent"
-                :is="errorComponent"
-                :payload="errorComponentPayload"
-            />
+            <component v-if="errorComponent" :is="errorComponent" :payload="errorComponentPayload" />
         </div>
     </div>
 </template>
@@ -76,12 +69,7 @@ export default class ErrorPlaceholder extends Vue {
      */
     get errorComponentPayload() {
         const payload = new ErrorComponentPayload();
-        payload.error = ErrorHandler.handle(
-            this.error,
-            this.options,
-            {},
-            !this.isFullPage
-        );
+        payload.error = ErrorHandler.handle(this.error, this.options, {}, !this.isFullPage);
         payload.options = this.options;
 
         return payload;

@@ -6,9 +6,7 @@ export class InputFieldUtil {
      * @param fields Object containing all the different InputField-objects
      */
     static getValues(fields: InputFields): any {
-        return Object.fromEntries(
-            Object.entries(fields).map(([key, _]) => [key, fields[key].value])
-        );
+        return Object.fromEntries(Object.entries(fields).map(([key, _]) => [key, fields[key].value]));
     }
 
     /**

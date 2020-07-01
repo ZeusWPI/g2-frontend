@@ -1,10 +1,7 @@
 <template>
     <v-toolbar class="navbar" color="primary" dark fixed>
         <!-- Open drawer icon -->
-        <v-app-bar-nav-icon
-            class="hidden-md-and-up"
-            @click.stop="toggleDrawer"
-        />
+        <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="toggleDrawer" />
 
         <!-- Title -->
         <v-toolbar-title class="navbar__title" @click="$router.push('/')">
@@ -15,13 +12,7 @@
 
         <!-- Items -->
         <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn
-                v-for="(link, index) in links"
-                :key="index"
-                :to="link.to"
-                exact
-                text
-            >
+            <v-btn v-for="(link, index) in links" :key="index" :to="link.to" exact text>
                 {{ link.text }}
             </v-btn>
         </v-toolbar-items>

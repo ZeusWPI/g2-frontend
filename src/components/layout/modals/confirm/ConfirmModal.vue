@@ -19,12 +19,7 @@
             <v-spacer />
 
             <!-- Cancel -->
-            <v-btn
-                color="error"
-                text
-                @click="close"
-                :disabled="modifications.loading"
-            >
+            <v-btn color="error" text @click="close" :disabled="modifications.loading">
                 Cancel
             </v-btn>
 
