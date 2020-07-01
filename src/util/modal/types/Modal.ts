@@ -24,7 +24,7 @@ export class Modal {
      * Should the modal be responsive.
      * This will make the modal fullscreen when the screen becomes to small.
      */
-    responsive?: boolean = true;
+    responsive?: boolean = false;
 
     /**
      * Animation while opening/closing the modal.

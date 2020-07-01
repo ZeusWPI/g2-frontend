@@ -2,7 +2,7 @@
     <div>
         <v-row justify="space-between" no-gutters>
             <!-- General Information -->
-            <v-col cols="auto">
+            <v-col cols="12" sm="auto">
                 <!-- Title -->
                 <inline-edit v-model="project.name" :update="updateName">
                     <div class="project__title">

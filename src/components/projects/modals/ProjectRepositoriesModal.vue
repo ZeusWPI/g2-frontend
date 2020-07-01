@@ -27,7 +27,7 @@
             <template v-else-if="repositories.isSuccess()">
                 <!-- Search -->
                 <v-row>
-                    <v-col align-self="center">
+                    <v-col cols="12" sm="" align-self="center">
                         <v-chip
                             v-for="(repository, index) of tableSelected"
                             :key="index"
@@ -39,7 +39,7 @@
                         </v-chip>
                     </v-col>
 
-                    <v-col align-self="center">
+                    <v-col cols="12" sm="" align-self="center">
                         <v-text-field
                             v-model="tableSearch"
                             label="Search for repository"

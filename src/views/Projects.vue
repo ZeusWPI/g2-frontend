@@ -87,7 +87,8 @@ export default class ProjectsView extends Vue {
      */
     openCreate() {
         ModalHandler.open({
-            component: ProjectCreateModal
+            component: ProjectCreateModal,
+            responsive: true
         });
     }
 }
