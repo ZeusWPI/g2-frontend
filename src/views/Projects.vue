@@ -2,8 +2,15 @@
     <v-container class="container--small">
         <!-- Action bar -->
         <v-row justify="space-between">
-            <v-col>
-                <v-text-field v-model="search" label="Search for a project" append-icon="mdi-magnify" outlined dense />
+            <v-col cols="12" sm="">
+                <v-text-field
+                    v-model="search"
+                    label="Search for a project"
+                    append-icon="mdi-magnify"
+                    outlined
+                    dense
+                    hide-details
+                />
             </v-col>
 
             <v-col cols="auto">

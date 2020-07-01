@@ -18,7 +18,7 @@
             <v-divider class="mt-2 mb-3" />
 
             <!-- Tab Menu -->
-            <v-tabs background-color="transparent" v-model="_tab" :show-arrows="false">
+            <v-tabs background-color="transparent" v-model="_tab">
                 <!-- Issues -->
                 <v-tab to="issues">
                     <v-icon left>mdi-alert-circle-outline</v-icon>

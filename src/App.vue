@@ -1,27 +1,25 @@
 <template>
     <v-app>
+        <!-- Navigation -->
+        <navigation />
+
+        <!-- Content -->
         <v-main>
-            <!-- Navigation -->
-            <navigation />
+            <!-- Potential Full Page error -->
+            <error-placeholder v-if="error" :error="error.error" :options="error.options" :is-full-page="true" />
 
             <!-- Content -->
-            <template>
-                <!-- Potential Full Page error -->
-                <error-placeholder v-if="error" :error="error.error" :options="error.options" :is-full-page="true" />
-
-                <!-- Content -->
-                <router-view v-else />
-            </template>
-
-            <!-- Footer -->
-            <Footer />
-
-            <!-- Modal -->
-            <modal-placeholder />
-
-            <!-- Snackbar -->
-            <snackbar-placeholder />
+            <router-view v-else />
         </v-main>
+
+        <!-- Footer -->
+        <Footer />
+
+        <!-- Modal -->
+        <modal-placeholder />
+
+        <!-- Snackbar -->
+        <snackbar-placeholder />
     </v-app>
 </template>
 
@@ -113,5 +111,13 @@ export default class App extends Vue {
         color: var(--v-primary-base);
         margin-bottom: 10px;
     }
+}
+
+/**
+ * Prevent space between the page border & tabs.
+ * The space should be there according to the material specs, but it looks strange.
+ */
+.v-slide-group__prev {
+    display: none !important;
 }
 </style>

@@ -21,6 +21,12 @@ export class Modal {
     fullscreen?: boolean = false;
 
     /**
+     * Should the modal be responsive.
+     * This will make the modal fullscreen when the screen becomes to small.
+     */
+    responsive?: boolean = true;
+
+    /**
      * Animation while opening/closing the modal.
      */
     transition?: string = "dialog-transition";

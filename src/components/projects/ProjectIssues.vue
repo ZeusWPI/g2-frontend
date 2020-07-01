@@ -48,7 +48,7 @@
                 </v-col>
 
                 <!-- Repository selection -->
-                <v-col cols="auto">
+                <v-col cols="auto" :hidden="$vuetify.breakpoint.smAndDown">
                     <v-select
                         v-model="tableFilters.repositories"
                         :items="tableRepositories"
@@ -67,7 +67,7 @@
                 </v-col>
 
                 <!-- Sort options -->
-                <v-col cols="auto">
+                <v-col cols="auto" :hidden="$vuetify.breakpoint.smAndDown">
                     <v-select
                         v-model="tableFilters.sort"
                         :items="tableFilters.sortOptions"

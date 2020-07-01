@@ -1,5 +1,5 @@
 <template>
-    <v-footer absolute class="font-weight-medium">
+    <v-footer height="auto" class="font-weight-medium footer">
         <!-- Empty Spacer -->
         <v-col class="text-center" cols="12" md="2"></v-col>
 

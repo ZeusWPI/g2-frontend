@@ -1,5 +1,5 @@
 <template>
-    <v-card :loading="loading">
+    <v-card :loading="loading" :tile="$vuetify.breakpoint.smAndDown">
         <v-card-title class="modal__title">
             Nieuw project aanmaken
 
@@ -11,8 +11,7 @@
         </v-card-title>
 
         <v-card-subtitle>
-            Maak een nieuw G2 project aan. Je hebt later de mogelijkheid om
-            repositories toe te voegen.
+            Maak een nieuw G2 project aan. Je hebt later de mogelijkheid om repositories toe te voegen.
         </v-card-subtitle>
 
         <v-card-text>
@@ -47,13 +46,7 @@
                 Sluiten
             </v-btn>
 
-            <v-btn
-                @click="create"
-                text
-                color="primary"
-                :disabled="loading"
-                :loading="loading"
-            >
+            <v-btn @click="create" text color="primary" :disabled="loading" :loading="loading">
                 Aanmaken
             </v-btn>
         </v-card-actions>

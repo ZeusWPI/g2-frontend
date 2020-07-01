@@ -3,7 +3,7 @@
         v-if="modal"
         v-model="open"
         :max-width="modal.width"
-        :fullscreen="modal.fullscreen"
+        :fullscreen="modal.fullscreen || ($vuetify.breakpoint.smAndDown && modal.responsive)"
         :transition="modal.transition"
     >
         <!-- Component -->
