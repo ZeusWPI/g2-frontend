@@ -48,17 +48,17 @@
 
             <v-tabs-items v-model="_tab" class="project__tabs__content">
                 <!-- Issues -->
-                <v-tab-item value="issues" class="container--small">
+                <v-tab-item value="issues" class="container--small" transition="" reverse-transition="">
                     <project-issues :project="project.data" />
                 </v-tab-item>
 
                 <!-- Repositories -->
-                <v-tab-item value="repositories" class="container--small">
+                <v-tab-item value="repositories" class="container--small" transition="" reverse-transition="">
                     <project-repositories :project="project.data" />
                 </v-tab-item>
 
                 <!-- Pull Requests -->
-                <v-tab-item value="pulls">
+                <v-tab-item value="pulls" transition="" reverse-transition="">
                     <project-issues />
                 </v-tab-item>
             </v-tabs-items>
