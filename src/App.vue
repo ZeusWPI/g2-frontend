@@ -61,6 +61,9 @@ export default class App extends Vue {
      * When the component is created.
      */
     created() {
+        // Fetch the logged in user.
+        this.$store.dispatch("session/fetch");
+
         // Fetch dark theme preferences.
         this.$store.dispatch("theme/fetchDark");
 

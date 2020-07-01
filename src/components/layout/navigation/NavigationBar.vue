@@ -15,6 +15,30 @@
             <v-btn v-for="(link, index) in links" :key="index" :to="link.to" exact text>
                 {{ link.text }}
             </v-btn>
+
+            <!-- Authentication -->
+            <template>
+                <!-- Loading -->
+                <template v-if="user.isLoading()">
+                    <v-btn text>
+                        <v-skeleton-loader class="skeleton__user" width="100px" type="text" />
+                    </v-btn>
+                </template>
+
+                <!-- Logged in -->
+                <template v-else-if="user.isSuccess() && false">
+                    <v-btn text>
+                        {{ user.data.name }}
+                    </v-btn>
+                </template>
+
+                <!-- Not logged in -->
+                <template v-else-if="user.isError() || true">
+                    <v-btn text @click="openLogin">
+                        Login
+                    </v-btn>
+                </template>
+            </template>
         </v-toolbar-items>
     </v-toolbar>
 </template>
@@ -22,6 +46,11 @@
 <script lang="ts">
 import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 import { NavigationLink } from "@/types/NavigationLink";
+import { StoreGetter } from "@/store/decorators/StoreGetter";
+import { User } from "@/api/models/User";
+import { EchoPromise } from "echofetch";
+import { ModalHandler } from "@/util/modal/ModalHandler";
+import LoginModal from "@/components/login/modals/LoginModal.vue";
 
 @Component
 export default class NavigationBar extends Vue {
@@ -38,10 +67,25 @@ export default class NavigationBar extends Vue {
     links: Array<NavigationLink>;
 
     /**
+     * Logged in user.
+     */
+    @StoreGetter("session/currentUser")
+    user: EchoPromise<User>;
+
+    /**
      * Toggle the drawer visible/invisible.
      */
     toggleDrawer(): void {
         this._drawer = !this._drawer;
+    }
+
+    /**
+     * Open the login modal.
+     */
+    openLogin() {
+        ModalHandler.open({
+            component: LoginModal
+        });
     }
 }
 </script>
