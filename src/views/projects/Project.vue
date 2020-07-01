@@ -18,13 +18,9 @@
             <v-divider class="mt-2 mb-3" />
 
             <!-- Tab Menu -->
-            <v-tabs
-                background-color="transparent"
-                v-model="tab"
-                :show-arrows="false"
-            >
+            <v-tabs background-color="transparent" v-model="_tab" :show-arrows="false">
                 <!-- Issues -->
-                <v-tab href="#tab-issues">
+                <v-tab to="issues">
                     <v-icon left>mdi-alert-circle-outline</v-icon>
                     Issues
 
@@ -34,13 +30,13 @@
                 </v-tab>
 
                 <!-- Repositories -->
-                <v-tab href="#tab-repositories">
+                <v-tab to="repositories">
                     <v-icon left>mdi-source-repository</v-icon>
                     Repositories
                 </v-tab>
 
                 <!-- Pull Requests -->
-                <v-tab href="#tab-prs">
+                <v-tab to="pulls">
                     <v-icon left>mdi-source-pull</v-icon>
                     Pull Requests
 
@@ -50,19 +46,19 @@
                 </v-tab>
             </v-tabs>
 
-            <v-tabs-items v-model="tab" class="project__tabs__content">
+            <v-tabs-items v-model="_tab" class="project__tabs__content">
                 <!-- Issues -->
-                <v-tab-item value="tab-issues" class="container--small">
+                <v-tab-item value="issues" class="container--small">
                     <project-issues />
                 </v-tab-item>
 
                 <!-- Repositories -->
-                <v-tab-item value="tab-repositories" class="container--small">
+                <v-tab-item value="repositories" class="container--small">
                     <project-repositories />
                 </v-tab-item>
 
                 <!-- Pull Requests -->
-                <v-tab-item value="tab-prs">
+                <v-tab-item value="pulls">
                     <project-issues />
                 </v-tab-item>
             </v-tabs-items>
@@ -70,16 +66,13 @@
 
         <!-- Error -->
         <template v-if="project.isError()">
-            <error-placeholder
-                :error="project.error"
-                :options="{ style: 'SECTION', displayFullPage: true }"
-            />
+            <error-placeholder :error="project.error" :options="{ style: 'SECTION', displayFullPage: true }" />
         </template>
     </v-container>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
@@ -105,14 +98,15 @@ export default class ProjectView extends Vue {
     id: number;
 
     /**
+     * Model for the tab menu.
+     */
+    @PropSync("tab", { default: "issues" })
+    _tab: string;
+
+    /**
      * Project to display.
      */
     project: EchoPromise<Project> = ProjectService.get(this.id);
-
-    /**
-     * Model for the tab menu.
-     */
-    tab = null;
 }
 </script>
 

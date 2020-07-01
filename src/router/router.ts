@@ -19,6 +19,11 @@ const routes: Array<RouteConfig> = [
 
     {
         path: "/projects/:id",
+        redirect: "/projects/:id/issues"
+    },
+
+    {
+        path: "/projects/:id/:tab?",
         name: "Project",
         component: () => import("../views/projects/Project.vue"),
         props: true

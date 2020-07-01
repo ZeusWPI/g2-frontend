@@ -25,9 +25,10 @@
                 :search="tableSearch"
                 :items-per-page="25"
                 mobile-breakpoint="0"
+                @click:row="openRepository"
             >
                 <template v-slot:item.name="{ item }">
-                    <div class="repository">
+                    <div class="repository" v-ripple>
                         <!-- Title -->
                         <div class="repository__name">
                             {{ item.name }}
@@ -48,6 +49,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
 import { ModalHandler } from "@/util/modal/ModalHandler";
+import { Repository } from "@/api/models/Repository";
 
 @Component
 export default class ProjectRepositories extends Vue {
@@ -78,12 +80,14 @@ export default class ProjectRepositories extends Vue {
     repositories = [
         {
             name: "Tab",
-            description: ":moneybag: Yes. We have to drink. But we also have to pay. This does the paying part."
+            description: ":moneybag: Yes. We have to drink. But we also have to pay. This does the paying part.",
+            url: "https://github.com/zeuswpi/tab"
         },
 
         {
             name: "helios-server",
-            description: "Helios server"
+            description: "Helios server",
+            url: "https://github.com/zeuswpi/helios-server"
         }
     ];
 
@@ -100,12 +104,21 @@ export default class ProjectRepositories extends Vue {
             transition: "dialog-bottom-transition"
         });
     }
+
+    /**
+     * Open the selected repository.
+     * @param repository Repository to open.
+     */
+    openRepository(repository: Repository) {
+        window.open(repository.url, "_blank");
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .repository {
     padding: 12px 0;
+    cursor: pointer;
 
     &__name {
         font-weight: bold;

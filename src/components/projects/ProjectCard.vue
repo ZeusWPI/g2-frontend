@@ -6,15 +6,8 @@
         </template>
 
         <!-- Data -->
-        <v-card
-            v-else-if="project"
-            class="fill-height"
-            :to="`/projects/${project.project_id}`"
-        >
-            <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                height="200px"
-            />
+        <v-card v-else-if="project" class="fill-height" :to="`/projects/${project.project_id}`">
+            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" />
 
             <v-card-title>
                 {{ project.name }}
@@ -27,11 +20,7 @@
             <v-card-actions>
                 <v-spacer />
 
-                <v-btn
-                    text
-                    color="primary"
-                    :to="`projects/${project.project_id}`"
-                >
+                <v-btn text color="primary" :to="`projects/${project.project_id}`">
                     Meer informatie
                 </v-btn>
             </v-card-actions>
