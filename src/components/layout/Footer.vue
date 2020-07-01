@@ -13,12 +13,7 @@
         </v-col>
 
         <!-- Dark theme toggle -->
-        <v-col
-            class="text-center d-flex"
-            cols="12"
-            md="2"
-            style="justify-content: center;"
-        >
+        <v-col class="text-center d-flex" cols="12" md="2" style="justify-content: center;">
             <v-switch v-model="dark" label="Dark mode" />
         </v-col>
     </v-footer>
@@ -37,3 +32,11 @@ export default class Footer extends Vue {
     dark: boolean;
 }
 </script>
+
+<style lang="scss" scoped>
+.footer {
+    &__heart {
+        color: #ff3860;
+    }
+}
+</style>
