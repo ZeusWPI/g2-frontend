@@ -28,13 +28,13 @@ export default class Navigation extends Vue {
      */
     links: Array<NavigationLink> = [
         {
-            text: "Home",
+            text: this.t("navigation.home"),
             to: "/",
             icon: "mdi-home"
         },
 
         {
-            text: "Projects",
+            text: this.t("navigation.projects"),
             to: "/projects",
             icon: "mdi-format-list-bulleted-type"
         }

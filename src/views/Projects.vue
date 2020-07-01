@@ -3,9 +3,10 @@
         <!-- Action bar -->
         <v-row justify="space-between">
             <v-col cols="12" sm="">
+                <!-- Search bar -->
                 <v-text-field
                     v-model="search"
-                    label="Search for a project"
+                    :label="t('projects.search')"
                     append-icon="mdi-magnify"
                     outlined
                     dense
@@ -14,8 +15,9 @@
             </v-col>
 
             <v-col cols="auto">
+                <!-- Create a new project -->
                 <v-btn color="primary" depressed @click="openCreate">
-                    Nieuw project
+                    {{ t("projects.new") }}
                     <v-icon right dark>mdi-plus-circle-outline</v-icon>
                 </v-btn>
             </v-col>
@@ -31,8 +33,13 @@
             <!-- No Data -->
             <template v-else-if="projects.isSuccess() && projectsFiltered.length <= 0">
                 <v-col cols="12">
-                    <h2>No projects found</h2>
-                    There are no projects available for the given search parameters.
+                    <!-- Title -->
+                    <h2>{{ t("projects.empty.title") }}</h2>
+
+                    <!-- Description -->
+                    <p>
+                        {{ t("projects.empty.desc") }}
+                    </p>
                 </v-col>
             </template>
 

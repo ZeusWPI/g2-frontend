@@ -4,6 +4,8 @@ import router from "./router/router";
 import store from "./store/store";
 import vuetify from "./plugins/vuetify";
 
+import "./plugins/i18n";
+
 new Vue({
     router,
     store,

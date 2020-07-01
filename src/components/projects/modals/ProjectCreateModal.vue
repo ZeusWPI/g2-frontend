@@ -1,7 +1,7 @@
 <template>
     <v-card :loading="loading" :tile="$vuetify.breakpoint.smAndDown">
         <v-card-title class="modal__title">
-            Nieuw project aanmaken
+            {{ t("projects.create.title") }}
 
             <v-spacer />
 
@@ -11,7 +11,7 @@
         </v-card-title>
 
         <v-card-subtitle>
-            Maak een nieuw G2 project aan. Je hebt later de mogelijkheid om repositories toe te voegen.
+            {{ t("projects.create.desc") }}
         </v-card-subtitle>
 
         <v-card-text>
@@ -21,8 +21,7 @@
                     v-model="fields.name.value"
                     :rules="fields.name.rules"
                     :error-messages="fields.name.error"
-                    label="Naam"
-                    placeholder="Naam van het project"
+                    :label="t('projects.create.fields.name')"
                     outlined
                     required
                 />
@@ -32,8 +31,7 @@
                     v-model="fields.description.value"
                     :rules="fields.description.rules"
                     :error-messages="fields.description.error"
-                    label="Beschrijving"
-                    placeholder="Beschrijving van het project"
+                    :label="t('projects.create.fields.description')"
                     outlined
                 />
             </v-form>
@@ -43,11 +41,11 @@
             <v-spacer />
 
             <v-btn @click="close" text color="red" :disabled="loading">
-                Sluiten
+                {{ t("close") }}
             </v-btn>
 
             <v-btn @click="create" text color="primary" :disabled="loading" :loading="loading">
-                Aanmaken
+                {{ t("create") }}
             </v-btn>
         </v-card-actions>
     </v-card>

@@ -23,7 +23,7 @@
                 <v-btn color="error" text @click="openDelete">
                     <v-icon left>mdi-delete</v-icon>
 
-                    Delete
+                    {{ t("delete") }}
                 </v-btn>
             </v-col>
         </v-row>

@@ -1,0 +1,36 @@
+{
+    "close": "Close",
+    "create": "Create",
+    "delete": "Delete",
+
+    "navigation": {
+        "home": "Home",
+        "projects": "Projects",
+        "login": "Login"
+    },
+
+    "projects": {
+        "new": "New project",
+        "search": "Search for a project",
+        "empty": {
+            "title": "No projects found",
+            "desc": "No projects found for the given search parameters."
+        },
+
+        "create": {
+            "title": "Create a new project",
+            "desc": "Create a new G2 project. You will have the option to add repositories in a later stage!",
+            "fields": {
+                "name": "Name",
+                "description": "Description"
+            }
+        }
+    },
+
+    "login": {
+        "title": "Login",
+        "desc": "Choose one of the following options to continue.",
+        "zeus": "Login with Zeus WPI",
+        "github": "Login with Github"
+    }
+}

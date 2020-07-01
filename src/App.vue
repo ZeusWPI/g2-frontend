@@ -64,6 +64,9 @@ export default class App extends Vue {
         // Fetch the logged in user.
         this.$store.dispatch("session/fetch");
 
+        // Fetch the users language.
+        this.$store.dispatch("i18n/fetch");
+
         // Fetch dark theme preferences.
         this.$store.dispatch("theme/fetchDark");
 

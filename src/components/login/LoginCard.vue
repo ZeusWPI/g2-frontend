@@ -2,7 +2,7 @@
     <v-card>
         <!-- Toolbar -->
         <v-card-title>
-            Inloggen
+            {{ t("login.title") }}
 
             <v-spacer />
 
@@ -13,23 +13,25 @@
 
         <v-card-text>
             <p>
-                Kies 1 van de volgende authenticatie methoden om verder te gaan.
+                {{ t("login.desc") }}
             </p>
 
+            <!-- Zeus -->
             <v-btn :href="`${backendUrl}/oauth/zeus`" class="mb-4" color="primary" block depressed large>
                 <v-icon left>
                     mdi-alpha-z-box-outline
                 </v-icon>
 
-                Login met Zeus WPI
+                {{ t("login.zeus") }}
             </v-btn>
 
+            <!-- Github -->
             <v-btn :href="`${backendUrl}/oauth/github?auth-goal=auth`" color="dark" block depressed large>
                 <v-icon left>
                     mdi-github
                 </v-icon>
 
-                Login met Github
+                {{ t("login.github") }}
             </v-btn>
         </v-card-text>
     </v-card>
