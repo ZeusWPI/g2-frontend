@@ -7,12 +7,7 @@
             <!-- Content -->
             <template>
                 <!-- Potential Full Page error -->
-                <error-placeholder
-                    v-if="error"
-                    :error="error.error"
-                    :options="error.options"
-                    :is-full-page="true"
-                />
+                <error-placeholder v-if="error" :error="error.error" :options="error.options" :is-full-page="true" />
 
                 <!-- Content -->
                 <router-view v-else />
@@ -72,14 +67,11 @@ export default class App extends Vue {
         this.$store.dispatch("theme/fetchDark");
 
         // Create a listener that will show an error when it is spawned.
-        ErrorBus.$on(
-            "error",
-            (error: EchoError, options: CustomErrorOptions) => {
-                if (options.displayFullPage) {
-                    this.error = { error, options };
-                }
+        ErrorBus.$on("error", (error: EchoError, options: CustomErrorOptions) => {
+            if (options.displayFullPage) {
+                this.error = { error, options };
             }
-        );
+        });
 
         // Clear the error when navigating to a different route.
         router.afterEach(() => {
@@ -90,6 +82,12 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+.text {
+    &--bold {
+        font-weight: bold;
+    }
+}
+
 .container {
     margin-top: 20px;
     margin-bottom: 120px;

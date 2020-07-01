@@ -1,12 +1,4 @@
-import {
-    Body,
-    EchoPromise,
-    EchoService,
-    EchoServiceBuilder,
-    GET,
-    Path,
-    POST
-} from "echofetch";
+import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST } from "echofetch";
 import { Project } from "@/api/models/Project";
 import { ProjectCreateWrapper } from "@/api/wrappers/ProjectCreateWrapper";
 
@@ -39,8 +31,15 @@ class ProjectService extends EchoService {
     create(@Body() body: ProjectCreateWrapper): EchoPromise<Project> {
         return {} as EchoPromise<Project>;
     }
+
+    /**
+     * Delete a project by id.
+     * @param id Id of the project to delete.
+     */
+    @DELETE("/project/{id}")
+    delete(@Path("id") id: number): EchoPromise<void> {
+        return {} as EchoPromise<void>;
+    }
 }
 
-export default new EchoServiceBuilder()
-    .setBaseUrl(process.env.VUE_APP_BACKEND_URL)
-    .build(ProjectService);
+export default new EchoServiceBuilder().setBaseUrl(process.env.VUE_APP_BACKEND_URL).build(ProjectService);

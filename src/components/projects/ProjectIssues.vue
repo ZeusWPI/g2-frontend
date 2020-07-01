@@ -22,7 +22,11 @@
             <v-row class="px-2">
                 <!-- Open/closed switch -->
                 <v-col>
-                    <v-btn text style="font-weight: bold">
+                    <v-btn
+                        text
+                        :class="tableFilters.status === 'open' ? 'text--bold' : 'text--secondary'"
+                        @click="tableFilters.status = 'open'"
+                    >
                         <v-icon left>
                             mdi-alert-circle-outline
                         </v-icon>
@@ -30,7 +34,11 @@
                         2 open
                     </v-btn>
 
-                    <v-btn text class="text--secondary">
+                    <v-btn
+                        text
+                        :class="tableFilters.status === 'closed' ? 'text--bold' : 'text--secondary'"
+                        @click="tableFilters.status = 'closed'"
+                    >
                         <v-icon left>
                             mdi-alert-circle-check-outline
                         </v-icon>
@@ -46,14 +54,21 @@
 
                 <!-- Sort options -->
                 <v-col cols="auto">
-                    <v-select :items="[]" label="Sort" flat solo dense />
+                    <v-select
+                        v-model="tableFilters.sort"
+                        :items="tableFilters.sortOptions"
+                        label="Sort"
+                        flat
+                        solo
+                        dense
+                    />
                 </v-col>
             </v-row>
 
             <v-data-table
                 :headers="tableHeaders"
                 :search="tableSearch"
-                :items="issues"
+                :items="tableItems"
                 :items-per-page="25"
                 hide-default-header
                 mobile-breakpoint="0"
@@ -95,10 +110,7 @@
                         </v-col>
 
                         <!-- Description -->
-                        <v-col
-                            cols="12"
-                            class="issue__description text--secondary"
-                        >
+                        <v-col cols="12" class="issue__description text--secondary">
                             Opened by {{ item.author }}, 5 days ago
                         </v-col>
                     </v-row>
@@ -124,6 +136,36 @@ export default class ProjectIssues extends Vue {
      * Table search value.
      */
     tableSearch = "";
+
+    /**
+     * Table filters for selecting/sorting the issues.
+     */
+    tableFilters = {
+        /**
+         * Selected status option.
+         */
+        status: "open",
+
+        /**
+         * Selected sort option.
+         */
+        sort: "newest",
+
+        /**
+         * Available sort options.
+         */
+        sortOptions: [
+            {
+                value: "newest",
+                text: "Newest"
+            },
+
+            {
+                value: "oldest",
+                text: "Oldest"
+            }
+        ]
+    };
 
     /**
      * Table headers.
@@ -152,9 +194,20 @@ export default class ProjectIssues extends Vue {
         return (
             headers
                 // Hide headers that should not be displayed on the mobile view.
-                .filter(header =>
-                    this.$vuetify.breakpoint.smAndDown ? header.mobile : true
-                )
+                .filter(header => (this.$vuetify.breakpoint.smAndDown ? header.mobile : true))
+        );
+    }
+
+    /**
+     * Table items.
+     * Will filter the issues based on some set parameters.
+     */
+    get tableItems() {
+        return (
+            this.issues
+
+                // Only display the issues with the correct selected status.
+                .filter(issue => issue.status === this.tableFilters.status)
         );
     }
 

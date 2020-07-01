@@ -32,6 +32,9 @@ import { Project } from "@/api/models/Project";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import ConfirmModal from "@/components/layout/modals/confirm/ConfirmModal.vue";
 import { ConfirmModalModifications } from "@/components/layout/modals/confirm/ConfirmModalModifications";
+import ProjectService from "@/api/services/ProjectService";
+import { ErrorHandler } from "@/api/error/ErrorHandler";
+import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
 
 @Component
 export default class ProjectHeader extends Vue {
@@ -52,6 +55,27 @@ export default class ProjectHeader extends Vue {
                     "Are you sure you want to delete this project? This action cannot be undone forever (very long time)",
                 action: (modifications: ConfirmModalModifications) => {
                     modifications.loading = true;
+
+                    ProjectService.delete(this.project.project_id)
+                        .then(() => {
+                            // Close the modal
+                            ModalHandler.close();
+
+                            // Navigate to the projects page.
+                            this.$router.push("/projects");
+
+                            // Send a confirmation snackbar.
+                            SnackbarHandler.open({
+                                message: "Project has been successfully deleted.",
+                                color: "success"
+                            });
+                        })
+                        .catch(error =>
+                            ErrorHandler.handle(error, {
+                                style: "SNACKBAR"
+                            })
+                        )
+                        .finally(() => (modifications.loading = false));
                 }
             }
         });
