@@ -49,12 +49,12 @@
             <v-tabs-items v-model="_tab" class="project__tabs__content">
                 <!-- Issues -->
                 <v-tab-item value="issues" class="container--small">
-                    <project-issues />
+                    <project-issues :project="project.data" />
                 </v-tab-item>
 
                 <!-- Repositories -->
                 <v-tab-item value="repositories" class="container--small">
-                    <project-repositories />
+                    <project-repositories :project="project.data" />
                 </v-tab-item>
 
                 <!-- Pull Requests -->

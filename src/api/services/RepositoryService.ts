@@ -1,11 +1,4 @@
-import {
-    EchoPromise,
-    EchoService,
-    EchoServiceBuilder,
-    GET,
-    Path,
-    POST
-} from "echofetch";
+import { EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST, PUT } from "echofetch";
 import { Project } from "@/api/models/Project";
 import { Repository } from "@/api/models/Repository";
 
@@ -35,15 +28,10 @@ class RepositoryService extends EchoService {
      * @param id Repository id.
      * @param projectId Project id.
      */
-    @POST("/repository/{id}/link/{pid}")
-    linkProject(
-        @Path("id") id: number,
-        @Path("pid") projectId: number
-    ): EchoPromise<void> {
+    @PUT("/repository/{id}/link/{pid}")
+    linkProject(@Path("id") id: number, @Path("pid") projectId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
 }
 
-export default new EchoServiceBuilder()
-    .setBaseUrl(process.env.VUE_APP_BACKEND_URL)
-    .build(RepositoryService);
+export default new EchoServiceBuilder().setBaseUrl(process.env.VUE_APP_BACKEND_URL).build(RepositoryService);

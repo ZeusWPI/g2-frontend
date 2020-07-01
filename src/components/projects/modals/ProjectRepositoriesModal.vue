@@ -158,6 +158,7 @@ export default class ProjectRepositoriesModal extends Vue {
 
         // Find all the newly selected repositories.
         for (const repository of this.tableSelected) {
+            console.log(repository);
             try {
                 await RepositoryService.linkProject(repository.repo_id, this.payload.project.project_id);
             } catch (error) {
@@ -165,7 +166,9 @@ export default class ProjectRepositoriesModal extends Vue {
                     style: "SNACKBAR"
                 });
 
-                break;
+                this.loading = false;
+
+                return;
             }
         }
 

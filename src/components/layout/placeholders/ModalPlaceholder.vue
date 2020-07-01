@@ -7,11 +7,7 @@
         :transition="modal.transition"
     >
         <!-- Component -->
-        <component
-            v-if="modal.component"
-            :is="modal.component"
-            :payload="modal.componentPayload"
-        />
+        <component v-if="modal.component" :is="modal.component" :payload="modal.componentPayload" />
     </v-dialog>
 </template>
 
