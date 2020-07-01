@@ -9,6 +9,12 @@ export const languages: Language[] = [
         code: "en",
         locale: require("@/i18n/en.json"),
         default: true
+    },
+
+    {
+        name: "Nederlands",
+        code: "nl",
+        locale: require("@/i18n/nl.json")
     }
 ];
 
@@ -46,7 +52,6 @@ Vue.mixin({
 declare module "vue/types/vue" {
     interface Vue {
         t(path: string): string;
-        languages(): Language[];
     }
 }
 

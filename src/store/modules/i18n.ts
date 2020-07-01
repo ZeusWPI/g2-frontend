@@ -57,6 +57,24 @@ export const i18n = {
                 code: language?.code,
                 save: false
             });
+        },
+
+        /**
+         * Set the new language
+         * @param context Vuex context.
+         * @param code Language code.
+         */
+        setLanguage(context: any, code: string) {
+            context.commit("SET_LANGUAGE", { code, save: true });
+        },
+
+        /**
+         * Set the new language, as a v-select output format.
+         * @param context Vuex context.
+         * @param code Code as a array (as received from v-select)
+         */
+        setLanguageInput(context: any, code: string[]) {
+            context.commit("SET_LANGUAGE", { code: code[0], save: true });
         }
     },
 
@@ -67,6 +85,19 @@ export const i18n = {
          */
         language(state: any): Language {
             return languages.find(language => language.code === state.language)!!;
+        },
+
+        /**
+         * Get the language of the user, as a v-select input format.
+         * @param state Vuex state.
+         */
+        languageInput(state: any): { text: string; value: string } {
+            const language = languages.find(language => language.code === state.language)!!;
+
+            return {
+                text: language.name,
+                value: language.code
+            };
         }
     }
 };

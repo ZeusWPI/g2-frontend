@@ -12,7 +12,7 @@
                         mdi-pencil
                     </v-icon>
 
-                    Edit
+                    {{ openEdit }}
                 </v-btn>
             </v-col>
         </v-row>

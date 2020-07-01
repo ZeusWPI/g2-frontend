@@ -2,6 +2,7 @@
     "close": "Close",
     "create": "Create",
     "delete": "Delete",
+    "edit": "Edit",
 
     "navigation": {
         "home": "Home",

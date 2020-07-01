@@ -1,0 +1,37 @@
+{
+    "close": "Sluit",
+    "create": "Aanmaken",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+
+    "navigation": {
+        "home": "Home",
+        "projects": "Projecten",
+        "login": "Inloggen"
+    },
+
+    "projects": {
+        "new": "Nieuw project",
+        "search": "Zoek naar een project",
+        "empty": {
+            "title": "Geen projecten gevonden",
+            "desc": "Er werden geen projecten gevonden met de gegeven parameters."
+        },
+
+        "create": {
+            "title": "Nieuw project aanmaken",
+            "desc": "Maak een nieuw G2 project aan. Je hebt straks de mogelijkheid om repositories toe te voegen.",
+            "fields": {
+                "name": "Naam",
+                "description": "Beschrijving"
+            }
+        }
+    },
+
+    "login": {
+        "title": "Inloggen",
+        "desc": "Kies een van de volgende opties om verder te gaan.",
+        "zeus": "Inloggen met Zeus WPI",
+        "github": "Inloggen Github"
+    }
+}
