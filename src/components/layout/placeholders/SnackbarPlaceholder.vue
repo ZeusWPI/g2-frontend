@@ -10,7 +10,20 @@
         :color="snackbar.color"
         @click="close"
     >
-        {{ snackbar.message }}
+        <v-row style="width: 100%" no-gutters justify="space-between">
+            <v-col align-self="center">
+                {{ snackbar.message }}
+            </v-col>
+
+            <v-col cols="auto">
+                <!-- Close button -->
+                <v-btn icon small @click="close">
+                    <v-icon>
+                        mdi-close
+                    </v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
     </v-snackbar>
 </template>
 
