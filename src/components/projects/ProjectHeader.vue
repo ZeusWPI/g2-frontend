@@ -4,14 +4,18 @@
             <!-- General Information -->
             <v-col cols="auto">
                 <!-- Title -->
-                <div class="project__title">
-                    {{ project.name }}
-                </div>
+                <inline-edit v-model="project.name" :update="updateName">
+                    <div class="project__title">
+                        {{ project.name }}
+                    </div>
+                </inline-edit>
 
                 <!-- Description -->
-                <div class="project__description text--secondary">
-                    {{ project.description }}
-                </div>
+                <inline-edit v-model="project.description" :update="updateDescription">
+                    <div class="project__description text--secondary">
+                        {{ project.description }}
+                    </div>
+                </inline-edit>
             </v-col>
 
             <!-- Actions -->
@@ -30,19 +34,43 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
 import { ModalHandler } from "@/util/modal/ModalHandler";
-import ConfirmModal from "@/components/layout/modals/confirm/ConfirmModal.vue";
 import { ConfirmModalModifications } from "@/components/layout/modals/confirm/ConfirmModalModifications";
-import ProjectService from "@/api/services/ProjectService";
 import { ErrorHandler } from "@/api/error/ErrorHandler";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
+import { EchoPromise } from "echofetch";
+import ProjectService from "@/api/services/ProjectService";
+import InlineEdit from "@/components/util/InlineEdit.vue";
+import ConfirmModal from "@/components/layout/modals/confirm/ConfirmModal.vue";
 
-@Component
+@Component({
+    components: { InlineEdit }
+})
 export default class ProjectHeader extends Vue {
     /**
      * Project to display.
      */
     @Prop()
     project: Project;
+
+    /**
+     * Update the project name.
+     * @param value New value.
+     */
+    updateName(value: string): EchoPromise<unknown> {
+        return ProjectService.update(this.project.project_id, {
+            name: value
+        });
+    }
+
+    /**
+     * Update the project description.
+     * @param value New value.
+     */
+    updateDescription(value: string): EchoPromise<unknown> {
+        return ProjectService.update(this.project.project_id, {
+            description: value
+        });
+    }
 
     /**
      * Open the delete confirmation modal.

@@ -1,6 +1,7 @@
-import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST } from "echofetch";
+import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH, Path, POST } from "echofetch";
 import { Project } from "@/api/models/Project";
 import { ProjectCreateWrapper } from "@/api/wrappers/ProjectCreateWrapper";
+import { ProjectUpdateWrapper } from "@/api/wrappers/ProjectUpdateWrapper";
 
 /**
  * Service for managing projects.
@@ -29,6 +30,16 @@ class ProjectService extends EchoService {
      */
     @POST("/project")
     create(@Body() body: ProjectCreateWrapper): EchoPromise<Project> {
+        return {} as EchoPromise<Project>;
+    }
+
+    /**
+     * Update a project.
+     * @param id Project id.
+     * @param body Body containing the projects data.
+     */
+    @PATCH("/project/{id}")
+    update(@Path("id") id: number, @Body() body: ProjectUpdateWrapper): EchoPromise<Project> {
         return {} as EchoPromise<Project>;
     }
 

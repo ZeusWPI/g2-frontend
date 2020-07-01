@@ -6,6 +6,7 @@ import { InputFields } from "@/types/fields/InputFields";
 import { InputFieldError } from "@/types/fields/InputFieldError";
 import ErrorBus from "@/api/error/ErrorBus";
 import router from "@/router/router";
+import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
 
 /**
  * List with custom error messages for certain response codes/messages
@@ -14,8 +15,7 @@ const globalCustomMessages: Array<CustomErrorMessage> = [
     {
         code: "401",
         message: "You are not logged in",
-        description:
-            "You are currently nog logged in. Please login and try again!"
+        description: "You are currently nog logged in. Please login and try again!"
     },
     {
         code: "404",
@@ -27,15 +27,13 @@ const globalCustomMessages: Array<CustomErrorMessage> = [
     {
         code: "500",
         message: "Internal server error.",
-        description:
-            "We are having issues with the server. Please try again later."
+        description: "We are having issues with the server. Please try again later."
     },
 
     {
         code: "502",
         message: "Server is currently offline.",
-        description:
-            "We are having issues with the server. Please try again later."
+        description: "We are having issues with the server. Please try again later."
     },
 
     {
@@ -54,12 +52,7 @@ export class ErrorHandler {
      * @param fields Optional list with input fields. Individual input errors will be displayed on the correct field.
      * @param emit Should the error be emitted on the ErrorBus. (only used on internal ErrorPlaceholder)
      */
-    static handle(
-        error: EchoError,
-        options: CustomErrorOptions,
-        fields: InputFields = {},
-        emit = false
-    ): CustomError {
+    static handle(error: EchoError, options: CustomErrorOptions, fields: InputFields = {}, emit = false): CustomError {
         const customError: CustomError = error;
 
         // Handle custom message.
@@ -77,6 +70,14 @@ export class ErrorHandler {
             ErrorBus.$emit("error", error, options);
         }
 
+        // If the error type is a snackbar, spawn a snackbar.
+        if (options.style === "SNACKBAR") {
+            SnackbarHandler.open({
+                message: customError.customMessage ?? "",
+                color: "error"
+            });
+        }
+
         return customError;
     }
 
@@ -86,22 +87,14 @@ export class ErrorHandler {
      * @param customError Custom Error.
      * @param options Error options
      */
-    static handleCustomMessage(
-        customError: CustomError,
-        options: CustomErrorOptions
-    ) {
+    static handleCustomMessage(customError: CustomError, options: CustomErrorOptions) {
         // Stitch the given global & given custom error messages together.
         // The given messages have a higher priority.
-        const messages = [
-            ...globalCustomMessages,
-            ...(options.customMessages || [])
-        ];
+        const messages = [...globalCustomMessages, ...(options.customMessages || [])];
 
         // Check if the error code is present inside the messages.
         const message = messages.find(
-            message =>
-                message.code === customError.response?.status.toString() ||
-                message.code === customError.code
+            message => message.code === customError.response?.status.toString() || message.code === customError.code
         );
 
         // Update the custom error when the message is present.
@@ -146,12 +139,7 @@ export class ErrorHandler {
      */
     static handleInputFields(error: EchoError, fields: InputFields) {
         // Check if the input errors are undefined.
-        if (
-            !error ||
-            !error.response ||
-            !error.response.data ||
-            !error.response.data.inputErrors
-        ) {
+        if (!error || !error.response || !error.response.data || !error.response.data.inputErrors) {
             return;
         }
 
@@ -160,9 +148,7 @@ export class ErrorHandler {
         // Set the error messages for every field.
         for (const fieldName of Object.keys(fields)) {
             const fieldValue = fields[fieldName];
-            const fieldNewError = inputErrors.find(
-                (inputError: InputFieldError) => inputError.field === fieldName
-            );
+            const fieldNewError = inputErrors.find((inputError: InputFieldError) => inputError.field === fieldName);
 
             // Set the new error message, when available.
             if (fieldNewError) {
