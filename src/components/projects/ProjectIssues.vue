@@ -49,7 +49,21 @@
 
                 <!-- Repository selection -->
                 <v-col cols="auto">
-                    <v-select :items="[]" label="Repository" flat solo dense />
+                    <v-select
+                        v-model="tableFilters.repositories"
+                        :items="tableRepositories"
+                        label="Repository"
+                        flat
+                        solo
+                        dense
+                        multiple
+                    >
+                        <template v-slot:selection="{ index, item }">
+                            <span v-if="index === 0">{{ item }}</span>
+
+                            <span v-if="index === 1">, ...</span>
+                        </template>
+                    </v-select>
                 </v-col>
 
                 <!-- Sort options -->
@@ -164,7 +178,12 @@ export default class ProjectIssues extends Vue {
                 value: "oldest",
                 text: "Oldest"
             }
-        ]
+        ],
+
+        /**
+         * Selected repositories.
+         */
+        repositories: []
     };
 
     /**
@@ -206,9 +225,23 @@ export default class ProjectIssues extends Vue {
         return (
             this.issues
 
-                // Only display the issues with the correct selected status.
+                // Filter issues with the correct selected status.
                 .filter(issue => issue.status === this.tableFilters.status)
+
+                // Filter issues with the correct repository.
+                .filter(issue =>
+                    this.tableFilters.repositories.length > 0
+                        ? (this.tableFilters.repositories as string[]).includes(issue.repository)
+                        : true
+                )
         );
+    }
+
+    /**
+     * Get the repositories available for the given issues.
+     */
+    get tableRepositories(): string[] {
+        return [...new Set(this.issues.map(issue => issue.repository))];
     }
 
     /**
