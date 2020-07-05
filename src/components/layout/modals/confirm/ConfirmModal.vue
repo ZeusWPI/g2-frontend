@@ -2,7 +2,7 @@
     <v-card>
         <!-- Toolbar -->
         <v-card-title>
-            Are you sure?
+            {{ t("confirmModal.title") }}
 
             <v-spacer />
 
@@ -20,7 +20,7 @@
 
             <!-- Cancel -->
             <v-btn color="error" text @click="close" :disabled="modifications.loading">
-                Cancel
+                {{ t("cancel") }}
             </v-btn>
 
             <!-- Confirm -->
@@ -31,7 +31,7 @@
                 :disabled="modifications.loading"
                 :loading="modifications.loading"
             >
-                Confirm
+                {{ t("confirm") }}
             </v-btn>
         </v-card-actions>
     </v-card>

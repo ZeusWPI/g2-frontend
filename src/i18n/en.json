@@ -2,6 +2,7 @@
     "close": "Close",
     "create": "Create",
     "delete": "Delete",
+    "confirm": "Confirm",
     "edit": "Edit",
 
     "navigation": {
@@ -10,7 +11,12 @@
         "login": "Login"
     },
 
+    "confirmModal": {
+        "title": "Are you sure?"
+    },
+
     "projects": {
+        "more": "More info",
         "new": "New project",
         "search": "Search for a project",
         "empty": {
@@ -26,6 +32,11 @@
                 "description": "Description"
             }
         }
+    },
+
+    "issues": {
+        "search": "Search for an issue",
+        "new": "New issue"
     },
 
     "login": {

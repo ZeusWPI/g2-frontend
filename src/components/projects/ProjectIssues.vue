@@ -5,7 +5,7 @@
             <v-col>
                 <v-text-field
                     v-model="tableSearch"
-                    label="Search for an issue"
+                    :label="t('issues.search')"
                     append-icon="mdi-magnify"
                     outlined
                     dense
@@ -13,7 +13,9 @@
             </v-col>
 
             <v-col cols="auto">
-                <v-btn color="primary" depressed>New Issue</v-btn>
+                <v-btn color="primary" depressed>
+                    {{ t("issues.new") }}
+                </v-btn>
             </v-col>
         </v-row>
 

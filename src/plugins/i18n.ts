@@ -19,6 +19,15 @@ export const languages: Language[] = [
 ];
 
 /**
+ * Convert a dotted path string to a property value from a given object.
+ * @param path Path to find.
+ * @param object Object to get data from.
+ */
+function getPathValue(path: string, object: any) {
+    return path.split(".").reduce((p, c) => (p && p[c]) || null, object);
+}
+
+/**
  * Mixin for translation.
  */
 Vue.mixin({
@@ -30,9 +39,15 @@ Vue.mixin({
          */
         t(path: string, ...params: [unknown]) {
             const language = this.$store.getters["i18n/language"];
+            const defaultLanguage = languages.find(language => language.default);
 
             // Convert a dotted path to a nested property selector of an object.
-            let value = path.split(".").reduce((p, c) => (p && p[c]) || null, language.locale) ?? "";
+            let value = getPathValue(path, language.locale) ?? null;
+
+            // Default fallback: default language.
+            if (!value && defaultLanguage) {
+                value = getPathValue(path, defaultLanguage.locale);
+            }
 
             // Replace the optional params if available.
             for (const index in params) {

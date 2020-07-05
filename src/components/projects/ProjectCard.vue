@@ -21,7 +21,7 @@
                 <v-spacer />
 
                 <v-btn text color="primary" :to="`projects/${project.project_id}`">
-                    Meer informatie
+                    {{ t("projects.more") }}
                 </v-btn>
             </v-card-actions>
         </v-card>
