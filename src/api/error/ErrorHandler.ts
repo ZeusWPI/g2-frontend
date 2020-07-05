@@ -4,9 +4,8 @@ import { CustomErrorMessage } from "@/api/error/types/CustomErrorMessage";
 import { CustomErrorOptions } from "@/api/error/types/CustomErrorOptions";
 import { InputFields } from "@/types/fields/InputFields";
 import { InputFieldError } from "@/types/fields/InputFieldError";
-import ErrorBus from "@/api/error/ErrorBus";
-import router from "@/router/router";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
+import ErrorBus from "@/api/error/ErrorBus";
 
 /**
  * List with custom error messages for certain response codes/messages
@@ -54,6 +53,11 @@ export class ErrorHandler {
      */
     static handle(error: EchoError, options: CustomErrorOptions, fields: InputFields = {}, emit = false): CustomError {
         const customError: CustomError = error;
+
+        // Add custom status code for network errors.
+        if (error.message.startsWith("Network Error")) {
+            customError.code = "network_error";
+        }
 
         // Handle custom message.
         this.handleCustomMessage(customError, options);
