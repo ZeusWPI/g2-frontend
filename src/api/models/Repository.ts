@@ -1,6 +1,7 @@
 export class Repository {
-    repo_id: number;
+    id: number;
     name: string;
     description: string;
+    image: string;
     url: string;
 }

@@ -1,5 +1,5 @@
-export class User {
+export class Author {
     name: string;
-    admin: boolean;
+    url: string;
     avatar: string;
 }
