@@ -26,14 +26,14 @@
                 </template>
 
                 <!-- Logged in -->
-                <template v-else-if="user.isSuccess() && false">
+                <template v-else-if="user.isSuccess()">
                     <v-btn text>
                         {{ user.data.name }}
                     </v-btn>
                 </template>
 
                 <!-- Not logged in -->
-                <template v-else-if="user.isError() || true">
+                <template v-else-if="user.isError()">
                     <v-btn text @click="openLogin">
                         Login
                     </v-btn>
