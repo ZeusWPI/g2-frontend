@@ -3,7 +3,7 @@
         <!-- Actions -->
         <v-row justify="space-between">
             <v-col>
-                <v-text-field v-model="tableSearch" label="Search for a repository" outlined dense />
+                <v-text-field v-model="search" label="Search for a repository" outlined dense />
             </v-col>
 
             <v-col cols="auto">
@@ -17,41 +17,36 @@
             </v-col>
         </v-row>
 
-        <!-- Repositories -->
-        <v-card outlined>
-            <v-data-table
-                :items="repositories"
-                :headers="tableHeaders"
-                :search="tableSearch"
-                :items-per-page="25"
-                mobile-breakpoint="0"
-                @click:row="openRepository"
-            >
-                <template v-slot:item.name="{ item }">
-                    <div class="repository" v-ripple>
-                        <!-- Title -->
-                        <div class="repository__name">
-                            {{ item.name }}
-                        </div>
+        <!-- Loading -->
+        <template v-if="repositories.isLoading()">
+            <v-skeleton-loader type="table" />
+        </template>
 
-                        <!-- Description -->
-                        <div class="text--secondary">
-                            {{ item.description }}
-                        </div>
-                    </div>
-                </template>
-            </v-data-table>
-        </v-card>
+        <!-- Data -->
+        <template v-else-if="repositories.isSuccess()">
+            <repositories-table :repositories="repositories.data" :search.sync="search" />
+        </template>
+
+        <!-- Error -->
+        <template v-else-if="repositories.isError()">
+            <error-placeholder :error="repositories.error" :options="{ style: 'SECTION' }" />
+        </template>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import { Repository } from "@/api/models/Repository";
+import ProjectService from "@/api/services/ProjectService";
+import RepositoriesTable from "@/components/projects/tables/RepositoriesTable.vue";
+import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 
-@Component
+@Component({
+    components: { ErrorPlaceholder, RepositoriesTable }
+})
 export default class ProjectRepositories extends Vue {
     /**
      * Project to display.
@@ -60,36 +55,14 @@ export default class ProjectRepositories extends Vue {
     project: Project;
 
     /**
-     * Table search value.
+     * Repositories for the given project.
      */
-    tableSearch = "";
+    repositories: EchoPromise<Repository[]> = ProjectService.repositories(this.project.id);
 
     /**
-     * Table headers.
+     * Search value.
      */
-    tableHeaders = [
-        {
-            text: "Repository",
-            value: "name"
-        }
-    ];
-
-    /**
-     * Temporary fake data with repositories.
-     */
-    repositories = [
-        {
-            name: "Tab",
-            description: ":moneybag: Yes. We have to drink. But we also have to pay. This does the paying part.",
-            url: "https://github.com/zeuswpi/tab"
-        },
-
-        {
-            name: "helios-server",
-            description: "Helios server",
-            url: "https://github.com/zeuswpi/helios-server"
-        }
-    ];
+    search = "";
 
     /**
      * Edit the linked repositories of the project.
@@ -104,26 +77,5 @@ export default class ProjectRepositories extends Vue {
             transition: "dialog-bottom-transition"
         });
     }
-
-    /**
-     * Open the selected repository.
-     * @param repository Repository to open.
-     */
-    openRepository(repository: Repository) {
-        window.open(repository.url, "_blank");
-    }
 }
 </script>
-
-<style lang="scss" scoped>
-.repository {
-    padding: 12px 0;
-    cursor: pointer;
-
-    &__name {
-        font-weight: bold;
-        font-size: 1.2em;
-        padding-bottom: 0;
-    }
-}
-</style>

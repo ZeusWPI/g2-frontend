@@ -4,6 +4,7 @@ import { ProjectCreateWrapper } from "@/api/wrappers/ProjectCreateWrapper";
 import { ProjectUpdateWrapper } from "@/api/wrappers/ProjectUpdateWrapper";
 import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
+import { Repository } from "@/api/models/Repository";
 
 /**
  * Service for managing projects.
@@ -61,6 +62,15 @@ class ProjectService extends EchoService {
     @GET("/projects/{id}/issues")
     issues(@Path("id") id: number): EchoPromise<Issue[]> {
         return {} as EchoPromise<Issue[]>;
+    }
+
+    /**
+     * Get a list with repositories for a given project.
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/repositories")
+    repositories(@Path("id") id: number): EchoPromise<Repository[]> {
+        return {} as EchoPromise<Repository[]>;
     }
 
     /**

@@ -37,7 +37,7 @@ import { Project } from "@/api/models/Project";
 import { Issue } from "@/api/models/Issue";
 import ProjectService from "@/api/services/ProjectService";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
-import IssuePullTable from "@/components/projects/IssuePullTable.vue";
+import IssuePullTable from "@/components/projects/tables/IssuePullTable.vue";
 
 @Component({
     components: { IssuePullTable, ErrorPlaceholder }
