@@ -121,7 +121,7 @@
                 </v-row>
             </template>
 
-            <!-- No Datq -->
+            <!-- No Data -->
             <template v-slot:no-data>
                 <!-- Issues -->
                 <template v-if="type === 'issues'">

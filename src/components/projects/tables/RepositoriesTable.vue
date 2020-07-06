@@ -22,7 +22,7 @@
                 </div>
             </template>
 
-            <!-- No Datq -->
+            <!-- No Data -->
             <template v-slot:no-data>
                 <v-icon class="my-3 text--secondary" size="70">mdi-source-repository</v-icon>
 
