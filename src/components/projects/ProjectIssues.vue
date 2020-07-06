@@ -52,7 +52,7 @@ export default class ProjectIssues extends Vue {
     /**
      * Issues to display.
      */
-    issues: EchoPromise<Issue[]> = ProjectService.issues(/*this.project.id*/ 902.7734109843542);
+    issues: EchoPromise<Issue[]> = ProjectService.issues(this.project.id);
 
     /**
      * Search value.

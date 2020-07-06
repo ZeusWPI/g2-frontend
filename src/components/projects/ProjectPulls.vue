@@ -52,7 +52,7 @@ export default class ProjectIssues extends Vue {
     /**
      * Pulls to display.
      */
-    pulls: EchoPromise<Issue[]> = ProjectService.pulls(/*this.project.id*/ 998.9444102587731);
+    pulls: EchoPromise<Issue[]> = ProjectService.pulls(this.project.id);
 
     /**
      * Search value.
