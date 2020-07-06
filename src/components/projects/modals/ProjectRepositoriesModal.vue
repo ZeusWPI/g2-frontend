@@ -54,7 +54,7 @@
                 <!-- Table -->
                 <v-data-table
                     v-model="tableSelected"
-                    :items="repositories.data.repos"
+                    :items="repositories.data"
                     :headers="tableHeaders"
                     :search="tableSearch"
                     show-select
@@ -93,6 +93,7 @@ export default class ProjectRepositoriesModal extends Vue {
     @Prop()
     payload: {
         project: Project;
+        projectRepositories: Repository[];
     };
 
     /**
@@ -133,7 +134,7 @@ export default class ProjectRepositoriesModal extends Vue {
     /**
      * Selected repositories.
      */
-    tableSelected: Repository[] = [];
+    tableSelected: Repository[] = this.payload.projectRepositories;
 
     /**
      * Close the modal.
@@ -157,9 +158,34 @@ export default class ProjectRepositoriesModal extends Vue {
         this.loading = true;
 
         // Find all the newly selected repositories.
-        for (const repository of this.tableSelected) {
+        const linkRepositories = this.tableSelected.filter(
+            repository => !this.payload.projectRepositories.includes(repository)
+        );
+
+        // Find all the unselected repositories.
+        const unlinkRepositories = this.payload.projectRepositories.filter(
+            repository => !this.tableSelected.includes(repository)
+        );
+
+        // Link the selected repositories.
+        for (const repository of linkRepositories) {
             try {
-                await RepositoryService.linkProject(repository.repo_id, this.payload.project.project_id);
+                await RepositoryService.linkProject(repository.id, this.payload.project.id);
+            } catch (error) {
+                ErrorHandler.handle(error, {
+                    style: "SNACKBAR"
+                });
+
+                this.loading = false;
+
+                return;
+            }
+        }
+
+        // Link the selected repositories.
+        for (const repository of unlinkRepositories) {
+            try {
+                await RepositoryService.unlinkProject(repository.id, this.payload.project.id);
             } catch (error) {
                 ErrorHandler.handle(error, {
                     style: "SNACKBAR"

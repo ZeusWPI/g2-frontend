@@ -1,22 +1,5 @@
 <template>
     <div>
-        <!-- Actions -->
-        <v-row justify="space-between">
-            <v-col>
-                <v-text-field v-model="search" label="Search for a repository" outlined dense />
-            </v-col>
-
-            <v-col cols="auto">
-                <v-btn color="primary" depressed @click="openEdit">
-                    <v-icon left>
-                        mdi-pencil
-                    </v-icon>
-
-                    {{ t("edit") }}
-                </v-btn>
-            </v-col>
-        </v-row>
-
         <!-- Loading -->
         <template v-if="repositories.isLoading()">
             <v-skeleton-loader type="table" />
@@ -24,6 +7,24 @@
 
         <!-- Data -->
         <template v-else-if="repositories.isSuccess()">
+            <!-- Actions -->
+            <v-row justify="space-between">
+                <v-col>
+                    <v-text-field v-model="search" label="Search for a repository" outlined dense />
+                </v-col>
+
+                <v-col cols="auto">
+                    <v-btn color="primary" depressed @click="openEdit">
+                        <v-icon left>
+                            mdi-pencil
+                        </v-icon>
+
+                        {{ t("edit") }}
+                    </v-btn>
+                </v-col>
+            </v-row>
+
+            <!-- Repositories -->
             <repositories-table :repositories="repositories.data" :search.sync="search" />
         </template>
 
@@ -71,7 +72,8 @@ export default class ProjectRepositories extends Vue {
         ModalHandler.open({
             component: () => import("./modals/ProjectRepositoriesModal.vue"),
             componentPayload: {
-                project: this.project
+                project: this.project,
+                projectRepositories: this.repositories.requireData()
             },
             fullscreen: true,
             transition: "dialog-bottom-transition"
