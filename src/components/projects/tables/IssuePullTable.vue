@@ -274,11 +274,33 @@ export default class IssuePullTable extends Vue {
      * Will filter the issues based on some set parameters.
      */
     get tableItems() {
+        return this.getData(true);
+    }
+
+    /**
+     * Get the repositories available for the given data.
+     */
+    get tableRepositories(): string[] {
+        return [...new Set(this.data.map(item => item.repository.name))];
+    }
+
+    /**
+     * Get the authors available for the given data.
+     */
+    get tableAuthors(): string[] {
+        return [...new Set(this.data.map(item => item.author.name))];
+    }
+
+    /**
+     * Get the data with the applied filters & sorting options.
+     * @param filterStatus Should only data from the selected status be displayed.
+     */
+    getData(filterStatus: boolean) {
         return (
             this.data
 
                 // Filter with the correct selected status.
-                .filter(item => item.status === this.tableFilters.status)
+                .filter(item => item.status === this.tableFilters.status || !filterStatus)
 
                 // Filter with the correct repository.
                 .filter(item =>
@@ -312,25 +334,16 @@ export default class IssuePullTable extends Vue {
     }
 
     /**
-     * Get the repositories available for the given data.
-     */
-    get tableRepositories(): string[] {
-        return [...new Set(this.data.map(item => item.repository.name))];
-    }
-
-    /**
-     * Get the authors available for the given data.
-     */
-    get tableAuthors(): string[] {
-        return [...new Set(this.data.map(item => item.author.name))];
-    }
-
-    /**
      * Get the amount of entries for a given "status".
      * @param status Status to count.
      */
     getStatusAmount(status: string) {
-        return this.tableItems.filter(item => item.status === status).length;
+        return (
+            this.getData(false)
+
+                // Filter the items that have the same status as the given status.
+                .filter(item => item.status === status).length
+        );
     }
 
     /**
