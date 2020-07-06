@@ -28,8 +28,19 @@
                 </v-btn>
             </v-col>
 
+            <!-- Author selection -->
+            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+                <v-select v-model="tableFilters.authors" :items="tableAuthors" label="Author" flat solo dense multiple>
+                    <template v-slot:selection="{ index, item }">
+                        <span v-if="index === 0">{{ item }}</span>
+
+                        <span v-if="index === 1">, ...</span>
+                    </template>
+                </v-select>
+            </v-col>
+
             <!-- Repository selection -->
-            <v-col cols="auto" :hidden="$vuetify.breakpoint.smAndDown">
+            <v-col :hidden="$vuetify.breakpoint.smAndDown">
                 <v-select
                     v-model="tableFilters.repositories"
                     :items="tableRepositories"
@@ -48,7 +59,7 @@
             </v-col>
 
             <!-- Sort options -->
-            <v-col cols="auto" :hidden="$vuetify.breakpoint.smAndDown">
+            <v-col :hidden="$vuetify.breakpoint.smAndDown">
                 <v-select v-model="tableFilters.sort" :items="tableFilters.sortOptions" label="Sort" flat solo dense />
             </v-col>
         </v-row>
@@ -171,7 +182,12 @@ export default class IssuePullTable extends Vue {
         /**
          * Selected repositories.
          */
-        repositories: []
+        repositories: [],
+
+        /**
+         * Selected authors.
+         */
+        authors: []
     };
 
     /**
@@ -222,6 +238,13 @@ export default class IssuePullTable extends Vue {
                         ? (this.tableFilters.repositories as string[]).includes(item.repository.name)
                         : true
                 )
+
+                // Filter with the correct author.
+                .filter(item =>
+                    this.tableFilters.authors.length > 0
+                        ? (this.tableFilters.authors as string[]).includes(item.author.name)
+                        : true
+                )
         );
     }
 
@@ -230,6 +253,13 @@ export default class IssuePullTable extends Vue {
      */
     get tableRepositories(): string[] {
         return [...new Set(this.data.map(item => item.repository.name))];
+    }
+
+    /**
+     * Get the authors available for the given data.
+     */
+    get tableAuthors(): string[] {
+        return [...new Set(this.data.map(item => item.author.name))];
     }
 
     /**
