@@ -89,14 +89,14 @@ export default class ProjectCreateModal extends Vue {
         this.loading = true;
 
         ProjectService.create(InputFieldUtil.getValues(this.fields))
-            .then((project: any) => {
+            .then(project => {
                 SnackbarHandler.open({
                     message: "Project has been created",
                     color: "success"
                 });
 
                 // Go to the created projects.
-                this.$router.push(`/projects/${project.new_project_id}`);
+                this.$router.push(`/projects/${project.id}`);
 
                 // Close the modal.
                 ModalHandler.close();
