@@ -66,7 +66,16 @@
     },
 
     "repositories": {
-        "search": "Search for a repository"
+        "search": "Search for a repository",
+        "empty": {
+            "title": "No repositories available",
+            "desc": "Click the button bellow to link repositories to this project.",
+            "button": "Link repositories"
+        },
+        "unmatched": {
+            "title": "No repositories found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
     },
 
     "login": {

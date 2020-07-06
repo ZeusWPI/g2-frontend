@@ -21,6 +21,32 @@
                     </div>
                 </div>
             </template>
+
+            <!-- No Datq -->
+            <template v-slot:no-data>
+                <v-icon class="my-3 text--secondary" size="70">mdi-source-repository</v-icon>
+
+                <h2>{{ t("repositories.empty.title") }}</h2>
+
+                <p>{{ t("repositories.empty.desc") }}</p>
+
+                <v-btn class="mb-3" color="primary" depressed @click="editAction">
+                    <v-icon left>
+                        mdi-plus-circle-outline
+                    </v-icon>
+
+                    {{ t("repositories.empty.button") }}
+                </v-btn>
+            </template>
+
+            <!-- No matched data -->
+            <template v-slot:no-results>
+                <v-icon class="my-3 text--secondary" size="70">mdi-source-repository</v-icon>
+
+                <h2>{{ t("repositories.unmatched.title") }}</h2>
+
+                <p>{{ t("repositories.unmatched.desc") }}</p>
+            </template>
         </v-data-table>
     </v-card>
 </template>
@@ -42,6 +68,12 @@ export default class RepositoriesTable extends Vue {
      */
     @PropSync("search")
     tableSearch: string;
+
+    /**
+     * Edit repositories action.
+     */
+    @Prop()
+    editAction: () => void;
 
     /**
      * Table headers.

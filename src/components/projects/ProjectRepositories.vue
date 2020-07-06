@@ -25,7 +25,7 @@
             </v-row>
 
             <!-- Repositories -->
-            <repositories-table :repositories="repositories.data" :search.sync="search" />
+            <repositories-table :repositories="repositories.data" :search.sync="search" :editAction="openEdit" />
         </template>
 
         <!-- Error -->
