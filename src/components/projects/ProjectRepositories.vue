@@ -10,7 +10,7 @@
             <!-- Actions -->
             <v-row justify="space-between">
                 <v-col>
-                    <v-text-field v-model="search" label="Search for a repository" outlined dense />
+                    <v-text-field v-model="search" :label="t('repositories.search')" outlined dense />
                 </v-col>
 
                 <v-col cols="auto">

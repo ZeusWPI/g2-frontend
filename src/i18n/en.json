@@ -32,6 +32,10 @@
                 "name": "Name",
                 "description": "Description"
             }
+        },
+
+        "table": {
+            "desc": "Opened by"
         }
     },
 
@@ -43,6 +47,10 @@
     "pulls": {
         "search": "Search for a pull request",
         "new": "New pull request"
+    },
+
+    "repositories": {
+        "search": "Search for a repository"
     },
 
     "login": {

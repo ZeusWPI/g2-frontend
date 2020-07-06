@@ -99,7 +99,13 @@
 
                     <!-- Description -->
                     <v-col cols="12" class="table__description text--secondary">
-                        Opened by <a :href="item.author.url">{{ item.author.name }}</a> , {{ getTimeSince(item) }}
+                        {{ t("projects.table.desc") }}
+
+                        <!-- Author -->
+                        <a :href="item.author.url">{{ item.author.name }}</a> ,
+
+                        <!-- Time ago -->
+                        {{ getTimeSince(item) }}
                     </v-col>
                 </v-row>
             </template>
