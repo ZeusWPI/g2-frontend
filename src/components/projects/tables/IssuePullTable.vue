@@ -245,6 +245,21 @@ export default class IssuePullTable extends Vue {
                         ? (this.tableFilters.authors as string[]).includes(item.author.name)
                         : true
                 )
+
+                // Sort the data based on the given sort option.
+                .sort((a, b) => {
+                    // Newest
+                    if (this.tableFilters.sort === "newest") {
+                        return b.timestamp - a.timestamp;
+                    }
+
+                    // Oldest
+                    if (this.tableFilters.sort === "oldest") {
+                        return a.timestamp - b.timestamp;
+                    }
+
+                    return 0;
+                })
         );
     }
 
