@@ -26,18 +26,20 @@ export default class Navigation extends Vue {
     /**
      * Links to display inside the navigation bar
      */
-    links: Array<NavigationLink> = [
-        {
-            text: this.t("navigation.home"),
-            to: "/",
-            icon: "mdi-home"
-        },
+    get links(): Array<NavigationLink> {
+        return [
+            {
+                text: this.t("navigation.home"),
+                to: "/",
+                icon: "mdi-home"
+            },
 
-        {
-            text: this.t("navigation.projects"),
-            to: "/projects",
-            icon: "mdi-format-list-bulleted-type"
-        }
-    ];
+            {
+                text: this.t("navigation.projects"),
+                to: "/projects",
+                icon: "mdi-format-list-bulleted-type"
+            }
+        ];
+    }
 }
 </script>
