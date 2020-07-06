@@ -330,7 +330,7 @@ export default class IssuePullTable extends Vue {
      * @param status Status to count.
      */
     getStatusAmount(status: string) {
-        return this.data.filter(item => item.status === status).length;
+        return this.tableItems.filter(item => item.status === status).length;
     }
 
     /**
