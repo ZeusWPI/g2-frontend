@@ -120,6 +120,48 @@
                     </v-col>
                 </v-row>
             </template>
+
+            <!-- No Datq -->
+            <template v-slot:no-data>
+                <!-- Issues -->
+                <template v-if="type === 'issues'">
+                    <v-icon class="mb-3 text--secondary" size="70">mdi-alert-circle-outline</v-icon>
+
+                    <h2>{{ t("issues.empty.title") }}</h2>
+
+                    <p>{{ t("issues.empty.desc") }}</p>
+                </template>
+
+                <!-- Pulls -->
+                <template v-if="type === 'pulls'">
+                    <v-icon class="mb-3 text--secondary" size="70">mdi-source-pull</v-icon>
+
+                    <h2>{{ t("pulls.empty.title") }}</h2>
+
+                    <p>{{ t("pulls.empty.desc") }}</p>
+                </template>
+            </template>
+
+            <!-- No matched data -->
+            <template v-slot:no-results>
+                <!-- Issues -->
+                <template v-if="type === 'issues'">
+                    <v-icon class="mb-3 text--secondary" size="70">mdi-alert-circle-outline</v-icon>
+
+                    <h2>{{ t("issues.unmatched.title") }}</h2>
+
+                    <p>{{ t("issues.unmatched.desc") }}</p>
+                </template>
+
+                <!-- Pulls -->
+                <template v-if="type === 'pulls'">
+                    <v-icon class="mb-3 text--secondary" size="70">mdi-source-pull</v-icon>
+
+                    <h2>{{ t("pulls.unmatched.title") }}</h2>
+
+                    <p>{{ t("pulls.unmatched.desc") }}</p>
+                </template>
+            </template>
         </v-data-table>
     </v-card>
 </template>
@@ -143,6 +185,12 @@ export default class IssuePullTable extends Vue {
      */
     @Prop()
     data: Array<Issue | Pull>;
+
+    /**
+     * Is the table used for issues or pulls.
+     */
+    @Prop()
+    type: "issues" | "pulls";
 
     /**
      * Table search value.

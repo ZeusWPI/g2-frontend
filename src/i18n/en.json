@@ -41,12 +41,28 @@
 
     "issues": {
         "search": "Search for an issue",
-        "new": "New issue"
+        "new": "New issue",
+        "empty": {
+            "title": "No issues available",
+            "desc": "Issues are used to track todos, bugs, feature requests, and more. As issues are created, they’ll appear here in a searchable and filterable list."
+        },
+        "unmatched": {
+            "title": "No issues found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
     },
 
     "pulls": {
         "search": "Search for a pull request",
-        "new": "New pull request"
+        "new": "New pull request",
+        "empty": {
+            "title": "No pull requests available",
+            "desc": "Pull requests help you collaborate on code with other people. As pull requests are created, they’ll appear here in a searchable and filterable list."
+        },
+        "unmatched": {
+            "title": "No pull requests found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
     },
 
     "repositories": {

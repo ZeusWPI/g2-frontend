@@ -20,7 +20,7 @@
 
         <!-- Data -->
         <template v-else-if="pulls.isSuccess()">
-            <issue-pull-table :data="pulls.data" :search.sync="search" />
+            <issue-pull-table :data="pulls.data" :search.sync="search" type="pulls" />
         </template>
 
         <!-- Error -->
