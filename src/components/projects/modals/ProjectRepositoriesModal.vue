@@ -82,6 +82,7 @@ import RepositoryService from "@/api/services/RepositoryService";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import { ErrorHandler } from "@/api/error/ErrorHandler";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
+import { RouterUtil } from "@/util/RouterUtil";
 
 @Component({
     components: { ErrorPlaceholder }
@@ -207,6 +208,9 @@ export default class ProjectRepositoriesModal extends Vue {
 
         // Close the modal.
         ModalHandler.close();
+
+        // Reload the page.
+        await RouterUtil.reload(this.$router);
     }
 }
 </script>

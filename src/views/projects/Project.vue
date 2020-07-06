@@ -25,7 +25,7 @@
                     Issues
 
                     <v-chip class="ml-2" x-small>
-                        4
+                        {{ project.data.statistics.issuesCount }}
                     </v-chip>
                 </v-tab>
 
@@ -41,7 +41,7 @@
                     Pull Requests
 
                     <v-chip class="ml-2" x-small>
-                        2
+                        {{ project.data.statistics.pullsCount }}
                     </v-chip>
                 </v-tab>
             </v-tabs>
