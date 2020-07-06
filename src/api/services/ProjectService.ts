@@ -2,6 +2,8 @@ import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH,
 import { Project } from "@/api/models/Project";
 import { ProjectCreateWrapper } from "@/api/wrappers/ProjectCreateWrapper";
 import { ProjectUpdateWrapper } from "@/api/wrappers/ProjectUpdateWrapper";
+import { Issue } from "@/api/models/Issue";
+import { Pull } from "@/api/models/Pull";
 
 /**
  * Service for managing projects.
@@ -10,7 +12,7 @@ class ProjectService extends EchoService {
     /**
      * Get a list with projects
      */
-    @GET("/project")
+    @GET("/projects")
     getAll(): EchoPromise<Project[]> {
         return {} as EchoPromise<Project[]>;
     }
@@ -19,7 +21,7 @@ class ProjectService extends EchoService {
      * Get a single projects by id.
      * @prop id Project id.
      */
-    @GET("/project/{id}")
+    @GET("/projects/{id}")
     get(@Path("id") id: number): EchoPromise<Project> {
         return {} as EchoPromise<Project>;
     }
@@ -28,7 +30,7 @@ class ProjectService extends EchoService {
      * Create a new projects.
      * @param body Body containing the projects data.
      */
-    @POST("/project")
+    @POST("/projects")
     create(@Body() body: ProjectCreateWrapper): EchoPromise<Project> {
         return {} as EchoPromise<Project>;
     }
@@ -38,7 +40,7 @@ class ProjectService extends EchoService {
      * @param id Project id.
      * @param body Body containing the projects data.
      */
-    @PATCH("/project/{id}")
+    @PATCH("/projects/{id}")
     update(@Path("id") id: number, @Body() body: ProjectUpdateWrapper): EchoPromise<Project> {
         return {} as EchoPromise<Project>;
     }
@@ -47,9 +49,27 @@ class ProjectService extends EchoService {
      * Delete a project by id.
      * @param id Id of the project to delete.
      */
-    @DELETE("/project/{id}")
+    @DELETE("/projects/{id}")
     delete(@Path("id") id: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
+    }
+
+    /**
+     * Get a list with issues for a given project.
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/issues")
+    issues(@Path("id") id: number): EchoPromise<Issue[]> {
+        return {} as EchoPromise<Issue[]>;
+    }
+
+    /**
+     * Get a list with pulls for a given project.
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/pulls")
+    pulls(@Path("id") id: number): EchoPromise<Pull[]> {
+        return {} as EchoPromise<Issue[]>;
     }
 }
 

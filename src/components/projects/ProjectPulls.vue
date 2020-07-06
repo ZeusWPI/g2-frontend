@@ -3,29 +3,29 @@
         <!-- Actions -->
         <v-row justify="space-between">
             <v-col>
-                <v-text-field v-model="search" :label="t('issues.search')" append-icon="mdi-magnify" outlined dense />
+                <v-text-field v-model="search" :label="t('pulls.search')" append-icon="mdi-magnify" outlined dense />
             </v-col>
 
             <v-col cols="auto">
                 <v-btn color="primary" depressed>
-                    {{ t("issues.new") }}
+                    {{ t("pulls.new") }}
                 </v-btn>
             </v-col>
         </v-row>
 
         <!-- Loading -->
-        <template v-if="issues.isLoading()">
+        <template v-if="pulls.isLoading()">
             <v-skeleton-loader type="table" />
         </template>
 
         <!-- Data -->
-        <template v-else-if="issues.isSuccess()">
-            <issue-pull-table :data="issues.data" :search.sync="search" />
+        <template v-else-if="pulls.isSuccess()">
+            <issue-pull-table :data="pulls.data" :search.sync="search" />
         </template>
 
         <!-- Error -->
-        <template v-else-if="issues.isError()">
-            <error-placeholder :error="issues.error" :options="{ style: 'SECTION' }" />
+        <template v-else-if="pulls.isError()">
+            <error-placeholder :error="pulls.error" :options="{ style: 'SECTION' }" />
         </template>
     </div>
 </template>
@@ -50,9 +50,9 @@ export default class ProjectIssues extends Vue {
     project: Project;
 
     /**
-     * Issues to display.
+     * Pulls to display.
      */
-    issues: EchoPromise<Issue[]> = ProjectService.issues(/*this.project.id*/ 902.7734109843542);
+    pulls: EchoPromise<Issue[]> = ProjectService.pulls(/*this.project.id*/ 998.9444102587731);
 
     /**
      * Search value.

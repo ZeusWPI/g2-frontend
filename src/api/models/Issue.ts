@@ -6,6 +6,7 @@ export class Issue {
     id: number;
     title: string;
     timestamp: number;
+    status: "open" | "closed";
     author: Author;
     repository: Repository;
     labels: Label[];

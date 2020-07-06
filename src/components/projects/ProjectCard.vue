@@ -6,7 +6,7 @@
         </template>
 
         <!-- Data -->
-        <v-card v-else-if="project" class="fill-height" :to="`/projects/${project.project_id}`">
+        <v-card v-else-if="project" class="fill-height" :to="`/projects/${project.id}`">
             <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" />
 
             <v-card-title>
@@ -20,7 +20,7 @@
             <v-card-actions>
                 <v-spacer />
 
-                <v-btn text color="primary" :to="`projects/${project.project_id}`">
+                <v-btn text color="primary" :to="`projects/${project.id}`">
                     {{ t("projects.more") }}
                 </v-btn>
             </v-card-actions>

@@ -40,6 +40,11 @@
         "new": "New issue"
     },
 
+    "pulls": {
+        "search": "Search for a pull request",
+        "new": "New pull request"
+    },
+
     "login": {
         "title": "Login",
         "desc": "Choose one of the following options to continue.",

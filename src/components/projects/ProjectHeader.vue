@@ -57,7 +57,7 @@ export default class ProjectHeader extends Vue {
      * @param value New value.
      */
     updateName(value: string): EchoPromise<unknown> {
-        return ProjectService.update(this.project.project_id, {
+        return ProjectService.update(this.project.id, {
             name: value
         });
     }
@@ -67,7 +67,7 @@ export default class ProjectHeader extends Vue {
      * @param value New value.
      */
     updateDescription(value: string): EchoPromise<unknown> {
-        return ProjectService.update(this.project.project_id, {
+        return ProjectService.update(this.project.id, {
             description: value
         });
     }
@@ -84,7 +84,7 @@ export default class ProjectHeader extends Vue {
                 action: (modifications: ConfirmModalModifications) => {
                     modifications.loading = true;
 
-                    ProjectService.delete(this.project.project_id)
+                    ProjectService.delete(this.project.id)
                         .then(() => {
                             // Close the modal
                             ModalHandler.close();

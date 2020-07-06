@@ -58,8 +58,8 @@
                 </v-tab-item>
 
                 <!-- Pull Requests -->
-                <v-tab-item value="pulls" transition="none" reverse-transition="none">
-                    <project-issues />
+                <v-tab-item value="pulls" class="container--small" transition="none" reverse-transition="none">
+                    <project-pulls :project="project.data" />
                 </v-tab-item>
             </v-tabs-items>
         </template>
@@ -80,9 +80,11 @@ import ProjectService from "@/api/services/ProjectService";
 import ProjectIssues from "@/components/projects/ProjectIssues.vue";
 import ProjectHeader from "@/components/projects/ProjectHeader.vue";
 import ProjectRepositories from "@/components/projects/ProjectRepositories.vue";
+import ProjectPulls from "@/components/projects/ProjectPulls.vue";
 
 @Component({
     components: {
+        ProjectPulls,
         ProjectHeader,
         ProjectIssues,
         ProjectRepositories,
