@@ -99,7 +99,7 @@
 
                     <!-- Description -->
                     <v-col cols="12" class="table__description text--secondary">
-                        Opened by <a :href="item.author.url">{{ item.author.name }}</a> , 5 days ago
+                        Opened by <a :href="item.author.url">{{ item.author.name }}</a> , {{ getTimeSince(item) }}
                     </v-col>
                 </v-row>
             </template>
@@ -232,6 +232,34 @@ export default class IssuePullTable extends Vue {
      */
     getStatusAmount(status: string) {
         return this.data.filter(item => item.status === status).length;
+    }
+
+    /**
+     * Get the time since the creation of a given item as a formatted string.
+     * @param item Item to get the time for.
+     */
+    getTimeSince(item: Issue | Pull): string {
+        const now = new Date();
+        const created = new Date(item.timestamp);
+
+        const diff = Math.abs(created.getTime() - now.getTime());
+        const days = Math.floor(diff / (1000 * 3600 * 24));
+        const hours = Math.floor(diff / 36e5);
+        const minutes = Math.floor(diff / 1000 / 60);
+
+        if (hours >= 24) {
+            return `${days} day(s) ago`;
+        }
+
+        if (minutes >= 60) {
+            return `${hours} hour(s) ago`;
+        }
+
+        if (minutes < 1) {
+            return "Just now";
+        }
+
+        return `${minutes} minute(s) ago`;
     }
 }
 </script>
