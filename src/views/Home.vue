@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="`home__${$vuetify.theme.isDark ? 'dark' : 'light'}`">
         <!-- Hero -->
         <home-hero />
 
@@ -55,6 +55,12 @@ export default class Home extends Vue {}
 </script>
 
 <style lang="scss" scoped>
+.home {
+    &__light {
+        background-color: #fafafa;
+    }
+}
+
 .hero {
     &__overlap {
         margin-top: -100px;
