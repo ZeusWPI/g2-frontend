@@ -6,6 +6,11 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
     {
+        path: "*",
+        component: () => import("../views/404.vue")
+    },
+
+    {
         path: "/",
         name: "Home",
         component: Home

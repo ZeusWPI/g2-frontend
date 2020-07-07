@@ -6,7 +6,7 @@
         </div>
 
         <!-- Message -->
-        <v-card-title class="error-card__message">
+        <v-card-title :class="`error-card__message ${payload.options.displayFullPage ? 'justify-center' : ''}`">
             {{ payload.error.customMessage }}
         </v-card-title>
 
@@ -54,21 +54,25 @@ export default class ErrorCard extends Vue {
 <style lang="scss" scoped>
 .error-card {
     padding: 20px;
+
     &__image {
         height: 150px;
         width: 100%;
         margin-bottom: 50px;
     }
+
     &__actions {
         display: flex;
         justify-content: center;
         margin-top: 50px;
     }
+
     &__message {
         font-size: 1.9em;
         padding-bottom: 20px;
         text-wrap: normal;
     }
+
     &__description {
         font-size: 1.1em;
     }
