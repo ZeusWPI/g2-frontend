@@ -22,7 +22,7 @@ export default class HomeHero extends Vue {}
 
 <style lang="scss" scoped>
 .hero {
-    background: linear-gradient(to bottom, var(--v-primary-base), darken(#ff7f00, 10%));
+    background: var(--v-primary-base);
     min-height: 300px;
     padding: 0 25px 60px 25px;
 

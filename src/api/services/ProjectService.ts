@@ -1,4 +1,4 @@
-import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH, Path, POST } from "echofetch";
+import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH, Path, POST, Query } from "echofetch";
 import { Project } from "@/api/models/Project";
 import { ProjectCreateWrapper } from "@/api/wrappers/ProjectCreateWrapper";
 import { ProjectUpdateWrapper } from "@/api/wrappers/ProjectUpdateWrapper";
@@ -14,7 +14,10 @@ class ProjectService extends EchoService {
      * Get a list with projects
      */
     @GET("/projects")
-    getAll(): EchoPromise<Project[]> {
+    getAll(
+        @Query("sort") sort?: "popular" | "recent" | "alphabetical",
+        @Query("limit") limit?: number
+    ): EchoPromise<Project[]> {
         return {} as EchoPromise<Project[]>;
     }
 

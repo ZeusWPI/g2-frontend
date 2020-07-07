@@ -6,11 +6,7 @@
         <!-- Content -->
         <v-container class="hero__overlap container--small">
             <!-- Popular projects -->
-            <v-card>
-                <v-card-title>Popular projects</v-card-title>
-
-                <v-skeleton-loader v-for="index of 5" :key="index" type="list-item-avatar-three-line" boilerplate />
-            </v-card>
+            <home-projects />
 
             <!-- Recent issues -->
             <v-row>
@@ -47,9 +43,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HomeHero from "@/components/home/HomeHero.vue";
+import { EchoPromise } from "echofetch";
+import { Project } from "@/api/models/Project";
+import ProjectService from "@/api/services/ProjectService";
+import HomeProjects from "@/components/home/HomeProjects.vue";
 
 @Component({
-    components: { HomeHero }
+    components: { HomeProjects, HomeHero }
 })
 export default class Home extends Vue {}
 </script>

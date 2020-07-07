@@ -16,6 +16,10 @@
         "title": "Are you sure?"
     },
 
+    "home":{
+        "projects": "Popular projects"
+    },
+
     "projects": {
         "more": "More info",
         "new": "New project",
