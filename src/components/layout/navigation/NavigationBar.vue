@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar class="navbar" color="primary" dark fixed>
+    <v-toolbar class="navbar" color="primary" :flat="$route.name === 'Home'" dark fixed elevate-on-scroll>
         <!-- Open drawer icon -->
         <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="toggleDrawer" />
 
