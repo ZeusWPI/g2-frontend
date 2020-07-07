@@ -86,7 +86,7 @@ export default class ProjectsView extends Vue {
     get projectsFiltered(): Project[] {
         const projects = this.projects.data || [];
 
-        return projects.filter(project => project.name.includes(this.search));
+        return projects.filter(project => project.name.toLowerCase().includes(this.search.toLowerCase()));
     }
 
     /**
