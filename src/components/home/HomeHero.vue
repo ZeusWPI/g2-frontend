@@ -3,11 +3,13 @@
     <div class="hero pt-0 pt-sm-10">
         <v-container class="container--small">
             <!-- Title -->
-            <div class="hero__title white--text">Welcome to G2</div>
+            <div class="hero__title white--text">
+                {{ t("home.hero.title") }}
+            </div>
 
             <!-- Description -->
             <div class="hero__description white--text">
-                The gateway to success! This is a place where we manage all Zeus projects.
+                {{ t("home.hero.desc") }}
             </div>
         </v-container>
     </div>

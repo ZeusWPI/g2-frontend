@@ -17,7 +17,11 @@
     },
 
     "home":{
-        "projects": "Popular projects"
+        "projects": "Popular projects",
+        "hero": {
+            "title": "Welcome to G2",
+            "desc": "The gateway to success! This is a place where we manage all Zeus projects."
+        }
     },
 
     "projects": {
