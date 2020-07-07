@@ -97,15 +97,25 @@
 
                     <!-- Labels -->
                     <v-col class="table__labels">
-                        <v-chip
-                            v-for="label of item.labels"
-                            :key="label.name"
-                            :color="label.color"
-                            class="mr-2 mb-2"
-                            small
-                        >
-                            {{ label.name }}
-                        </v-chip>
+                        <v-menu v-for="label of item.labels" :key="label.name" open-on-hover top offset-y>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on">
+                                    {{ label.name }}
+                                </v-chip>
+                            </template>
+
+                            <v-card>
+                                <v-card-title>
+                                    <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on">
+                                        {{ label.name }}
+                                    </v-chip>
+                                </v-card-title>
+
+                                <v-card-text>
+                                    {{ label.description }}
+                                </v-card-text>
+                            </v-card>
+                        </v-menu>
                     </v-col>
 
                     <!-- Description -->
