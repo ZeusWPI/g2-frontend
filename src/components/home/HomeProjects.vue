@@ -1,5 +1,14 @@
 <template>
-    <div>
+    <v-card>
+        <v-card-title>
+            {{ t("home.projects") }}
+        </v-card-title>
+
+        <!-- Create a new project. -->
+        <v-btn absolute dark fab top right color="secondary" @click="openCreate">
+            <v-icon>mdi-plus</v-icon>
+        </v-btn>
+
         <!-- Loading -->
         <template v-if="popularProjects.isLoading()">
             <v-skeleton-loader v-for="index of 3" :key="index" type="list-item-avatar-three-line" />
@@ -7,25 +16,14 @@
 
         <!-- Data -->
         <template v-else-if="popularProjects.isSuccess()">
-            <v-card>
-                <!-- Create a new project. -->
-                <v-btn absolute dark fab top right color="secondary" @click="openCreate">
-                    <v-icon>mdi-plus</v-icon>
-                </v-btn>
-
-                <v-card-title>
-                    {{ t("home.projects") }}
-                </v-card-title>
-
-                <project-list :projects="popularProjects.data" />
-            </v-card>
+            <project-list :projects="popularProjects.data" />
         </template>
 
         <!-- Error -->
         <template v-else-if="popularProjects.isError()">
-            <error-placeholder :error="popularProjects.error" :style="{ style: 'CARD' }" />
+            <error-placeholder :error="popularProjects.error" :style="{ style: 'SECTION' }" />
         </template>
-    </div>
+    </v-card>
 </template>
 
 <script lang="ts">
