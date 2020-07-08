@@ -71,6 +71,7 @@
             :items-per-page="25"
             hide-default-header
             mobile-breakpoint="0"
+            @click:row="openItem"
         >
             <!-- Status -->
             <template v-slot:item.status="{ item }">
@@ -383,6 +384,17 @@ export default class IssuePullTable extends Vue {
         }
 
         return `${minutes} minute(s) ago`;
+    }
+
+    /**
+     * Open the selected item.
+     * Only used on mobile.
+     * @param item Item to open.
+     */
+    openItem(item: Issue | Pull) {
+        if (this.$vuetify.breakpoint.smAndDown) {
+            window.open(item.url, "_blank");
+        }
     }
 }
 </script>

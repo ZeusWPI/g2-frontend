@@ -6,6 +6,7 @@
             :search="tableSearch"
             :items-per-page="25"
             mobile-breakpoint="0"
+            @click:row="openRepository"
         >
             <!-- Image -->
             <template v-slot:item.image="{ item }">
@@ -113,7 +114,9 @@ export default class RepositoriesTable extends Vue {
      * @param repository Repository to open.
      */
     openRepository(repository: Repository) {
-        window.open(repository.url, "_blank");
+        if (this.$vuetify.breakpoint.smAndDown) {
+            window.open(repository.url, "_blank");
+        }
     }
 
     /**

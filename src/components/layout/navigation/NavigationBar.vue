@@ -22,7 +22,7 @@
             <!-- Loading -->
             <template v-if="user.isLoading()">
                 <v-btn text>
-                    <user-avatar loading />
+                    <user-avatar :loading="true" />
                 </v-btn>
             </template>
 

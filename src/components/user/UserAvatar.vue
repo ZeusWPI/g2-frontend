@@ -1,10 +1,16 @@
 <template>
-    <v-avatar :color="!avatarUrl ? 'red' : ''" :size="size">
+    <v-avatar :color="!avatarUrl && !loading ? 'red' : ''" :size="size">
         <!-- Loading -->
         <v-skeleton-loader v-if="loading" class="avatar__placeholder" type="avatar" :height="size" :width="size" />
 
         <!-- Image -->
-        <v-img ref="avatarImage" v-else-if="avatarUrl" :src="avatarUrl" :alt="user.name" @error="invalidAvatar = true">
+        <v-img
+            ref="avatarImage"
+            v-else-if="user && avatarUrl"
+            :src="avatarUrl"
+            :alt="user.name"
+            @error="invalidAvatar = true"
+        >
             <template v-slot:placeholder>
                 <span class="white--text headline">
                     {{ user.name.toUpperCase().charAt(0) }}
@@ -13,7 +19,7 @@
         </v-img>
 
         <!-- Default fallback -->
-        <span v-else class="white--text headline">
+        <span v-else-if="user" class="white--text headline">
             {{ user.name.toUpperCase().charAt(0) }}
         </span>
     </v-avatar>
@@ -28,7 +34,7 @@ export default class UserAvatar extends Vue {
     /**
      * User to display.
      */
-    @Prop()
+    @Prop({ default: null })
     user: User;
 
     /**
