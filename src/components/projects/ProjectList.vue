@@ -30,6 +30,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
+import { ColorUtil } from "@/util/ColorUtil";
 
 @Component
 export default class ProjectList extends Vue {
@@ -44,15 +45,7 @@ export default class ProjectList extends Vue {
      * @param project Project.
      */
     getProjectColor(project: Project): string {
-        let hash = 0;
-
-        for (let i = 0; i < project.name.length; i++) {
-            hash = project.name.charCodeAt(i) + ((hash << 5) - hash);
-        }
-
-        hash %= 360;
-
-        return `hsl(${hash}, 100%, 30%)`;
+        return ColorUtil.getColorFromString(project.name);
     }
 }
 </script>

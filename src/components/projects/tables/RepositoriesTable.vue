@@ -6,13 +6,27 @@
             :search="tableSearch"
             :items-per-page="25"
             mobile-breakpoint="0"
-            @click:row="openRepository"
         >
+            <!-- Image -->
+            <template v-slot:item.image="{ item }">
+                <v-list-item-avatar class="repository__image">
+                    <v-img :src="item.image" width="auto" height="100%" class="repository__image">
+                        <template v-slot:placeholder>
+                            <v-avatar :color="getRepositoryColor(item)" size="90%">
+                                {{ item.name.toUpperCase().charAt(0) }}
+                            </v-avatar>
+                        </template>
+                    </v-img>
+                </v-list-item-avatar>
+            </template>
+
             <template v-slot:item.name="{ item }">
-                <div class="repository" v-ripple>
+                <div class="repository">
                     <!-- Title -->
                     <div class="repository__name">
-                        {{ item.name }}
+                        <a class="no-decoration" :href="item.url" target="_blank">
+                            {{ item.name }}
+                        </a>
                     </div>
 
                     <!-- Description -->
@@ -54,6 +68,7 @@
 <script lang="ts">
 import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 import { Repository } from "@/api/models/Repository";
+import { ColorUtil } from "@/util/ColorUtil";
 
 @Component
 export default class RepositoriesTable extends Vue {
@@ -80,6 +95,14 @@ export default class RepositoriesTable extends Vue {
      */
     tableHeaders = [
         {
+            value: "image",
+            sortable: false,
+            filterable: false,
+            align: "center",
+            width: "1%"
+        },
+
+        {
             text: "Repository",
             value: "name"
         }
@@ -92,13 +115,24 @@ export default class RepositoriesTable extends Vue {
     openRepository(repository: Repository) {
         window.open(repository.url, "_blank");
     }
+
+    /**
+     * Get the color for a given repository based on the name.
+     * @param repository Repository
+     */
+    getRepositoryColor(repository: Repository): string {
+        return ColorUtil.getColorFromString(repository.name);
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .repository {
     padding: 12px 0;
-    cursor: pointer;
+
+    &__image {
+        margin: 0;
+    }
 
     &__name {
         font-weight: bold;
