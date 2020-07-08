@@ -106,7 +106,7 @@
 
                             <v-card>
                                 <v-card-title>
-                                    <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on">
+                                    <v-chip :color="label.color" class="mr-2 mb-2" small>
                                         {{ label.name }}
                                     </v-chip>
                                 </v-card-title>
