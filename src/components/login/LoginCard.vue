@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card :tile="$vuetify.breakpoint.smAndDown && isModal">
         <!-- Toolbar -->
         <v-card-title>
             {{ t("login.title") }}

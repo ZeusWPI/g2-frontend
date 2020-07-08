@@ -133,7 +133,8 @@ export default class NavigationBar extends Vue {
      */
     openLogin() {
         ModalHandler.open({
-            component: LoginModal
+            component: LoginModal,
+            responsive: true
         });
     }
 }
