@@ -92,7 +92,7 @@
                 <v-row>
                     <!-- Title -->
                     <v-col cols="12" sm="auto" class="table__title">
-                        {{ item.title }}
+                        <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
                     </v-col>
 
                     <!-- Labels -->
@@ -123,7 +123,7 @@
                         {{ t("projects.table.desc") }}
 
                         <!-- Author -->
-                        <a :href="item.author.url">{{ item.author.name }}</a> ,
+                        <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
 
                         <!-- Time ago -->
                         {{ getTimeSince(item) }}
@@ -181,6 +181,7 @@ import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
 import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
+import { Repository } from "@/api/models/Repository";
 
 @Component
 export default class IssuePullTable extends Vue {
@@ -386,7 +387,7 @@ export default class IssuePullTable extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .table {
     &__title {
         font-weight: bold;

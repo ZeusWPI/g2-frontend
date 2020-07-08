@@ -126,4 +126,18 @@ export default class App extends Vue {
 .v-slide-group__prev {
     display: none !important;
 }
+
+/**
+ * No decorations for a.
+ */
+a {
+    &.no-decoration {
+        text-decoration: none !important;
+        color: inherit !important;
+
+        &:hover {
+            color: var(--v-primary-base) !important;
+        }
+    }
+}
 </style>

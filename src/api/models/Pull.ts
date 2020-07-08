@@ -7,6 +7,7 @@ export class Pull {
     title: string;
     timestamp: number;
     status: "open" | "closed";
+    url: string;
     author: Author;
     repository: Repository;
     labels: Label[];
