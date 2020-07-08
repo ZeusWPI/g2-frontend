@@ -58,7 +58,8 @@ export default class ProjectRepositories extends Vue {
     /**
      * Repositories for the given project.
      */
-    repositories: EchoPromise<Repository[]> = ProjectService.repositories(this.project.id);
+    @Prop()
+    repositories: EchoPromise<Repository[]>;
 
     /**
      * Search value.

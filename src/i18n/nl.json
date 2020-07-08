@@ -45,7 +45,9 @@
 
     "issues": {
         "search": "Zoek een nieuwe issue",
-        "new": "Nieuwe issue",
+        "new": {
+            "button": "Nieuwe issue"
+        },
         "empty": {
             "title": "Geen issues beschikbaar",
             "desc": "Issues worden gebruikt om todos, bugs, feature aanvragen en meer bij te houden. Als issues gemaakt worden, zullen ze voorkomen in een zoekbare en filterbare lijst."
@@ -58,7 +60,9 @@
 
     "pulls": {
         "search": "Zoek een pull request",
-        "new": "Nieuw pull request",
+        "new": {
+            "button": "Nieuw pull request"
+        },
         "empty": {
             "title": "Geen pull requests beschikbaar",
             "desc": "Pull requests helpen je om samen met anderen aan code te werken. Als pull requests gemaakt worden, zullen ze voorkomen in een zoekbare en filterbare lijst."

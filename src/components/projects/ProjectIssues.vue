@@ -7,8 +7,8 @@
             </v-col>
 
             <v-col cols="auto">
-                <v-btn color="primary" depressed>
-                    {{ t("issues.new") }}
+                <v-btn color="primary" depressed @click="openNew">
+                    {{ t("issues.new.button") }}
                 </v-btn>
             </v-col>
         </v-row>
@@ -38,6 +38,9 @@ import { Issue } from "@/api/models/Issue";
 import ProjectService from "@/api/services/ProjectService";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import IssuePullTable from "@/components/projects/tables/IssuePullTable.vue";
+import { Repository } from "@/api/models/Repository";
+import { ModalHandler } from "@/util/modal/ModalHandler";
+import NewIssuePullModal from "@/components/projects/modals/NewIssuePullModal.vue";
 
 @Component({
     components: { IssuePullTable, ErrorPlaceholder }
@@ -55,8 +58,28 @@ export default class ProjectIssues extends Vue {
     issues: EchoPromise<Issue[]> = ProjectService.issues(this.project.id);
 
     /**
+     * Repositories for the given project.
+     */
+    @Prop()
+    repositories: EchoPromise<Repository[]>;
+
+    /**
      * Search value.
      */
     search = "";
+
+    /**
+     * Open the new issue modal.
+     */
+    openNew() {
+        ModalHandler.open({
+            component: NewIssuePullModal,
+            componentPayload: {
+                type: "issues",
+                repositories: this.repositories
+            },
+            responsive: true
+        });
+    }
 }
 </script>

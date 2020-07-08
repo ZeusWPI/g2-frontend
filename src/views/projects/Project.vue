@@ -49,17 +49,17 @@
             <v-tabs-items v-model="_tab" class="project__tabs__content">
                 <!-- Issues -->
                 <v-tab-item value="issues" class="container--small" transition="none" reverse-transition="none">
-                    <project-issues :project="project.data" />
+                    <project-issues :project="project.data" :repositories="repositories" />
                 </v-tab-item>
 
                 <!-- Repositories -->
                 <v-tab-item value="repositories" class="container--small" transition="none" reverse-transition="none">
-                    <project-repositories :project="project.data" />
+                    <project-repositories :project="project.data" :repositories="repositories" />
                 </v-tab-item>
 
                 <!-- Pull Requests -->
                 <v-tab-item value="pulls" class="container--small" transition="none" reverse-transition="none">
-                    <project-pulls :project="project.data" />
+                    <project-pulls :project="project.data" :repositories="repositories" />
                 </v-tab-item>
             </v-tabs-items>
         </template>
@@ -81,6 +81,7 @@ import ProjectIssues from "@/components/projects/ProjectIssues.vue";
 import ProjectHeader from "@/components/projects/ProjectHeader.vue";
 import ProjectRepositories from "@/components/projects/ProjectRepositories.vue";
 import ProjectPulls from "@/components/projects/ProjectPulls.vue";
+import { Repository } from "@/api/models/Repository";
 
 @Component({
     components: {
@@ -109,6 +110,11 @@ export default class ProjectView extends Vue {
      * Project to display.
      */
     project: EchoPromise<Project> = ProjectService.get(this.id);
+
+    /**
+     * Repositories to display.
+     */
+    repositories: EchoPromise<Repository[]> = ProjectService.repositories(this.id);
 }
 </script>
 

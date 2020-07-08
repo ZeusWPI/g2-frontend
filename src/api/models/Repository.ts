@@ -4,4 +4,6 @@ export class Repository {
     description: string;
     image: string;
     url: string;
+    newIssueUrl: string;
+    newPullUrl: string;
 }
