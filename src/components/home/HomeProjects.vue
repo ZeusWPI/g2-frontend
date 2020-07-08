@@ -21,7 +21,9 @@
 
         <!-- Error -->
         <template v-else-if="popularProjects.isError()">
-            <error-placeholder :error="popularProjects.error" :style="{ style: 'SECTION' }" />
+            <v-card-text>
+                <error-placeholder :error="popularProjects.error" :options="{ style: 'SECTION' }" />
+            </v-card-text>
         </template>
     </v-card>
 </template>

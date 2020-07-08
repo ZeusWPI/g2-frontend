@@ -36,7 +36,7 @@ export default class ErrorPlaceholder extends Vue {
     /**
      * Display options.
      */
-    @Prop()
+    @Prop({ default: {} })
     options: CustomErrorOptions;
 
     /**
