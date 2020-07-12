@@ -28,6 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { User } from "@/api/models/User";
+import { Author } from "@/api/models/Author";
 
 @Component
 export default class UserAvatar extends Vue {
@@ -35,7 +36,7 @@ export default class UserAvatar extends Vue {
      * User to display.
      */
     @Prop({ default: null })
-    user: User;
+    user: User | Author;
 
     /**
      * If the avatar is loading or not.

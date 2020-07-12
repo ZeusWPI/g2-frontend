@@ -30,7 +30,7 @@ const routes: Array<RouteConfig> = [
 
     {
         path: "/projects/:id",
-        redirect: "/projects/:id/issues"
+        redirect: "/projects/:id/overview"
     },
 
     {

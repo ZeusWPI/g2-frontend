@@ -5,6 +5,8 @@ import { ProjectUpdateWrapper } from "@/api/wrappers/ProjectUpdateWrapper";
 import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
 import { Repository } from "@/api/models/Repository";
+import { Author } from "@/api/models/Author";
+import { Feature } from "@/api/models/Feature";
 
 /**
  * Service for managing projects.
@@ -82,7 +84,25 @@ class ProjectService extends EchoService {
      */
     @GET("/projects/{id}/pulls")
     pulls(@Path("id") id: number): EchoPromise<Pull[]> {
-        return {} as EchoPromise<Issue[]>;
+        return {} as EchoPromise<Pull[]>;
+    }
+
+    /**
+     * Get a list with maintainers for a given project.
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/maintainers")
+    maintainers(@Path("id") id: number): EchoPromise<Author[]> {
+        return {} as EchoPromise<Author[]>;
+    }
+
+    /**
+     * Get a list with featured items for a given project..
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/features")
+    features(@Path("id") id: number): EchoPromise<Feature[]> {
+        return {} as EchoPromise<Feature[]>;
     }
 }
 

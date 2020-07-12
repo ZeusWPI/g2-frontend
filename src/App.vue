@@ -140,4 +140,23 @@ a {
         }
     }
 }
+.hover {
+    cursor: pointer;
+
+    &.rounded {
+        border-radius: 4px;
+    }
+
+    &:hover {
+        background-color: #eeeeee;
+    }
+
+    &.theme--dark:hover {
+        background-color: #616161 !important;
+    }
+}
+
+.transparent {
+    background: transparent !important;
+}
 </style>

@@ -19,6 +19,12 @@
 
             <!-- Tab Menu -->
             <v-tabs background-color="transparent" v-model="_tab">
+                <!-- Overview -->
+                <v-tab to="overview">
+                    <v-icon left>mdi-view-dashboard-outline</v-icon>
+                    Overview
+                </v-tab>
+
                 <!-- Issues -->
                 <v-tab to="issues">
                     <v-icon left>mdi-alert-circle-outline</v-icon>
@@ -27,12 +33,6 @@
                     <v-chip class="ml-2" x-small>
                         {{ project.data.statistics.issuesCount }}
                     </v-chip>
-                </v-tab>
-
-                <!-- Repositories -->
-                <v-tab to="repositories">
-                    <v-icon left>mdi-source-repository</v-icon>
-                    Repositories
                 </v-tab>
 
                 <!-- Pull Requests -->
@@ -44,22 +44,33 @@
                         {{ project.data.statistics.pullsCount }}
                     </v-chip>
                 </v-tab>
+
+                <!-- Repositories -->
+                <v-tab to="repositories">
+                    <v-icon left>mdi-source-repository</v-icon>
+                    Repositories
+                </v-tab>
             </v-tabs>
 
             <v-tabs-items v-model="_tab" class="project__tabs__content">
+                <!-- Overview -->
+                <v-tab-item value="overview" transition="none" reverse-transition="none">
+                    <project-overview :project="project.data" />
+                </v-tab-item>
+
                 <!-- Issues -->
                 <v-tab-item value="issues" class="container--small" transition="none" reverse-transition="none">
                     <project-issues :project="project.data" :repositories="repositories" />
                 </v-tab-item>
 
-                <!-- Repositories -->
-                <v-tab-item value="repositories" class="container--small" transition="none" reverse-transition="none">
-                    <project-repositories :project="project.data" :repositories="repositories" />
-                </v-tab-item>
-
                 <!-- Pull Requests -->
                 <v-tab-item value="pulls" class="container--small" transition="none" reverse-transition="none">
                     <project-pulls :project="project.data" :repositories="repositories" />
+                </v-tab-item>
+
+                <!-- Repositories -->
+                <v-tab-item value="repositories" class="container--small" transition="none" reverse-transition="none">
+                    <project-repositories :project="project.data" :repositories="repositories" />
                 </v-tab-item>
             </v-tabs-items>
         </template>
@@ -82,9 +93,11 @@ import ProjectHeader from "@/components/projects/ProjectHeader.vue";
 import ProjectRepositories from "@/components/projects/ProjectRepositories.vue";
 import ProjectPulls from "@/components/projects/ProjectPulls.vue";
 import { Repository } from "@/api/models/Repository";
+import ProjectOverview from "@/components/projects/ProjectOverview.vue";
 
 @Component({
     components: {
+        ProjectOverview,
         ProjectPulls,
         ProjectHeader,
         ProjectIssues,
