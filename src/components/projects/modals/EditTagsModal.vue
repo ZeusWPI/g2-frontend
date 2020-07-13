@@ -44,7 +44,7 @@
                 >
                     <!-- Tag -->
                     <template v-slot:item.name="{ item }">
-                        <project-tag :tag="item" />
+                        <project-tag :tag="item" :show-padding="false" />
                     </template>
                 </v-data-table>
             </template>
@@ -77,7 +77,6 @@ import { Project } from "@/api/models/Project";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import { EchoPromise } from "echofetch";
 import { Tag } from "@/api/models/Tag";
-import { ArrayUtil } from "@/util/ArrayUtil";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
 import { RouterUtil } from "@/util/RouterUtil";
 import { ErrorHandler } from "@/api/error/ErrorHandler";

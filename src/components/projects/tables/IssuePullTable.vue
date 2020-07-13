@@ -74,14 +74,14 @@
             @click:row="openItem"
         >
             <!-- Issue -->
-            <template v-slot:item.issue="{ item }">
-                <issue-pull-item :item="item" />
+            <template v-slot:item.item="{ item }">
+                <issue-pull-item :type="type" :project="project" :item="item" />
             </template>
 
             <!-- No Data -->
             <template v-slot:no-data>
                 <!-- Issues -->
-                <template v-if="type === 'issues'">
+                <template v-if="type === 'issue'">
                     <v-icon class="mb-3 text--secondary" size="70">mdi-alert-circle-outline</v-icon>
 
                     <h2>{{ t("issues.empty.title") }}</h2>
@@ -90,7 +90,7 @@
                 </template>
 
                 <!-- Pulls -->
-                <template v-if="type === 'pulls'">
+                <template v-if="type === 'pull'">
                     <v-icon class="mb-3 text--secondary" size="70">mdi-source-pull</v-icon>
 
                     <h2>{{ t("pulls.empty.title") }}</h2>
@@ -102,7 +102,7 @@
             <!-- No matched data -->
             <template v-slot:no-results>
                 <!-- Issues -->
-                <template v-if="type === 'issues'">
+                <template v-if="type === 'issue'">
                     <v-icon class="mb-3 text--secondary" size="70">mdi-alert-circle-outline</v-icon>
 
                     <h2>{{ t("issues.unmatched.title") }}</h2>
@@ -111,7 +111,7 @@
                 </template>
 
                 <!-- Pulls -->
-                <template v-if="type === 'pulls'">
+                <template v-if="type === 'pull'">
                     <v-icon class="mb-3 text--secondary" size="70">mdi-source-pull</v-icon>
 
                     <h2>{{ t("pulls.unmatched.title") }}</h2>
@@ -151,7 +151,7 @@ export default class IssuePullTable extends Vue {
      * Is the table used for issues or pulls.
      */
     @Prop()
-    type: "issues" | "pulls";
+    type: "issue" | "pull";
 
     /**
      * Table search value.
@@ -160,7 +160,7 @@ export default class IssuePullTable extends Vue {
     tableSearch: string;
 
     /**
-     * Table filters for selecting/sorting the issues.
+     * Table filters for selecting/sorting the items.
      */
     tableFilters = {
         /**
@@ -205,14 +205,9 @@ export default class IssuePullTable extends Vue {
     get tableHeaders() {
         const headers = [
             {
-                text: "Issue",
-                value: "issue",
+                text: "Item",
+                value: "item",
                 mobile: true
-            },
-
-            {
-                text: "Repository",
-                value: "repository.name"
             }
         ];
 
@@ -225,7 +220,7 @@ export default class IssuePullTable extends Vue {
 
     /**
      * Table items.
-     * Will filter the issues based on some set parameters.
+     * Will filter the items based on some set parameters.
      */
     get tableItems() {
         return this.getData(true);

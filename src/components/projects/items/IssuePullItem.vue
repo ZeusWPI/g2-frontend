@@ -50,16 +50,30 @@ import ProjectLabel from "@/components/projects/ProjectLabel.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import { ContextMenuLink } from "@/types/ContextMenuLink";
+import { ModalHandler } from "@/util/modal/ModalHandler";
+import { Project } from "@/api/models/Project";
 
 @Component({
     components: { ContextMenu, ProjectTag, ProjectLabel }
 })
 export default class IssuePullItem extends Vue {
     /**
+     * Project of the issue/pull.
+     */
+    @Prop()
+    project: Project;
+
+    /**
      * Issue/pull to display.
      */
     @Prop()
     item: Issue | Pull;
+
+    /**
+     * Is the given item an issue or a pull.
+     */
+    @Prop()
+    type: "issue" | "pull";
 
     /**
      * Get the time since the creation as a formatted string.
@@ -96,7 +110,16 @@ export default class IssuePullItem extends Vue {
             {
                 text: "Edit tags",
                 icon: "mdi-tag-multiple-outline",
-                action: () => console.log("HERE")
+                action: () =>
+                    // Open a modal for editing the tags for the given item.
+                    ModalHandler.open({
+                        component: () => import("../modals/EditTagsModal.vue"),
+                        componentPayload: {
+                            project: this.project,
+                            id: this.item.id,
+                            type: this.type
+                        }
+                    })
             },
 
             {

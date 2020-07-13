@@ -1,7 +1,7 @@
 <template>
     <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
-            <v-chip :color="tag.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on" dark>
+            <v-chip :color="tag.color" :class="showPadding ? 'mr-2 mb-2' : ''" small v-bind="attrs" v-on="on" dark>
                 {{ tag.name }}
             </v-chip>
         </template>
@@ -21,5 +21,11 @@ export default class ProjectTag extends Vue {
      */
     @Prop()
     tag: Tag;
+
+    /**
+     * Should the tag have padding.
+     */
+    @Prop({ default: true })
+    showPadding: boolean;
 }
 </script>
