@@ -1,43 +1,45 @@
 <template>
-    <v-row align="center">
-        <!-- Status -->
-        <v-col cols="auto" class="item__icon">
-            <!-- Open -->
-            <v-icon v-if="item.status === 'open'" color="success">
-                mdi-alert-circle-outline
-            </v-icon>
+    <context-menu :items="contextItems">
+        <v-row align="center">
+            <!-- Status -->
+            <v-col cols="auto" class="item__icon">
+                <!-- Open -->
+                <v-icon v-if="item.status === 'open'" color="success">
+                    mdi-alert-circle-outline
+                </v-icon>
 
-            <!-- Closed -->
-            <v-icon v-else color="error">
-                mdi-alert-circle-check-outline
-            </v-icon>
-        </v-col>
+                <!-- Closed -->
+                <v-icon v-else color="error">
+                    mdi-alert-circle-check-outline
+                </v-icon>
+            </v-col>
 
-        <!-- Content -->
-        <v-col>
-            <!-- Title -->
-            <div class="item__title">
-                <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
-            </div>
+            <!-- Content -->
+            <v-col>
+                <!-- Title -->
+                <div class="item__title">
+                    <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
+                </div>
 
-            <!-- Labels -->
-            <div class="item__labels">
-                <project-tag v-for="tag of item.tags" :key="tag.name" :tag="tag" />
-                <project-label v-for="label of item.labels" :key="label.name" :label="label" />
-            </div>
+                <!-- Labels -->
+                <div class="item__labels">
+                    <project-tag v-for="tag of item.tags" :key="tag.name" :tag="tag" />
+                    <project-label v-for="label of item.labels" :key="label.name" :label="label" />
+                </div>
 
-            <!-- Description -->
-            <div class="item__description text--secondary">
-                {{ t("projects.table.desc") }}
+                <!-- Description -->
+                <div class="item__description text--secondary">
+                    {{ t("projects.table.desc") }}
 
-                <!-- Author -->
-                <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
+                    <!-- Author -->
+                    <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
 
-                <!-- Time ago -->
-                {{ getTimeSince(item) }}
-            </div>
-        </v-col>
-    </v-row>
+                    <!-- Time ago -->
+                    {{ timeSince }}
+                </div>
+            </v-col>
+        </v-row>
+    </context-menu>
 </template>
 
 <script lang="ts">
@@ -46,8 +48,11 @@ import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
 import ProjectLabel from "@/components/projects/ProjectLabel.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
+import ContextMenu from "@/components/util/ContextMenu.vue";
+import { ContextMenuLink } from "@/types/ContextMenuLink";
+
 @Component({
-    components: { ProjectTag, ProjectLabel }
+    components: { ContextMenu, ProjectTag, ProjectLabel }
 })
 export default class IssuePullItem extends Vue {
     /**
@@ -57,12 +62,11 @@ export default class IssuePullItem extends Vue {
     item: Issue | Pull;
 
     /**
-     * Get the time since the creation of a given item as a formatted string.
-     * @param item Item to get the time for.
+     * Get the time since the creation as a formatted string.
      */
-    getTimeSince(item: Issue | Pull): string {
+    get timeSince(): string {
         const now = new Date();
-        const created = new Date(item.timestamp);
+        const created = new Date(this.item.timestamp);
 
         const diff = Math.abs(created.getTime() - now.getTime());
         const days = Math.floor(diff / (1000 * 3600 * 24));
@@ -82,6 +86,25 @@ export default class IssuePullItem extends Vue {
         }
 
         return `${minutes} minute(s) ago`;
+    }
+
+    /**
+     * Get the context items to display inside the context menu.
+     */
+    get contextItems(): ContextMenuLink[] {
+        return [
+            {
+                text: "Edit tags",
+                icon: "mdi-tag-multiple-outline",
+                action: () => console.log("HERE")
+            },
+
+            {
+                text: "Feature item",
+                icon: "mdi-star-circle-outline",
+                action: () => console.log("HERE")
+            }
+        ];
     }
 }
 </script>
