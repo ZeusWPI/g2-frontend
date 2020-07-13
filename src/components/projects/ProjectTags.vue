@@ -11,7 +11,7 @@
         <v-card-text>
             <!-- Loading -->
             <template v-if="tags.isLoading()">
-                <v-skeleton-loader v-for="index of 4" :key="index" type="chip" />
+                <v-skeleton-loader type="chip" />
             </template>
 
             <!-- Data -->
