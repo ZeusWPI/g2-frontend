@@ -1,6 +1,7 @@
 import { Author } from "@/api/models/Author";
 import { Repository } from "@/api/models/Repository";
 import { Label } from "@/api/models/Label";
+import { Tag } from "@/api/models/Tag";
 
 export class Issue {
     id: number;
@@ -11,4 +12,5 @@ export class Issue {
     author: Author;
     repository: Repository;
     labels: Label[];
+    tags: Tag[];
 }

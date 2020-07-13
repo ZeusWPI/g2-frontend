@@ -14,27 +14,20 @@
         </v-col>
 
         <!-- Content -->
-        <div>
+        <v-col>
             <!-- Title -->
-            <v-col cols="12" sm="auto" class="item__title">
+            <div class="item__title">
                 <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
-            </v-col>
+            </div>
 
             <!-- Labels -->
-            <v-col class="item__labels">
-                <v-tooltip top v-for="label of item.labels" :key="label.name">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on" dark>
-                            {{ label.name }}
-                        </v-chip>
-                    </template>
-
-                    <span>{{ label.description }}</span>
-                </v-tooltip>
-            </v-col>
+            <div class="item__labels">
+                <project-tag v-for="tag of item.tags" :key="tag.name" :tag="tag" />
+                <project-label v-for="label of item.labels" :key="label.name" :label="label" />
+            </div>
 
             <!-- Description -->
-            <v-col cols="12" class="item__description text--secondary">
+            <div class="item__description text--secondary">
                 {{ t("projects.table.desc") }}
 
                 <!-- Author -->
@@ -42,8 +35,8 @@
 
                 <!-- Time ago -->
                 {{ getTimeSince(item) }}
-            </v-col>
-        </div>
+            </div>
+        </v-col>
     </v-row>
 </template>
 
@@ -51,8 +44,11 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
-
-@Component
+import ProjectLabel from "@/components/projects/ProjectLabel.vue";
+import ProjectTag from "@/components/projects/ProjectTag.vue";
+@Component({
+    components: { ProjectTag, ProjectLabel }
+})
 export default class IssuePullItem extends Vue {
     /**
      * Issue/pull to display.
@@ -95,19 +91,15 @@ export default class IssuePullItem extends Vue {
     &__title {
         font-weight: bold;
         font-size: 1.2em;
-        padding-bottom: 0;
     }
 
     &__labels {
-        padding-bottom: 0;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
     }
 
     &__description {
         font-size: 0.9em;
-
-        @media screen and (min-width: 600px) {
-            padding-top: 0;
-        }
     }
 
     &__icon {

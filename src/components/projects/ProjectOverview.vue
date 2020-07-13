@@ -16,29 +16,7 @@
                 <project-subprojects />
 
                 <!-- Tags -->
-                <div>
-                    <v-card-title>
-                        Tags
-
-                        <v-chip class="ml-2" small>
-                            3
-                        </v-chip>
-                    </v-card-title>
-
-                    <v-card-text>
-                        <v-chip color="brown" class="mr-2 mb-2" small>
-                            Rust
-                        </v-chip>
-
-                        <v-chip color="red" class="mr-2 mb-2" small>
-                            HTML
-                        </v-chip>
-
-                        <v-chip color="green" class="mr-2 mb-2" small>
-                            Beginner friendly
-                        </v-chip>
-                    </v-card-text>
-                </div>
+                <project-tags :tags="tags" />
             </v-col>
         </v-row>
     </div>
@@ -51,14 +29,23 @@ import { EchoPromise } from "echofetch";
 import { Author } from "@/api/models/Author";
 import { Feature } from "@/api/models/Feature";
 import IssuePullItem from "@/components/projects/items/IssuePullItem.vue";
-import ProjectMaintainersCard from "@/components/projects/cards/ProjectMaintainersCard.vue";
+import ProjectMaintainers from "@/components/projects/ProjectMaintainers.vue";
 import ProjectService from "@/api/services/ProjectService";
 import ProjectFeaturedCard from "@/components/projects/cards/ProjectFeaturedCard.vue";
 import ProjectFeatures from "@/components/projects/ProjectFeatures.vue";
 import ProjectSubprojects from "@/components/projects/ProjectSubprojects.vue";
+import { Tag } from "@/api/models/Tag";
+import ProjectTags from "@/components/projects/ProjectTags.vue";
 
 @Component({
-    components: { ProjectSubprojects, ProjectFeatures, ProjectFeaturedCard, ProjectMaintainersCard, IssuePullItem }
+    components: {
+        ProjectTags,
+        ProjectSubprojects,
+        ProjectFeatures,
+        ProjectFeaturedCard,
+        ProjectMaintainersCard: ProjectMaintainers,
+        IssuePullItem
+    }
 })
 export default class ProjectOverview extends Vue {
     /**
@@ -76,5 +63,10 @@ export default class ProjectOverview extends Vue {
      * Project features.
      */
     features: EchoPromise<Feature[]> = ProjectService.features(this.project.id);
+
+    /**
+     * Project tags.
+     */
+    tags: EchoPromise<Tag[]> = ProjectService.tags(this.project.id);
 }
 </script>

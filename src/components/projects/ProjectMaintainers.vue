@@ -42,7 +42,7 @@ import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 @Component({
     components: { ErrorPlaceholder, AuthorItem }
 })
-export default class ProjectMaintainersCard extends Vue {
+export default class ProjectMaintainers extends Vue {
     /**
      * List with maintainers.
      */

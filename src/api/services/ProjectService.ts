@@ -7,6 +7,7 @@ import { Pull } from "@/api/models/Pull";
 import { Repository } from "@/api/models/Repository";
 import { Author } from "@/api/models/Author";
 import { Feature } from "@/api/models/Feature";
+import { Tag } from "@/api/models/Tag";
 
 /**
  * Service for managing projects.
@@ -103,6 +104,15 @@ class ProjectService extends EchoService {
     @GET("/projects/{id}/features")
     features(@Path("id") id: number): EchoPromise<Feature[]> {
         return {} as EchoPromise<Feature[]>;
+    }
+
+    /**
+     * Get a list with tags for a given project..
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/tags")
+    tags(@Path("id") id: number): EchoPromise<Tag[]> {
+        return {} as EchoPromise<Tag[]>;
     }
 }
 
