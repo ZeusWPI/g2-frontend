@@ -103,7 +103,7 @@ export default class ProjectRepositoriesModal extends Vue {
     repositories: EchoPromise<Repository[]> = RepositoryService.getAll();
 
     /**
-     * If the request is loading.
+     * If the update request is loading.
      */
     loading = false;
 

@@ -1,5 +1,4 @@
-import { EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST, PUT } from "echofetch";
-import { Project } from "@/api/models/Project";
+import { EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST } from "echofetch";
 import { Repository } from "@/api/models/Repository";
 
 /**

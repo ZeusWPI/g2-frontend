@@ -16,7 +16,7 @@
                 <project-subprojects />
 
                 <!-- Tags -->
-                <project-tags :tags="tags" />
+                <project-tags :project="project" :tags="tags" />
             </v-col>
         </v-row>
     </div>
