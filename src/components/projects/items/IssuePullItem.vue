@@ -1,43 +1,49 @@
 <template>
-    <v-row>
-        <!-- Title -->
-        <v-col cols="12" sm="auto" class="table__title">
-            <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
+    <v-row align="center">
+        <!-- Status -->
+        <v-col cols="auto" class="item__icon">
+            <!-- Open -->
+            <v-icon v-if="item.status === 'open'" color="success">
+                mdi-alert-circle-outline
+            </v-icon>
+
+            <!-- Closed -->
+            <v-icon v-else color="error">
+                mdi-alert-circle-check-outline
+            </v-icon>
         </v-col>
 
-        <!-- Labels -->
-        <v-col class="table__labels">
-            <v-menu v-for="label of item.labels" :key="label.name" open-on-hover top offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                    <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on" dark>
-                        {{ label.name }}
-                    </v-chip>
-                </template>
+        <!-- Content -->
+        <div>
+            <!-- Title -->
+            <v-col cols="12" sm="auto" class="item__title">
+                <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
+            </v-col>
 
-                <v-card>
-                    <v-card-title>
-                        <v-chip :color="label.color" class="mr-2 mb-2" small dark>
+            <!-- Labels -->
+            <v-col class="item__labels">
+                <v-tooltip top v-for="label of item.labels" :key="label.name">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on" dark>
                             {{ label.name }}
                         </v-chip>
-                    </v-card-title>
+                    </template>
 
-                    <v-card-text>
-                        {{ label.description }}
-                    </v-card-text>
-                </v-card>
-            </v-menu>
-        </v-col>
+                    <span>{{ label.description }}</span>
+                </v-tooltip>
+            </v-col>
 
-        <!-- Description -->
-        <v-col cols="12" class="table__description text--secondary">
-            {{ t("projects.table.desc") }}
+            <!-- Description -->
+            <v-col cols="12" class="item__description text--secondary">
+                {{ t("projects.table.desc") }}
 
-            <!-- Author -->
-            <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
+                <!-- Author -->
+                <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
 
-            <!-- Time ago -->
-            {{ getTimeSince(item) }}
-        </v-col>
+                <!-- Time ago -->
+                {{ getTimeSince(item) }}
+            </v-col>
+        </div>
     </v-row>
 </template>
 
@@ -83,3 +89,30 @@ export default class IssuePullItem extends Vue {
     }
 }
 </script>
+
+<style lang="scss">
+.item {
+    &__title {
+        font-weight: bold;
+        font-size: 1.2em;
+        padding-bottom: 0;
+    }
+
+    &__labels {
+        padding-bottom: 0;
+    }
+
+    &__description {
+        font-size: 0.9em;
+
+        @media screen and (min-width: 600px) {
+            padding-top: 0;
+        }
+    }
+
+    &__icon {
+        padding: 0 15px;
+        text-align: center;
+    }
+}
+</style>

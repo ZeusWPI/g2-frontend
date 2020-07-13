@@ -4,6 +4,10 @@
             <v-list-item-title>
                 {{ branch.name }}
             </v-list-item-title>
+
+            <v-list-item-subtitle>
+                {{ branch.repository.name }}
+            </v-list-item-subtitle>
         </v-list-item-content>
     </v-list-item>
 </template>

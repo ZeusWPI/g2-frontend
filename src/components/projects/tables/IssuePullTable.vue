@@ -73,23 +73,8 @@
             mobile-breakpoint="0"
             @click:row="openItem"
         >
-            <!-- Status -->
-            <template v-slot:item.status="{ item }">
-                <div class="table__icon">
-                    <!-- Open -->
-                    <v-icon v-if="item.status === 'open'" color="success">
-                        mdi-alert-circle-outline
-                    </v-icon>
-
-                    <!-- Closed -->
-                    <v-icon v-else color="error">
-                        mdi-alert-circle-check-outline
-                    </v-icon>
-                </div>
-            </template>
-
-            <!-- Title & labels -->
-            <template v-slot:item.title="{ item }">
+            <!-- Issue -->
+            <template v-slot:item.issue="{ item }">
                 <issue-pull-item :item="item" />
             </template>
 
@@ -145,6 +130,7 @@ import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
 import { Repository } from "@/api/models/Repository";
 import IssuePullItem from "@/components/projects/items/IssuePullItem.vue";
+
 @Component({
     components: { IssuePullItem }
 })
@@ -219,15 +205,8 @@ export default class IssuePullTable extends Vue {
     get tableHeaders() {
         const headers = [
             {
-                value: "status",
-                mobile: true,
-                sortable: false,
-                align: "center"
-            },
-
-            {
-                text: "Title",
-                value: "title",
+                text: "Issue",
+                value: "issue",
                 mobile: true
             },
 
@@ -333,30 +312,3 @@ export default class IssuePullTable extends Vue {
     }
 }
 </script>
-
-<style lang="scss">
-.table {
-    &__title {
-        font-weight: bold;
-        font-size: 1.2em;
-        padding-bottom: 0;
-    }
-
-    &__labels {
-        padding-bottom: 0;
-    }
-
-    &__description {
-        font-size: 0.9em;
-
-        @media screen and (min-width: 600px) {
-            padding-top: 0;
-        }
-    }
-
-    &__icon {
-        padding: 0;
-        text-align: center;
-    }
-}
-</style>
