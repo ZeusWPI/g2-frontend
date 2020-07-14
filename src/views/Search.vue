@@ -189,7 +189,10 @@ export default class SearchView extends Vue {
      * Convert the "searchQuery" to a list format using the separator.
      */
     get searchQueryList(): string[] {
-        return this.searchQuery.split(";");
+        // Group 1: match all tags with a prefix (<prefix>:"<name>")
+        // Group 2: match all tags with a prefix without quotes (<prefix>:<name>)
+        // Group 3: match regular strings
+        return this.searchQuery.match(/([^" ]+:"[^"]+")|([^" ]+:[^" ]+)|([^" ]+)/g) ?? [];
     }
 
     /**
@@ -201,7 +204,7 @@ export default class SearchView extends Vue {
         const filters = this.filters.tag.concat(this.filters.project).concat(this.filters.keyword);
 
         // Calculate the new search query.
-        const newSearchQuery = filters.join(";");
+        const newSearchQuery = filters.join(" ");
 
         if (this.searchQuery !== newSearchQuery) {
             this.searchQuery = encodeURI(newSearchQuery);

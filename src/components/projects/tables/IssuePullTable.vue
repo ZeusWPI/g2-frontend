@@ -30,7 +30,16 @@
 
             <!-- Author selection -->
             <v-col :hidden="$vuetify.breakpoint.smAndDown">
-                <v-select v-model="tableFilters.authors" :items="tableAuthors" label="Author" flat solo dense multiple>
+                <v-select
+                    v-model="tableFilters.authors"
+                    :items="tableAuthors"
+                    :menu-props="{ bottom: true, offsetY: true }"
+                    label="Author"
+                    flat
+                    solo
+                    dense
+                    multiple
+                >
                     <template v-slot:selection="{ index, item }">
                         <span v-if="index === 0">{{ item }}</span>
 
@@ -44,6 +53,7 @@
                 <v-select
                     v-model="tableFilters.repositories"
                     :items="tableRepositories"
+                    :menu-props="{ bottom: true, offsetY: true }"
                     label="Repository"
                     flat
                     solo
@@ -60,7 +70,15 @@
 
             <!-- Sort options -->
             <v-col :hidden="$vuetify.breakpoint.smAndDown">
-                <v-select v-model="tableFilters.sort" :items="tableFilters.sortOptions" label="Sort" flat solo dense />
+                <v-select
+                    v-model="tableFilters.sort"
+                    :items="tableFilters.sortOptions"
+                    :menu-props="{ bottom: true, offsetY: true }"
+                    label="Sort"
+                    flat
+                    solo
+                    dense
+                />
             </v-col>
         </v-row>
 
