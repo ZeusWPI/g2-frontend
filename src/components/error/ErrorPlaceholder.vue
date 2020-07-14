@@ -30,13 +30,13 @@ export default class ErrorPlaceholder extends Vue {
     /**
      * Error to display.
      */
-    @Prop()
+    @Prop({ required: true })
     error: EchoError;
 
     /**
      * Display options.
      */
-    @Prop({ default: {} })
+    @Prop({ default: {}, required: true })
     options: CustomErrorOptions;
 
     /**

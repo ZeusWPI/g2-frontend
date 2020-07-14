@@ -66,13 +66,13 @@ export default class IssuePullItem extends Vue {
     /**
      * Issue/pull to display.
      */
-    @Prop()
+    @Prop({ required: true })
     item: Issue | Pull;
 
     /**
      * Is the given item an issue or a pull.
      */
-    @Prop()
+    @Prop({ required: true })
     type: "issue" | "pull";
 
     /**

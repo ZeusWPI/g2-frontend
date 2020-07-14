@@ -17,8 +17,13 @@
             </v-btn>
         </v-toolbar-items>
 
+        <!-- Search -->
+        <div class="mx-4">
+            <search-bar />
+        </div>
+
         <!-- Authentication -->
-        <div class="ml-3">
+        <div>
             <!-- Loading -->
             <template v-if="user.isLoading()">
                 <v-btn text>
@@ -98,9 +103,10 @@ import { EchoPromise } from "echofetch";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import LoginModal from "@/components/login/modals/LoginModal.vue";
 import UserAvatar from "@/components/user/UserAvatar.vue";
+import SearchBar from "@/components/search/SearchBar.vue";
 
 @Component({
-    components: { UserAvatar }
+    components: { SearchBar, UserAvatar }
 })
 export default class NavigationBar extends Vue {
     /**
@@ -148,7 +154,6 @@ export default class NavigationBar extends Vue {
         cursor: pointer;
         padding: 10px;
         font-size: 1.2rem;
-        width: 210px;
         color: white;
 
         img {

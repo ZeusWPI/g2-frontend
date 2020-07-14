@@ -116,7 +116,7 @@ export default class ProjectView extends Vue {
     /**
      * Model for the tab menu.
      */
-    @PropSync("tab", { default: "issues" })
+    @PropSync("tab", { default: "overview" })
     _tab: string;
 
     /**
