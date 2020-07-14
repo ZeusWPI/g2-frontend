@@ -12,7 +12,7 @@
     >
         <!-- Prepend (default search entry) -->
         <template v-slot:prepend-item>
-            <v-list-item v-if="searchValue && searchValue.length > 0" :to="`/search?q=${searchValue}`">
+            <v-list-item v-if="searchValue && searchValue.length > 0" :to="`/search?q=${searchValueEncoded}`">
                 <v-list-item-icon class="mr-3">
                     <v-icon>
                         mdi-magnify
@@ -104,6 +104,13 @@ export default class SearchBar extends Vue {
     handleSearch() {
         // Go to the selected project.
         this.$router.push(`/projects/${this.searchSelected?.value.id}`);
+    }
+
+    /**
+     * Convert the search value to a url string.
+     */
+    get searchValueEncoded(): string {
+        return encodeURI(this.searchValue ?? "");
     }
 }
 </script>

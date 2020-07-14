@@ -181,7 +181,7 @@ export default class SearchView extends Vue {
      * When the component is created.
      */
     created() {
-        this.searchQuery = (this.$route.query.q as string) ?? "";
+        this.searchQuery = decodeURI((this.$route.query.q as string) ?? "");
         this.searchValue = SearchService.search(this.searchQuery);
     }
 
@@ -204,7 +204,7 @@ export default class SearchView extends Vue {
         const newSearchQuery = filters.join(";");
 
         if (this.searchQuery !== newSearchQuery) {
-            this.searchQuery = newSearchQuery;
+            this.searchQuery = encodeURI(newSearchQuery);
 
             // Update the history state without refreshing the page.
             history.pushState(null, "", `?q=${this.searchQuery}`);
