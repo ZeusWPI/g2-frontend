@@ -5,6 +5,7 @@
         :items="searchEntries"
         :loading="searchLoading"
         label="Search or jump to..."
+        auto-select-first
         return-object
         flat
         solo-inverted
@@ -12,7 +13,7 @@
     >
         <!-- Prepend (default search entry) -->
         <template v-slot:prepend-item>
-            <v-list-item v-if="searchValue && searchValue.length > 0" :to="`/search?q=${searchValueEncoded}`">
+            <v-list-item v-if="searchValue && searchValue.length > 0" @click="openSearch">
                 <v-list-item-icon class="mr-3">
                     <v-icon>
                         mdi-magnify
@@ -42,6 +43,7 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import SearchService from "@/api/services/SearchService";
 import { Project } from "@/api/models/Project";
+import { RouterUtil } from "@/util/RouterUtil";
 
 @Component
 export default class SearchBar extends Vue {
@@ -64,6 +66,23 @@ export default class SearchBar extends Vue {
      * If the search is loading.
      */
     searchLoading = false;
+
+    /**
+     * Go to the search page with given query parameter.
+     */
+    openSearch() {
+        this.$router.push({
+            name: "Search",
+            query: {
+                q: this.searchValueEncoded
+            }
+        });
+
+        // Refresh the current route when already on the search page.
+        if (this.$route.name === "Search") {
+            RouterUtil.reload(this.$router);
+        }
+    }
 
     /**
      * Update the search entries list when a new search query is entered.

@@ -7,14 +7,14 @@ export class RouterUtil {
      * @param router Instance of the current Vue router
      */
     static async reload(router: VueRouter) {
-        const location = router.currentRoute.path;
+        const location = router.currentRoute.fullPath;
 
         // Go to a page for a quick second.
         await router.replace("/#");
 
         // Go back to the current page.
         Vue.nextTick(() => {
-            router.push(location);
+            router.replace(location);
         });
     }
 }

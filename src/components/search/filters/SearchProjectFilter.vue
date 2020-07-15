@@ -1,16 +1,13 @@
 <template>
     <div>
-        <!-- Loading -->
-        <template v-if="projects.isLoading()"> </template>
-
-        <!-- Data -->
-        <template v-else-if="projects.isSuccess()">
+        <!-- Loading | Data -->
+        <template v-if="projects.isLoading() || projects.isSuccess()">
             <v-select
                 v-model="selected"
-                :items="projects.data"
+                :items="projects.isSuccess() ? projects.data : []"
                 :menu-props="{ bottom: true, offsetY: true }"
+                :loading="projects.isLoading()"
                 item-text="name"
-                return-object
                 label="Projects"
                 deletable-chips
                 chips
@@ -31,15 +28,14 @@
 <script lang="ts">
 import { Component, Prop, PropSync, Vue, Watch } from "vue-property-decorator";
 import { EchoPromise } from "echofetch";
+import { Project } from "@/api/models/Project";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import ProjectService from "@/api/services/ProjectService";
-import { Project } from "@/api/models/Project";
-import { Tag } from "@/api/models/Tag";
 
 @Component({
     components: { ErrorPlaceholder }
 })
-export default class SearchTagFilter extends Vue {
+export default class SearchProjectFilter extends Vue {
     /**
      * Selected projects as filter label format.
      * This only contains the filter labels for this filter.
@@ -61,14 +57,19 @@ export default class SearchTagFilter extends Vue {
     /**
      * Selected data.
      */
-    selected: Project[] = [];
+    selected: string[] = [];
 
     /**
      * When the component is created.
      */
     created() {
+        const filters = this.query.filter(filter => filter.startsWith("project:"));
+
         // Feed the filters using the query list.
-        this._filters = this.query.filter(filter => filter.startsWith("project:"));
+        this._filters = filters;
+
+        // Update the selected based on the given filters.
+        this.selected = filters.map(filter => filter.replace("project:", "").replace('"', ""));
     }
 
     /**
@@ -76,23 +77,7 @@ export default class SearchTagFilter extends Vue {
      */
     @Watch("selected")
     updateFilters() {
-        this._filters = this.selected.map(project => `project:"${project.name}"`);
-    }
-
-    /**
-     * Update the selected when the projects become available.
-     */
-    @Watch("tags")
-    updateSelected() {
-        if (this.projects.isSuccess()) {
-            this.selected = this._filters
-
-                // Find the project that corresponds with the given filter.
-                .map(filter => this.projects.requireData().find(project => project.name === filter))
-
-                // Filter all the filters that do not match an available tag.
-                .filter(selected => selected !== undefined) as Project[];
-        }
+        this._filters = this.selected.map(projectName => `project:"${projectName}"`);
     }
 }
 </script>

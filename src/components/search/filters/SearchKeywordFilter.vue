@@ -11,7 +11,7 @@ import debounce from "debounce";
 @Component({
     components: { ProjectTag, ErrorPlaceholder }
 })
-export default class SearchTagFilter extends Vue {
+export default class SearchKeywordFilter extends Vue {
     /**
      * Selected tags as filter label format.
      * This only contains the filter labels for this filter.
@@ -58,6 +58,7 @@ export default class SearchTagFilter extends Vue {
      * This will only update the filters 300ms after the user has stopped typing.
      */
     updateFiltersDebounce = debounce(function() {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         this._filters = this.value.split(" ");
     }, 300);
 }

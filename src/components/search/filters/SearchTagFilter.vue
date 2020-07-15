@@ -1,16 +1,13 @@
 <template>
     <div>
-        <!-- Loading -->
-        <template v-if="tags.isLoading()"> </template>
-
-        <!-- Data -->
-        <template v-else-if="tags.isSuccess()">
+        <!-- Loading | Data -->
+        <template v-if="tags.isLoading() || tags.isSuccess()">
             <v-select
                 v-model="selected"
-                :items="tags.data"
+                :items="tags.isSuccess() ? tags.data : []"
                 :menu-props="{ bottom: true, offsetY: true }"
+                :loading="tags.isLoading()"
                 item-text="name"
-                return-object
                 label="Tags"
                 deletable-chips
                 chips
@@ -60,15 +57,19 @@ export default class SearchTagFilter extends Vue {
     /**
      * Selected data.
      */
-    selected: Tag[] = [];
+    selected: string[] = [];
 
     /**
      * When the component is created.
      */
     created() {
+        const filters = this.query.filter(filter => filter.startsWith("tag:"));
+
         // Feed the filters using the query list.
-        // This regex matches everything that starts with "<value>:".
-        this._filters = this.query.filter(filter => filter.startsWith("tag:"));
+        this._filters = filters;
+
+        // Update the selected based on the given filters.
+        this.selected = filters.map(filter => filter.replace("tag:", "").replace('"', ""));
     }
 
     /**
@@ -76,23 +77,7 @@ export default class SearchTagFilter extends Vue {
      */
     @Watch("selected")
     updateFilters() {
-        this._filters = this.selected.map(tag => `tag:"${tag.name}"`);
-    }
-
-    /**
-     * Update the selected when the tags become available.
-     */
-    @Watch("projects")
-    updateSelected() {
-        if (this.tags.isSuccess()) {
-            this.selected = this._filters
-
-                // Find the tag that corresponds with the given filter.
-                .map(filter => this.tags.requireData().find(tag => tag.name === filter))
-
-                // Filter all the filters that do not match an available tag.
-                .filter(selected => selected !== undefined) as Tag[];
-        }
+        this._filters = this.selected.map(tagName => `tag:"${tagName}"`);
     }
 }
 </script>
