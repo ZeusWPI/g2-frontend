@@ -10,12 +10,12 @@
             <v-card class="mt-3" outlined>
                 <!-- Issue -->
                 <template v-if="feature.type === 'issue'">
-                    <issue-pull-item class="px-3" type="issue" :project="project" :item="feature.data.issue" />
+                    <issue-pull-item class="px-3" type="issue" :item="feature.data.issue" />
                 </template>
 
                 <!-- Pull -->
                 <template v-if="feature.type === 'pull'">
-                    <issue-pull-item class="px-3" type="pull" :project="project" :item="feature.data.pull" />
+                    <issue-pull-item class="px-3" type="pull" :item="feature.data.pull" />
                 </template>
 
                 <!-- Project -->
@@ -25,7 +25,7 @@
 
                 <!-- Branch -->
                 <template v-if="feature.type === 'branch'">
-                    <branch-item class="pa-3" :project="project" :branch="feature.data.branch" />
+                    <branch-item class="pa-3" :branch="feature.data.branch" />
                 </template>
             </v-card>
         </v-col>

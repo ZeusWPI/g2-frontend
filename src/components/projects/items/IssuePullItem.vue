@@ -58,12 +58,6 @@ import { Project } from "@/api/models/Project";
 })
 export default class IssuePullItem extends Vue {
     /**
-     * Project of the issue/pull.
-     */
-    @Prop()
-    project: Project;
-
-    /**
      * Issue/pull to display.
      */
     @Prop({ required: true })
@@ -115,8 +109,7 @@ export default class IssuePullItem extends Vue {
                     ModalHandler.open({
                         component: () => import("../modals/EditTagsModal.vue"),
                         componentPayload: {
-                            project: this.project,
-                            id: this.item.id,
+                            item: this.item,
                             type: this.type
                         }
                     })

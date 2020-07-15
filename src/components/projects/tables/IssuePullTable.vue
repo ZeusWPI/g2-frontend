@@ -93,7 +93,7 @@
         >
             <!-- Issue -->
             <template v-slot:item.item="{ item }">
-                <issue-pull-item :type="type" :project="project" :item="item" />
+                <issue-pull-item :type="type" :item="item" />
             </template>
 
             <!-- No Data -->

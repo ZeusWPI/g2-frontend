@@ -87,6 +87,9 @@ import IssueService from "@/api/services/IssueService";
 import PullsService from "@/api/services/PullsService";
 import BranchService from "@/api/services/BranchService";
 import ProjectService from "@/api/services/ProjectService";
+import { Issue } from "@/api/models/Issue";
+import { Pull } from "@/api/models/Pull";
+import { Branch } from "@/api/models/Branch";
 
 @Component({
     components: { ProjectTag, ErrorPlaceholder }
@@ -97,15 +100,14 @@ export default class EditTagsModal extends Vue {
      */
     @Prop()
     payload: {
-        project: Project;
         type: "project" | "issue" | "pull" | "branch";
-        id: number;
+        item: Project | Issue | Pull | Branch;
     };
 
     /**
      * Get all the available tags.
      */
-    tags: EchoPromise<Tag[]> = TagService.getAll(false, this.payload.project.id);
+    tags: EchoPromise<Tag[]> = TagService.getAll();
 
     /**
      * If the update request is loading.
@@ -129,7 +131,7 @@ export default class EditTagsModal extends Vue {
     /**
      * Selected repositories.
      */
-    tableSelected: Tag[] = this.payload.project.tags;
+    tableSelected: Tag[] = this.payload.item.tags;
 
     /**
      * Close the modal.
@@ -145,32 +147,32 @@ export default class EditTagsModal extends Vue {
         this.loading = true;
 
         // Find all the newly selected tags.
-        const linkTags = this.tableSelected.filter(tag => !this.payload.project.tags.includes(tag));
+        const linkTags = this.tableSelected.filter(tag => !this.payload.item.tags.includes(tag));
 
         // Find all the unselected tags.
-        const unlinkTags = this.payload.project.tags.filter(tag => !this.tableSelected.includes(tag));
+        const unlinkTags = this.payload.item.tags.filter(tag => !this.tableSelected.includes(tag));
 
         // Link the selected tags.
         for (const tag of linkTags) {
             try {
                 // Issue
                 if (this.payload.type === "issue") {
-                    await IssueService.linkTag(this.payload.id, tag.id);
+                    await IssueService.linkTag(this.payload.item.id, tag.id);
                 }
 
                 // Pull
                 else if (this.payload.type === "pull") {
-                    await PullsService.linkTag(this.payload.id, tag.id);
+                    await PullsService.linkTag(this.payload.item.id, tag.id);
                 }
 
                 // Branch
                 else if (this.payload.type === "branch") {
-                    await BranchService.linkTag(this.payload.id, tag.id);
+                    await BranchService.linkTag(this.payload.item.id, tag.id);
                 }
 
                 // Project
                 else if (this.payload.type === "project") {
-                    await ProjectService.linkTag(this.payload.id, tag.id);
+                    await ProjectService.linkTag(this.payload.item.id, tag.id);
                 }
             } catch (error) {
                 ErrorHandler.handle(error, {
@@ -188,22 +190,22 @@ export default class EditTagsModal extends Vue {
             try {
                 // Issue
                 if (this.payload.type === "issue") {
-                    await IssueService.unlinkTag(this.payload.id, tag.id);
+                    await IssueService.unlinkTag(this.payload.item.id, tag.id);
                 }
 
                 // Pull
                 else if (this.payload.type === "pull") {
-                    await PullsService.unlinkTag(this.payload.id, tag.id);
+                    await PullsService.unlinkTag(this.payload.item.id, tag.id);
                 }
 
                 // Branch
                 else if (this.payload.type === "branch") {
-                    await BranchService.unlinkTag(this.payload.id, tag.id);
+                    await BranchService.unlinkTag(this.payload.item.id, tag.id);
                 }
 
                 // Project
                 else if (this.payload.type === "project") {
-                    await ProjectService.unlinkTag(this.payload.id, tag.id);
+                    await ProjectService.unlinkTag(this.payload.item.id, tag.id);
                 }
             } catch (error) {
                 ErrorHandler.handle(error, {

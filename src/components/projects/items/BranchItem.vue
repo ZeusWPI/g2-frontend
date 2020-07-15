@@ -37,12 +37,6 @@ import { Project } from "@/api/models/Project";
 })
 export default class BranchItem extends Vue {
     /**
-     * Project of the branch.
-     */
-    @Prop()
-    project: Project;
-
-    /**
      * Branch to display.
      */
     @Prop()
@@ -61,8 +55,7 @@ export default class BranchItem extends Vue {
                     ModalHandler.open({
                         component: () => import("../modals/EditTagsModal.vue"),
                         componentPayload: {
-                            project: this.project,
-                            id: this.project.id,
+                            item: this.branch,
                             type: "branch"
                         }
                     })

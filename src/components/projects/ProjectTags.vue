@@ -70,8 +70,7 @@ export default class ProjectTags extends Vue {
         ModalHandler.open({
             component: () => import("./modals/EditTagsModal.vue"),
             componentPayload: {
-                project: this.project,
-                id: this.project.id,
+                item: this.project,
                 type: "project"
             },
             responsive: true
