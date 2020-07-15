@@ -2,8 +2,7 @@
     <v-container>
         <!-- Loading -->
         <template v-if="project.isLoading()">
-            <v-skeleton-loader type="article" />
-            <v-skeleton-loader type="table" />
+            <page-loader />
         </template>
 
         <!-- Data -->
@@ -94,9 +93,11 @@ import ProjectRepositories from "@/components/projects/ProjectRepositories.vue";
 import ProjectPulls from "@/components/projects/ProjectPulls.vue";
 import { Repository } from "@/api/models/Repository";
 import ProjectOverview from "@/components/projects/ProjectOverview.vue";
+import PageLoader from "@/components/layout/PageLoader.vue";
 
 @Component({
     components: {
+        PageLoader,
         ProjectOverview,
         ProjectPulls,
         ProjectHeader,

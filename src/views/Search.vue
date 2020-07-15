@@ -20,7 +20,7 @@
 
         <!-- Loading -->
         <template v-if="searchValue.isLoading()">
-            <v-skeleton-loader type="table" />
+            <page-loader />
         </template>
 
         <!-- Data -->
@@ -129,9 +129,11 @@ import BranchItem from "@/components/projects/items/BranchItem.vue";
 import SearchTagFilter from "@/components/search/filters/SearchTagFilter.vue";
 import SearchProjectFilter from "@/components/search/filters/SearchProjectFilter.vue";
 import SearchKeywordFilter from "@/components/search/filters/SearchKeywordFilter.vue";
+import PageLoader from "@/components/layout/PageLoader.vue";
 
 @Component({
     components: {
+        PageLoader,
         SearchKeywordFilter,
         SearchProjectFilter,
         SearchTagFilter,
