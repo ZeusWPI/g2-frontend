@@ -1,5 +1,5 @@
 <template>
-    <context-menu :items="contextItems">
+    <item-context-menu :item="item" :type="type">
         <v-row align="center">
             <!-- Status -->
             <v-col cols="auto" class="item__icon">
@@ -39,7 +39,7 @@
                 </div>
             </v-col>
         </v-row>
-    </context-menu>
+    </item-context-menu>
 </template>
 
 <script lang="ts">
@@ -52,9 +52,10 @@ import ContextMenu from "@/components/util/ContextMenu.vue";
 import { ContextMenuLink } from "@/types/ContextMenuLink";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import { Project } from "@/api/models/Project";
+import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
 
 @Component({
-    components: { ContextMenu, ProjectTag, ProjectLabel }
+    components: { ItemContextMenu, ContextMenu, ProjectTag, ProjectLabel }
 })
 export default class IssuePullItem extends Vue {
     /**
@@ -94,33 +95,6 @@ export default class IssuePullItem extends Vue {
         }
 
         return `${minutes} minute(s) ago`;
-    }
-
-    /**
-     * Get the context items to display inside the context menu.
-     */
-    get contextItems(): ContextMenuLink[] {
-        return [
-            {
-                text: "Edit tags",
-                icon: "mdi-tag-multiple-outline",
-                action: () =>
-                    // Open a modal for editing the tags for the given item.
-                    ModalHandler.open({
-                        component: () => import("../modals/EditTagsModal.vue"),
-                        componentPayload: {
-                            item: this.item,
-                            type: this.type
-                        }
-                    })
-            },
-
-            {
-                text: "Feature item",
-                icon: "mdi-star-circle-outline",
-                action: () => console.log("HERE")
-            }
-        ];
     }
 }
 </script>

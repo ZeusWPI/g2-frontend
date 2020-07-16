@@ -26,7 +26,7 @@ export default class ContextMenu extends Vue {
     /**
      * Items to display inside the menu.
      */
-    @Prop()
+    @Prop({ required: true })
     items: ContextMenuLink;
 
     /**

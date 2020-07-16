@@ -32,7 +32,6 @@ import ErrorBus from "@/api/error/ErrorBus";
 import { EchoError } from "echofetch";
 import { CustomErrorOptions } from "@/api/error/types/CustomErrorOptions";
 import { Optional } from "@/types/Optional";
-import router from "@/router/router";
 import ModalPlaceholder from "@/components/layout/placeholders/ModalPlaceholder.vue";
 import SnackbarPlaceholder from "@/components/layout/placeholders/SnackbarPlaceholder.vue";
 
@@ -78,7 +77,7 @@ export default class App extends Vue {
         });
 
         // Clear the error when navigating to a different route.
-        router.afterEach(() => {
+        this.$router.afterEach(() => {
             this.error = null;
         });
     }

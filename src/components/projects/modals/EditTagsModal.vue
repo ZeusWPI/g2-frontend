@@ -17,7 +17,9 @@
         <v-card-text>
             <!-- Loading -->
             <template v-if="tags.isLoading()">
-                <v-skeleton-loader type="table" />
+                <v-row justify="center">
+                    <v-progress-circular class="mt-12 mb-12" color="primary" size="80" width="3" indeterminate />
+                </v-row>
             </template>
 
             <!-- Data -->
