@@ -134,6 +134,24 @@ class ProjectService extends EchoService {
     unlinkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
+
+    /**
+     * Feature a given project.
+     * @param id Id of the project to feature.
+     */
+    @POST("/projects/{id}/feature")
+    feature(@Path("id") id: number): EchoPromise<void> {
+        return {} as EchoPromise<void>;
+    }
+
+    /**
+     * Unfeature a given project.
+     * @param id Id of the project to unfeature.
+     */
+    @DELETE("/projects/{id}/feature")
+    unfeature(@Path("id") id: number): EchoPromise<void> {
+        return {} as EchoPromise<void>;
+    }
 }
 
 export default new EchoServiceBuilder().setBaseUrl(process.env.VUE_APP_BACKEND_URL).build(ProjectService);

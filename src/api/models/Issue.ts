@@ -13,4 +13,5 @@ export class Issue {
     repository: Repository;
     labels: Label[];
     tags: Tag[];
+    featured: boolean;
 }

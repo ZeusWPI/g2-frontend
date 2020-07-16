@@ -13,4 +13,5 @@ export class Pull {
     repository: Repository;
     labels: Label[];
     tags: Tag[];
+    featured: boolean;
 }

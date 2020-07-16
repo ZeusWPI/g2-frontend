@@ -8,4 +8,5 @@ export class Project {
     image: string;
     statistics: ProjectStatistics;
     tags: Tag[];
+    featured: boolean;
 }

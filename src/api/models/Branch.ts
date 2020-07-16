@@ -7,4 +7,5 @@ export class Branch {
     url: string;
     repository: Repository;
     tags: Tag[];
+    featured: boolean;
 }

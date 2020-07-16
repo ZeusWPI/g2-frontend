@@ -24,6 +24,24 @@ class PullsService extends EchoService {
     unlinkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
+
+    /**
+     * Feature a given pull request.
+     * @param id Id of the pull request to feature.
+     */
+    @POST("/pulls/{id}/feature")
+    feature(@Path("id") id: number): EchoPromise<void> {
+        return {} as EchoPromise<void>;
+    }
+
+    /**
+     * Unfeature a given pull request.
+     * @param id Id of the pull request to unfeature.
+     */
+    @DELETE("/pulls/{id}/feature")
+    unfeature(@Path("id") id: number): EchoPromise<void> {
+        return {} as EchoPromise<void>;
+    }
 }
 
 export default new EchoServiceBuilder().setBaseUrl(process.env.VUE_APP_BACKEND_URL).build(PullsService);
