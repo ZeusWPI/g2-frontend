@@ -1,7 +1,15 @@
 <template>
     <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
-            <v-chip :color="tag.color" :class="showPadding ? 'mr-2 mb-2' : ''" small v-bind="attrs" v-on="on" dark>
+            <v-chip
+                :to="`/search?q=tag:&quot;${tag.name}&quot;`"
+                :color="tag.color"
+                :class="showPadding ? 'mr-2 mb-2' : ''"
+                small
+                v-bind="attrs"
+                v-on="on"
+                dark
+            >
                 {{ tag.name }}
             </v-chip>
         </template>
