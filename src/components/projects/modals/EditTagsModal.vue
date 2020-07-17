@@ -231,8 +231,9 @@ export default class EditTagsModal extends Vue {
         // Close the modal.
         ModalHandler.close();
 
-        // Reload the page.
-        await RouterUtil.reload(this.$router);
+        // Clear the existing tags + update with the new tags.
+        this.payload.item.tags.splice(0, this.payload.item.tags.length);
+        this.payload.item.tags.push(...this.tableSelected);
     }
 }
 </script>

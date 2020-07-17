@@ -1,6 +1,6 @@
 <template>
     <v-row>
-        <v-col cols="auto">
+        <v-col cols="auto" :hidden="$vuetify.breakpoint.smAndDown">
             <author-item :author="feature.author" />
         </v-col>
 
