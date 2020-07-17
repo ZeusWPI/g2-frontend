@@ -25,7 +25,7 @@
 
                 <!-- Branch -->
                 <template v-if="feature.type === 'branch'">
-                    <branch-item class="pa-3" :branch="feature.data.branch" />
+                    <branch-item class="px-3" :branch="feature.data.branch" />
                 </template>
             </v-card>
         </v-col>

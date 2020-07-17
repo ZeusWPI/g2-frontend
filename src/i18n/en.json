@@ -82,6 +82,18 @@
         }
     },
 
+    "branches": {
+        "search": "Search for a branch",
+        "empty": {
+            "title": "No branches available",
+            "desc": "When branches become available they will appear here."
+        },
+        "unmatched": {
+            "title": "No branches found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
+    },
+
     "repositories": {
         "search": "Search for a repository",
         "empty": {

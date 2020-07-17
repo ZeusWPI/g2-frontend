@@ -44,6 +44,8 @@ export default class BranchItem extends Vue {
 
 <style lang="scss" scoped>
 .branch {
+    padding: 15px;
+
     &__name {
         font-weight: bold;
         font-size: 1.2em;

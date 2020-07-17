@@ -44,6 +44,12 @@
                     </v-chip>
                 </v-tab>
 
+                <!-- Branches -->
+                <v-tab to="branches">
+                    <v-icon left>mdi-source-branch</v-icon>
+                    Branches
+                </v-tab>
+
                 <!-- Repositories -->
                 <v-tab to="repositories">
                     <v-icon left>mdi-source-repository</v-icon>
@@ -65,6 +71,11 @@
                 <!-- Pull Requests -->
                 <v-tab-item value="pulls" class="container--small" transition="none" reverse-transition="none">
                     <project-pulls :project="project.data" :repositories="repositories" />
+                </v-tab-item>
+
+                <!-- Branches -->
+                <v-tab-item value="branches" class="container--small" transition="none" reverse-transition="none">
+                    <project-branches :project="project.data" />
                 </v-tab-item>
 
                 <!-- Repositories -->
@@ -94,9 +105,11 @@ import ProjectPulls from "@/components/projects/ProjectPulls.vue";
 import { Repository } from "@/api/models/Repository";
 import ProjectOverview from "@/components/projects/ProjectOverview.vue";
 import PageLoader from "@/components/layout/PageLoader.vue";
+import ProjectBranches from "@/components/projects/ProjectBranches.vue";
 
 @Component({
     components: {
+        ProjectBranches,
         PageLoader,
         ProjectOverview,
         ProjectPulls,

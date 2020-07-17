@@ -8,6 +8,7 @@ import { Repository } from "@/api/models/Repository";
 import { Author } from "@/api/models/Author";
 import { Feature } from "@/api/models/Feature";
 import { Tag } from "@/api/models/Tag";
+import { Branch } from "@/api/models/Branch";
 
 /**
  * Service for managing projects.
@@ -86,6 +87,15 @@ class ProjectService extends EchoService {
     @GET("/projects/{id}/pulls")
     pulls(@Path("id") id: number): EchoPromise<Pull[]> {
         return {} as EchoPromise<Pull[]>;
+    }
+
+    /**
+     * Get a list with branches for a given project.
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/branches")
+    branches(@Path("id") id: number): EchoPromise<Branch[]> {
+        return {} as EchoPromise<Branch[]>;
     }
 
     /**

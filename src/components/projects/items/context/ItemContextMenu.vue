@@ -21,7 +21,7 @@ import { ErrorHandler } from "@/api/error/ErrorHandler";
 import IssueService from "@/api/services/IssueService";
 import PullsService from "@/api/services/PullsService";
 import BranchService from "@/api/services/BranchService";
-import { EchoError, EchoService } from "echofetch";
+import { EchoError } from "echofetch";
 import { RouterUtil } from "@/util/RouterUtil";
 
 @Component({
