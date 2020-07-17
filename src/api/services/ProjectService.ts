@@ -108,6 +108,15 @@ class ProjectService extends EchoService {
     }
 
     /**
+     * Get a list with contributors for a given project.
+     * @param id Id of the project.
+     */
+    @GET("/projects/{id}/contributors")
+    contributors(@Path("id") id: number): EchoPromise<Author[]> {
+        return {} as EchoPromise<Author[]>;
+    }
+
+    /**
      * Get a list with featured items for a given project..
      * @param id Id of the project.
      */

@@ -6,23 +6,40 @@
             <v-skeleton-loader class="transparent" v-if="showName" type="list-item-avatar" />
 
             <!-- Just avatar -->
-            <v-skeleton-loader class="transparent" v-else type="avatar" />
+            <v-skeleton-loader class="transparent mr-1" v-else type="avatar" />
         </template>
 
         <!-- Data -->
         <template v-else>
             <v-menu open-on-hover top offset-y>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-row align="center" v-on="on" v-bind="attrs">
-                        <!-- Avatar -->
-                        <v-col cols="auto">
-                            <user-avatar :user="author" />
-                        </v-col>
+                    <v-row v-on="on" v-bind="attrs" no-gutters>
+                        <!-- Show Name -->
+                        <template v-if="showName">
+                            <v-list-item class="rounded" :href="author.username">
+                                <!-- Avatar -->
+                                <v-list-item-avatar cols="auto">
+                                    <user-avatar :user="author" />
+                                </v-list-item-avatar>
 
-                        <!-- Name -->
-                        <v-col cols="auto" v-if="showName">
-                            <div class="author__name">{{ author.name }}</div>
-                        </v-col>
+                                <!-- Name -->
+                                <v-list-item-title cols="auto">
+                                    {{ author.name }}
+                                </v-list-item-title>
+                            </v-list-item>
+                        </template>
+
+                        <!-- Otherwise -->
+                        <template v-else>
+                            <!-- Avatar -->
+                            <v-col class="mr-1">
+                                <a :href="author.url">
+                                    <v-list-item-avatar cols="auto" class="ma-0">
+                                        <user-avatar :user="author" />
+                                    </v-list-item-avatar>
+                                </a>
+                            </v-col>
+                        </template>
                     </v-row>
                 </template>
 
@@ -39,12 +56,12 @@
                                 </v-card-title>
 
                                 <v-card-subtitle>
-                                    bertjen
+                                    {{ author.username }}
                                 </v-card-subtitle>
                             </v-col>
                         </v-row>
 
-                        Student somewhere over the rainbow in a country far far away.
+                        {{ author.description }}
                     </v-card-text>
                 </v-card>
             </v-menu>

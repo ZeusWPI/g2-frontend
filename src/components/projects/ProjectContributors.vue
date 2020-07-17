@@ -1,31 +1,31 @@
 <template>
     <div>
         <v-card-title>
-            Maintainers
+            Contributors
 
-            <v-chip v-if="maintainers.isSuccess()" class="ml-2" small>
-                {{ maintainers.data.length }}
+            <v-chip v-if="contributors.isSuccess()" class="ml-2" small>
+                {{ contributors.data.length }}
             </v-chip>
         </v-card-title>
 
         <v-card-text>
             <!-- Loading -->
-            <template v-if="maintainers.isLoading()">
+            <template v-if="contributors.isLoading()">
                 <v-row no-gutters>
                     <author-item v-for="index in 3" :key="index" :loading="true" />
                 </v-row>
             </template>
 
             <!-- Data -->
-            <template v-else-if="maintainers.isSuccess()">
+            <template v-else-if="contributors.isSuccess()">
                 <v-row no-gutters>
-                    <author-item v-for="(author, index) of maintainers.data" :key="index" :author="author" />
+                    <author-item v-for="(author, index) of contributors.data" :key="index" :author="author" />
                 </v-row>
             </template>
 
             <!-- Error -->
-            <template v-else-if="maintainers.isError()">
-                <error-placeholder :error="maintainers.error" :options="{ style: 'SECTION' }" />
+            <template v-else-if="contributors.isError()">
+                <error-placeholder :error="contributors.error" :options="{ style: 'SECTION' }" />
             </template>
         </v-card-text>
     </div>
@@ -41,11 +41,11 @@ import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 @Component({
     components: { ErrorPlaceholder, AuthorItem }
 })
-export default class ProjectMaintainers extends Vue {
+export default class ProjectContributors extends Vue {
     /**
-     * List with maintainers.
+     * List with contributors.
      */
     @Prop()
-    maintainers: EchoPromise<Author[]>;
+    contributors: EchoPromise<Author[]>;
 }
 </script>

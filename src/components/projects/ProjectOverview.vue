@@ -10,7 +10,10 @@
             <!-- Sidebar -->
             <v-col cols="12" md="4">
                 <!-- Maintainers -->
-                <project-maintainers-card :maintainers="maintainers" />
+                <project-maintainers :maintainers="maintainers" />
+
+                <!-- Contributors -->
+                <project-contributors :contributors="contributors" />
 
                 <!-- Subprojects -->
                 <project-subprojects />
@@ -36,14 +39,16 @@ import ProjectFeatures from "@/components/projects/ProjectFeatures.vue";
 import ProjectSubprojects from "@/components/projects/ProjectSubprojects.vue";
 import { Tag } from "@/api/models/Tag";
 import ProjectTags from "@/components/projects/ProjectTags.vue";
+import ProjectContributors from "@/components/projects/ProjectContributors.vue";
 
 @Component({
     components: {
+        ProjectContributors,
         ProjectTags,
         ProjectSubprojects,
         ProjectFeatures,
         ProjectFeaturedCard,
-        ProjectMaintainersCard: ProjectMaintainers,
+        ProjectMaintainers,
         IssuePullItem
     }
 })
@@ -58,6 +63,11 @@ export default class ProjectOverview extends Vue {
      * Project maintainers.
      */
     maintainers: EchoPromise<Author[]> = ProjectService.maintainers(this.project.id);
+
+    /**
+     * Project contributors.
+     */
+    contributors: EchoPromise<Author[]> = ProjectService.contributors(this.project.id);
 
     /**
      * Project features.
