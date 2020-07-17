@@ -17,7 +17,9 @@
                 <v-col>
                     <!-- Name -->
                     <div class="project__name">
-                        <a class="no-decoration">{{ project.name }}</a>
+                        <router-link class="no-decoration" :to="`/projects/${project.id}`">
+                            {{ project.name }}
+                        </router-link>
                     </div>
 
                     <!-- Tags -->
