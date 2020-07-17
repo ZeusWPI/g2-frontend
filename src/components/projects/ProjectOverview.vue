@@ -19,7 +19,7 @@
                 <project-subprojects />
 
                 <!-- Tags -->
-                <project-tags :project="project" :tags="tags" />
+                <project-tags :project="project" />
             </v-col>
         </v-row>
     </div>
@@ -37,7 +37,6 @@ import ProjectService from "@/api/services/ProjectService";
 import ProjectFeaturedCard from "@/components/projects/cards/ProjectFeaturedCard.vue";
 import ProjectFeatures from "@/components/projects/ProjectFeatures.vue";
 import ProjectSubprojects from "@/components/projects/ProjectSubprojects.vue";
-import { Tag } from "@/api/models/Tag";
 import ProjectTags from "@/components/projects/ProjectTags.vue";
 import ProjectContributors from "@/components/projects/ProjectContributors.vue";
 
@@ -73,10 +72,5 @@ export default class ProjectOverview extends Vue {
      * Project features.
      */
     features: EchoPromise<Feature[]> = ProjectService.features(this.project.id);
-
-    /**
-     * Project tags.
-     */
-    tags: EchoPromise<Tag[]> = ProjectService.tags(this.project.id);
 }
 </script>

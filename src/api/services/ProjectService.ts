@@ -126,7 +126,7 @@ class ProjectService extends EchoService {
     }
 
     /**
-     * Get a list with tags for a given project..
+     * Get a list with tags for a given project.
      * @param id Id of the project.
      */
     @GET("/projects/{id}/tags")
