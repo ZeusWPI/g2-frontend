@@ -9,6 +9,7 @@
     "navigation": {
         "home": "Home",
         "projects": "Projecten",
+        "search": "Zoeken",
         "login": "Inloggen"
     },
 
@@ -17,7 +18,11 @@
     },
 
     "home": {
-        "projects": "Populaire projecten"
+        "projects": "Populaire projecten",
+        "hero": {
+            "title": "Welkom bij G2",
+            "desc": "De gateway naar succes! Dit is de plaats waar we alle Zeus projecten managen"
+        }
     },
 
     "projects": {
@@ -46,7 +51,9 @@
     "issues": {
         "search": "Zoek een nieuwe issue",
         "new": {
-            "button": "Nieuwe issue"
+            "button": "Nieuwe issue",
+            "title": "Maak een nieuwe issue",
+            "desc": "Maak een nieuwe issue voor een van de gelinkte projecten"
         },
         "empty": {
             "title": "Geen issues beschikbaar",
@@ -61,7 +68,9 @@
     "pulls": {
         "search": "Zoek een pull request",
         "new": {
-            "button": "Nieuw pull request"
+            "button": "Nieuw pull request",
+            "title": "Maak een nieuwe pull request",
+            "desc": "Maak een nieuwe pull request voor een van de gelinkte projecten"
         },
         "empty": {
             "title": "Geen pull requests beschikbaar",
@@ -69,7 +78,19 @@
         },
         "unmatched": {
             "title": "Geen pull requests gevonden voor de gegeven parameters",
-            "desc": "Probeer een een aantal parameters aan te passen"
+            "desc": "Probeer een een aantal parameters aan te passen."
+        }
+    },
+
+    "branches": {
+        "search": "Zoek een branch",
+        "empty": {
+            "title": "Geen branches beschikbaar",
+            "desc": "Als branches aangemaakt worden zullen ze hier komen."
+        },
+        "unmatched": {
+            "title": "Geen branches gevonden voor de gegeven parameters",
+            "desc": "Probeer een een aantal parameters aan te passen."
         }
     },
 
@@ -82,7 +103,7 @@
         },
         "unmatched": {
             "title": "Geen pull requests gevonden voor de gegeven parameters",
-            "desc": "Probeer een een aantal parameters aan te passen"
+            "desc": "Probeer een een aantal parameters aan te passen."
         }
     },
 
