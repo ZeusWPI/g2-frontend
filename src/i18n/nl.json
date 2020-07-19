@@ -1,0 +1,95 @@
+{
+    "close": "Sluit",
+    "create": "Aanmaken",
+    "delete": "Verwijderen",
+    "cancel": "Annuleren",
+    "confirm": "Bevestigen",
+    "edit": "Bewerken",
+
+    "navigation": {
+        "home": "Home",
+        "projects": "Projecten",
+        "login": "Inloggen"
+    },
+
+    "confirmModal": {
+        "title": "Ben je zeker?"
+    },
+
+    "home": {
+        "projects": "Populaire projecten"
+    },
+
+    "projects": {
+        "more": "Meer informatie",
+        "new": "Nieuw project",
+        "search": "Zoek naar een project",
+        "empty": {
+            "title": "Geen projecten gevonden",
+            "desc": "Er werden geen projecten gevonden met de gegeven parameters."
+        },
+
+        "create": {
+            "title": "Nieuw project aanmaken",
+            "desc": "Maak een nieuw G2 project aan. Je hebt straks de mogelijkheid om repositories toe te voegen.",
+            "fields": {
+                "name": "Naam",
+                "description": "Beschrijving"
+            }
+        },
+
+        "table": {
+            "desc": "Geopend door"
+        }
+    },
+
+    "issues": {
+        "search": "Zoek een nieuwe issue",
+        "new": {
+            "button": "Nieuwe issue"
+        },
+        "empty": {
+            "title": "Geen issues beschikbaar",
+            "desc": "Issues worden gebruikt om todos, bugs, feature aanvragen en meer bij te houden. Als issues gemaakt worden, zullen ze voorkomen in een zoekbare en filterbare lijst."
+        },
+        "unmatched": {
+            "title": "Geen issues gevonden voor de gegeven parameters",
+            "desc": "Probeer een een aantal parameters aan te passen"
+        }
+    },
+
+    "pulls": {
+        "search": "Zoek een pull request",
+        "new": {
+            "button": "Nieuw pull request"
+        },
+        "empty": {
+            "title": "Geen pull requests beschikbaar",
+            "desc": "Pull requests helpen je om samen met anderen aan code te werken. Als pull requests gemaakt worden, zullen ze voorkomen in een zoekbare en filterbare lijst."
+        },
+        "unmatched": {
+            "title": "Geen pull requests gevonden voor de gegeven parameters",
+            "desc": "Probeer een een aantal parameters aan te passen"
+        }
+    },
+
+    "repositories": {
+        "search": "Zoek een repository",
+        "empty": {
+            "title": "Geen repositories beschikbaar",
+            "desc": "Click de knop hieronder om repositories te linken aan dit project.",
+            "button": "Link repositories"
+        },
+        "unmatched": {
+            "title": "Geen pull requests gevonden voor de gegeven parameters",
+            "desc": "Probeer een een aantal parameters aan te passen"
+        }
+    },
+
+    "login": {
+        "title": "Inloggen",
+        "desc": "Kies een van de volgende opties om verder te gaan.",
+        "zeus": "Inloggen met Zeus WPI",
+        "github": "Inloggen met Github"
+    }
+}

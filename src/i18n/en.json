@@ -1,0 +1,116 @@
+{
+    "close": "Close",
+    "create": "Create",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "edit": "Edit",
+
+    "navigation": {
+        "home": "Home",
+        "projects": "Projects",
+        "search": "Search",
+        "login": "Login"
+    },
+
+    "confirmModal": {
+        "title": "Are you sure?"
+    },
+
+    "home":{
+        "projects": "Popular projects",
+        "hero": {
+            "title": "Welcome to G2",
+            "desc": "The gateway to success! This is a place where we manage all Zeus projects."
+        }
+    },
+
+    "projects": {
+        "more": "More info",
+        "new": "New project",
+        "search": "Search for a project",
+        "empty": {
+            "title": "No projects found",
+            "desc": "No projects found for the given search parameters."
+        },
+
+        "create": {
+            "title": "Create a new project",
+            "desc": "Create a new G2 project. You will have the option to add repositories in a later stage!",
+            "fields": {
+                "name": "Name",
+                "description": "Description"
+            }
+        },
+
+        "table": {
+            "desc": "Opened by"
+        }
+    },
+
+    "issues": {
+        "search": "Search for an issue",
+        "new": {
+            "button": "New issue",
+            "title": "Create a new issue",
+            "desc": "Create a new issue for one of the linked repositories."
+        },
+        "empty": {
+            "title": "No issues available",
+            "desc": "Issues are used to track todos, bugs, feature requests, and more. As issues are created, they’ll appear here in a searchable and filterable list."
+        },
+        "unmatched": {
+            "title": "No issues found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
+    },
+
+    "pulls": {
+        "search": "Search for a pull request",
+        "new": {
+            "button": "New pull request",
+            "title": "Create a new pull request",
+            "desc": "Create a new pull request for one of the linked repositories."
+        },
+        "empty": {
+            "title": "No pull requests available",
+            "desc": "Pull requests help you collaborate on code with other people. As pull requests are created, they’ll appear here in a searchable and filterable list."
+        },
+        "unmatched": {
+            "title": "No pull requests found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
+    },
+
+    "branches": {
+        "search": "Search for a branch",
+        "empty": {
+            "title": "No branches available",
+            "desc": "When branches become available they will appear here."
+        },
+        "unmatched": {
+            "title": "No branches found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
+    },
+
+    "repositories": {
+        "search": "Search for a repository",
+        "empty": {
+            "title": "No repositories available",
+            "desc": "Click the button bellow to link repositories to this project.",
+            "button": "Link repositories"
+        },
+        "unmatched": {
+            "title": "No repositories found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
+    },
+
+    "login": {
+        "title": "Login",
+        "desc": "Choose one of the following options to continue.",
+        "zeus": "Login with Zeus WPI",
+        "github": "Login with Github"
+    }
+}

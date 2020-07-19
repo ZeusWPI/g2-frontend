@@ -27,6 +27,7 @@ npm install -g @vue/cli
    ```
    yarn install
    ```
+4. Copy the .env.template file and name it .env. Make sure to apply the correct settings inside the created file.
 
 ### Running
 To start a development server, run:

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="32.0005" y1="62" x2="32.0005" y2="2.0005">
+	<stop offset="0" style="stop-color:#FFA027"/>
+	<stop offset="0.2723" style="stop-color:#FFC151"/>
+	<stop offset="0.7633" style="stop-color:#FFC93F"/>
+	<stop offset="1" style="stop-color:#FFE261"/>
+	<a:midPointStop offset="0" style="stop-color:#FFA027"/>
+	<a:midPointStop offset="0.5" style="stop-color:#FFA027"/>
+	<a:midPointStop offset="0.2723" style="stop-color:#FFC151"/>
+	<a:midPointStop offset="0.5" style="stop-color:#FFC151"/>
+	<a:midPointStop offset="0.7633" style="stop-color:#FFC93F"/>
+	<a:midPointStop offset="0.5" style="stop-color:#FFC93F"/>
+	<a:midPointStop offset="1" style="stop-color:#FFE261"/>
+</linearGradient>
+<circle fill="url(#SVGID_1_)" cx="32" cy="32" r="30"/>
+<path fill="#302C3B" d="M20.462,47.063c7.028-4.078,16.055-4.076,23.078,0c0.996,0.576,1.119-0.046,0.811-0.535  c-5.199-8.313-19.501-8.311-24.702,0C19.341,47.017,19.463,47.639,20.462,47.063z"/>
+<ellipse fill="#302C3B" cx="21.999" cy="26.5" rx="4.5" ry="6"/>
+<ellipse fill="#302C3B" cx="41.998" cy="26.5" rx="4.5" ry="6"/>
+</svg>

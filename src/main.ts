@@ -1,10 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./plugins/router";
+import router from "./router/router";
 import store from "./store/store";
 import vuetify from "./plugins/vuetify";
 
-Vue.config.productionTip = false;
+import "./plugins/i18n";
 
 new Vue({
     router,
