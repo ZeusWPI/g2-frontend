@@ -5,6 +5,7 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --mode production",
+        "build:pages": "vue-cli-service build --mode pages",
         "build:analyze": "yarn build --report",
         "lint": "vue-cli-service lint"
     },
