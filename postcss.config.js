@@ -8,6 +8,7 @@ module.exports = {
         IN_PRODUCTION &&
             purgeCSS({
                 content: [`./public/**/*.html`, `./src/**/*.vue`, `./node_modules/vuetify/src/**/*.ts`],
+                variables: true,
                 whitelist: [
                     /**
                      * Vuetify
