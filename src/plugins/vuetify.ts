@@ -1,6 +1,12 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib";
 
+/**
+ * Material Design Icons
+ * @ref https://materialdesignicons.com/
+ */
+import "@mdi/font/css/materialdesignicons.css";
+
 Vue.use(Vuetify);
 
 export default new Vuetify({

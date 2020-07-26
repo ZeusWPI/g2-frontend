@@ -23,6 +23,7 @@
         "vuex": "^3.4.0"
     },
     "devDependencies": {
+        "@mdi/font": "^5.4.55",
         "@types/debounce": "^1.2.0",
         "@typescript-eslint/eslint-plugin": "^2.33.0",
         "@typescript-eslint/parser": "^2.33.0",
@@ -54,6 +55,8 @@
         ]
     },
     "babel": {
-        "presets": ["@vue/cli-plugin-babel/preset"]
+        "presets": [
+            "@vue/cli-plugin-babel/preset"
+        ]
     }
 }
