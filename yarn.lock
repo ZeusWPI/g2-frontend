@@ -3228,14 +3228,12 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 echofetch@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/echofetch/-/echofetch-0.1.4.tgz#12f5a8a8574e859da450c2eb00a6d0ae59bb900b"
-  integrity sha512-7c0cKlJM4LdYu6CvkhHyHa9tJUfke+BkbTVv+H123xWKgtwZouznytbCQ5NMMADbl9yrSXGrt0kyyEDIZGdy6A==
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/echofetch/-/echofetch-0.1.5.tgz#96b83866292c2f30444ecc7554cd8d2089c6ffae"
+  integrity sha512-xBGBrZCv/ynFoRa2ggwNiuKeH66hKpFVZSKzGqUzBTd3/FqBnC5BTtZ11Ga38NgMl7SUUMNxEp4RJY1utaBGog==
   dependencies:
     axios "^0.19.2"
     form-data "^3.0.0"
-  optionalDependencies:
-    vue "^2.0.0"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -8601,7 +8599,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.0.0, vue@^2.6.11:
+vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
