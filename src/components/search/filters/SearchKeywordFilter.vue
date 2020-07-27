@@ -50,16 +50,15 @@ export default class SearchKeywordFilter extends Vue {
      */
     @Watch("value")
     updateFilters() {
-        this.updateFiltersDebounce();
+        this.updateFiltersDebounce(this);
     }
 
     /**
      * Update the filters, but debounced.
      * This will only update the filters 300ms after the user has stopped typing.
      */
-    updateFiltersDebounce = debounce(function() {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this._filters = this.value.split(" ");
+    updateFiltersDebounce = debounce((self: SearchKeywordFilter) => {
+        self._filters = self.value.split(" ");
     }, 300);
 }
 </script>
