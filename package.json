@@ -5,9 +5,9 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --mode production",
-        "build:pages": "vue-cli-service build --mode pages",
+        "lint": "vue-cli-service lint",
         "build:analyze": "yarn build --report",
-        "lint": "vue-cli-service lint"
+        "build:pages": "vue-cli-service build --mode pages"
     },
     "dependencies": {
         "core-js": "^3.6.5",
@@ -23,6 +23,9 @@
         "vuex": "^3.4.0"
     },
     "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^2.1.0",
+        "@fullhuman/vue-cli-plugin-purgecss": "~2.2.0",
+        "@mdi/font": "^5.4.55",
         "@types/debounce": "^1.2.0",
         "@typescript-eslint/eslint-plugin": "^2.33.0",
         "@typescript-eslint/parser": "^2.33.0",
@@ -41,8 +44,14 @@
         "prettier": "^1.19.1",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",
+        "typeface-roboto": "^0.0.75",
         "typescript": "~3.9.3",
         "vue-template-compiler": "^2.6.11"
+    },
+    "babel": {
+        "presets": [
+            "@vue/cli-plugin-babel/preset"
+        ]
     },
     "gitHooks": {
         "pre-commit": "lint-staged"
@@ -52,8 +61,5 @@
             "vue-cli-service lint",
             "git add"
         ]
-    },
-    "babel": {
-        "presets": ["@vue/cli-plugin-babel/preset"]
     }
 }
