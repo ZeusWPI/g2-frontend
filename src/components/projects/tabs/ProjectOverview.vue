@@ -32,13 +32,13 @@ import { EchoPromise } from "echofetch";
 import { Author } from "@/api/models/Author";
 import { Feature } from "@/api/models/Feature";
 import IssuePullItem from "@/components/projects/items/IssuePullItem.vue";
-import ProjectMaintainers from "@/components/projects/ProjectMaintainers.vue";
+import ProjectMaintainers from "@/components/projects/tabs/overview/ProjectMaintainers.vue";
 import ProjectService from "@/api/services/ProjectService";
 import ProjectFeaturedCard from "@/components/projects/cards/ProjectFeaturedCard.vue";
-import ProjectFeatures from "@/components/projects/ProjectFeatures.vue";
-import ProjectSubprojects from "@/components/projects/ProjectSubprojects.vue";
-import ProjectTags from "@/components/projects/ProjectTags.vue";
-import ProjectContributors from "@/components/projects/ProjectContributors.vue";
+import ProjectFeatures from "@/components/projects/tabs/overview/ProjectFeatures.vue";
+import ProjectSubprojects from "@/components/projects/tabs/overview/ProjectSubprojects.vue";
+import ProjectTags from "@/components/projects/tabs/overview/ProjectTags.vue";
+import ProjectContributors from "@/components/projects/tabs/overview/ProjectContributors.vue";
 
 @Component({
     components: {

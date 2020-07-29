@@ -61,7 +61,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
 import ProjectService from "@/api/services/ProjectService";
-import ProjectCard from "@/components/projects/ProjectCard.vue";
+import ProjectCard from "@/components/projects/cards/ProjectCard.vue";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import ProjectCreateModal from "@/components/projects/modals/ProjectCreateModal.vue";
