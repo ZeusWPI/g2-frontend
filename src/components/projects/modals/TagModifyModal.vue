@@ -145,7 +145,10 @@ export default class ModifyTagModal extends Vue {
      * When the component is created.
      */
     created() {
-        this.randomColor();
+        // Only render an initial random color when creating a tag.
+        if (!this.payload.tag) {
+            this.randomColor();
+        }
     }
 
     /**
