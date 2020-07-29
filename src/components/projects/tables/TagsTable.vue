@@ -110,7 +110,7 @@ export default class TagsTable extends Vue {
                 action: (mod: ConfirmModalModifications) => {
                     mod.loading = true;
 
-                    TagService.delete(tag.id)
+                    TagService.delete(tag)
                         .then(() => {
                             ArrayUtil.delete(this.tags, tag);
                             ModalHandler.close();

@@ -93,6 +93,7 @@ import { RouterUtil } from "@/util/RouterUtil";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
 import TagService from "@/api/services/TagService";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
+import { EchoPromise } from "echofetch";
 
 @Component({
     components: { ProjectTag }

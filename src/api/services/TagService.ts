@@ -38,8 +38,8 @@ class TagService extends EchoService {
      * @param body Body
      */
     @PATCH("/tags/{id}")
-    update(@Path("id") id: number, @Body() body: Tag): EchoPromise<void> {
-        return {} as EchoPromise<void>;
+    update(@Path("id") id: number, @Body() body: Tag): EchoPromise<Tag> {
+        return {} as EchoPromise<Tag>;
     }
 }
 
