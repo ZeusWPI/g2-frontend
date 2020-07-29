@@ -5,10 +5,12 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "edit": "Edit",
+    "save": "Save",
 
     "navigation": {
         "home": "Home",
         "projects": "Projects",
+        "tags": "Tags",
         "search": "Search",
         "login": "Login"
     },
@@ -103,6 +105,28 @@
         },
         "unmatched": {
             "title": "No repositories found for the given parameters",
+            "desc": "Try changing some parameters."
+        }
+    },
+
+    "tags": {
+        "search": "Search for a tag",
+        "delete": "Are you sure you want to delete this tag? This cannot be undone!",
+        "create": {
+            "button": "New tag",
+            "title": "Create a new tag",
+            "desc": "Todo: some description here"
+        },
+        "info": {
+            "title": "Available tags",
+            "desc": "Todo: some description here"
+        },
+        "empty": {
+            "title": "No tags available",
+            "desc": "When tags become available they will appear here."
+        },
+        "unmatched": {
+            "title": "No tags found for the given parameters",
             "desc": "Try changing some parameters."
         }
     },

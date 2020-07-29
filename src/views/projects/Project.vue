@@ -86,7 +86,7 @@
         </template>
 
         <!-- Error -->
-        <template v-if="project.isError()">
+        <template v-else-if="project.isError()">
             <error-placeholder :error="project.error" :options="{ style: 'SECTION', displayFullPage: true }" />
         </template>
     </v-container>

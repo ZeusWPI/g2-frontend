@@ -44,6 +44,12 @@ const routes: Array<RouteConfig> = [
         path: "/search",
         name: "Search",
         component: () => import("../views/Search.vue")
+    },
+
+    {
+        path: "/tags",
+        name: "Tags",
+        component: () => import("../views/Tags.vue")
     }
 ];
 

@@ -41,6 +41,12 @@ export default class Navigation extends Vue {
             },
 
             {
+                text: this.t("navigation.tags"),
+                to: "/tags",
+                icon: "mdi-tag"
+            },
+
+            {
                 text: this.t("navigation.search"),
                 to: "/search",
                 icon: "mdi-magnify"

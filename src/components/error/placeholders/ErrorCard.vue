@@ -42,6 +42,7 @@ export default class ErrorCard extends Vue {
      */
     @Prop()
     payload: ErrorComponentPayload;
+
     /**
      * Reload the current route.
      */
