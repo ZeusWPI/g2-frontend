@@ -115,11 +115,11 @@
         "create": {
             "button": "New tag",
             "title": "Create a new tag",
-            "desc": "This is some random text that has to be soo long so I can SEEEEEEEEEEEEEEEEEEEE if it will fit when we rescale on mobile. I am just making random things up. Help Me!"
+            "desc": "Todo: some description here"
         },
         "info": {
             "title": "Available tags",
-            "desc": "This is some random text that has to be soo long so I can SEEEEEEEEEEEEEEEEEEEE if it will fit when we rescale on mobile. I am just making random things up. Help Me!"
+            "desc": "Todo: some description hereg"
         },
         "empty": {
             "title": "No tags available",
