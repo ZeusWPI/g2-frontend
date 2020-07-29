@@ -1,6 +1,6 @@
 <template>
     <v-card outlined>
-        <v-data-table :headers="tableHeaders" :items="tags">
+        <v-data-table :headers="tableHeaders" :search="tableSearch" :custom-filter="tableFilter" :items="tags">
             <!-- Tag -->
             <template v-slot:item.tag="{ item }">
                 <project-tag :tag="item" :show-padding="false" />
@@ -86,6 +86,17 @@ export default class TagsTable extends Vue {
             align: "end"
         }
     ];
+
+    /**
+     * Table search filter.
+     * @param _
+     * @param search Search string value.
+     * @param item Item to check for a match.
+     * @returns If the tag matches the given search string
+     */
+    tableFilter(_: unknown, search: string, item: Tag): boolean {
+        return item.name.toLowerCase().includes(search.toLowerCase());
+    }
 
     /**
      * Delete a given tag.

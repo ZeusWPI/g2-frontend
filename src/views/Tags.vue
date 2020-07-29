@@ -23,6 +23,9 @@
             </v-col>
         </v-row>
 
+        <!-- Searchbar -->
+        <v-text-field v-model="search" :label="t('tags.search')" outlined dense />
+
         <!-- Loading -->
         <template v-if="tags.isLoading()">
             <v-skeleton-loader type="table" />
@@ -30,7 +33,7 @@
 
         <!-- Data -->
         <template v-else-if="tags.isSuccess()">
-            <tags-table :tags="tags.data" />
+            <tags-table :tags="tags.data" :search.sync="search" />
         </template>
 
         <!-- Error -->
@@ -57,6 +60,11 @@ export default class Tags extends Vue {
      * List with available tags.
      */
     tags: EchoPromise<Tag[]> = TagService.getAll();
+
+    /**
+     * Search value.
+     */
+    search = "";
 
     /**
      * Open the create modal.
