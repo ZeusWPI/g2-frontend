@@ -9,6 +9,7 @@
     "navigation": {
         "home": "Home",
         "projects": "Projects",
+        "tags": "Tags",
         "search": "Search",
         "login": "Login"
     },
