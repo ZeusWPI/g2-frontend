@@ -51,7 +51,6 @@ import { ModalHandler } from "@/util/modal/ModalHandler";
 import { ConfirmModalModifications } from "@/components/layout/modals/confirm/ConfirmModalModifications";
 import { ErrorHandler } from "@/api/error/ErrorHandler";
 import { ArrayUtil } from "@/util/ArrayUtil";
-import Tags from "@/views/Tags.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ConfirmModal from "@/components/layout/modals/confirm/ConfirmModal.vue";
 import TagService from "@/api/services/TagService";
@@ -64,7 +63,7 @@ export default class TagsTable extends Vue {
      * List with available tags.
      */
     @Prop({ required: true })
-    tags: Tags[];
+    tags: Tag[];
 
     /**
      * Table search value.
@@ -110,7 +109,7 @@ export default class TagsTable extends Vue {
                 action: (mod: ConfirmModalModifications) => {
                     mod.loading = true;
 
-                    TagService.delete(tag)
+                    TagService.delete(tag.id)
                         .then(() => {
                             ArrayUtil.delete(this.tags, tag);
                             ModalHandler.close();
