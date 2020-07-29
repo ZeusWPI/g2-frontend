@@ -71,7 +71,7 @@ export default class ProjectRepositories extends Vue {
      */
     openEdit() {
         ModalHandler.open({
-            component: () => import("./modals/ProjectRepositoriesModal.vue"),
+            component: () => import("../modals/ProjectRepositoriesModal.vue"),
             componentPayload: {
                 project: this.project,
                 projectRepositories: this.repositories.requireData()

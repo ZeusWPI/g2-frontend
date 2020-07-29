@@ -98,14 +98,14 @@ import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import ProjectService from "@/api/services/ProjectService";
-import ProjectIssues from "@/components/projects/ProjectIssues.vue";
+import ProjectIssues from "@/components/projects/tabs/ProjectIssues.vue";
 import ProjectHeader from "@/components/projects/ProjectHeader.vue";
-import ProjectRepositories from "@/components/projects/ProjectRepositories.vue";
-import ProjectPulls from "@/components/projects/ProjectPulls.vue";
+import ProjectRepositories from "@/components/projects/tabs/ProjectRepositories.vue";
+import ProjectPulls from "@/components/projects/tabs/ProjectPulls.vue";
 import { Repository } from "@/api/models/Repository";
-import ProjectOverview from "@/components/projects/ProjectOverview.vue";
+import ProjectOverview from "@/components/projects/tabs/ProjectOverview.vue";
 import PageLoader from "@/components/layout/PageLoader.vue";
-import ProjectBranches from "@/components/projects/ProjectBranches.vue";
+import ProjectBranches from "@/components/projects/tabs/ProjectBranches.vue";
 
 @Component({
     components: {
