@@ -2,7 +2,7 @@
     <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
             <v-chip
-                :to="`/search?q=tag:&quot;${tag.name}&quot;`"
+                :to="searchLink"
                 :color="tag.color"
                 :class="showPadding ? 'mr-2 mb-2' : ''"
                 small
@@ -27,7 +27,7 @@ export default class ProjectTag extends Vue {
     /**
      * Tag to display.
      */
-    @Prop()
+    @Prop({ required: true })
     tag: Tag;
 
     /**
@@ -35,5 +35,17 @@ export default class ProjectTag extends Vue {
      */
     @Prop({ default: true })
     showPadding: boolean;
+
+    /**
+     * Get the router link to search page.
+     */
+    get searchLink() {
+        return {
+            name: "Search",
+            query: {
+                q: `tag:"${this.tag.name}"`
+            }
+        };
+    }
 }
 </script>

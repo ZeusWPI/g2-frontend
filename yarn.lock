@@ -3250,7 +3250,7 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-echofetch@^0.1.4:
+echofetch@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/echofetch/-/echofetch-0.1.5.tgz#96b83866292c2f30444ecc7554cd8d2089c6ffae"
   integrity sha512-xBGBrZCv/ynFoRa2ggwNiuKeH66hKpFVZSKzGqUzBTd3/FqBnC5BTtZ11Ga38NgMl7SUUMNxEp4RJY1utaBGog==
