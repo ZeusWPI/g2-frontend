@@ -9,7 +9,7 @@
             <!-- Actions -->
             <template v-slot:item.actions="{ item }">
                 <!-- Modify -->
-                <v-btn color="info" icon>
+                <v-btn color="info" icon @click="modifyTag(item)">
                     <v-icon>
                         mdi-pencil
                     </v-icon>
@@ -122,6 +122,19 @@ export default class TagsTable extends Vue {
                             mod.loading = false;
                         });
                 }
+            }
+        });
+    }
+
+    /**
+     * Modify a given tag.
+     * @param tag Tag to delete.
+     */
+    modifyTag(tag: Tag) {
+        ModalHandler.open({
+            component: () => import("@/components/projects/modals/TagModifyModal.vue"),
+            componentPayload: {
+                tag
             }
         });
     }

@@ -1,4 +1,4 @@
-import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST, Query } from "echofetch";
+import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH, Path, POST, Query } from "echofetch";
 import { Tag } from "@/api/models/Tag";
 import { TagCreateWrapper } from "@/api/wrappers/TagCreateWrapper";
 
@@ -24,11 +24,22 @@ class TagService extends EchoService {
     }
 
     /**
-     * Create a new tag
+     * Create a new tag.
+     * @param body Body
      */
     @POST("/tags")
     create(@Body() body: TagCreateWrapper): EchoPromise<Tag> {
         return {} as EchoPromise<Tag>;
+    }
+
+    /**
+     * Update an existing tag.
+     * @param id Id of the tag.
+     * @param body Body
+     */
+    @PATCH("/tags/{id}")
+    update(@Path("id") id: number, @Body() body: Tag): EchoPromise<void> {
+        return {} as EchoPromise<void>;
     }
 }
 

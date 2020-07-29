@@ -71,7 +71,7 @@ export default class Tags extends Vue {
      */
     openCreate() {
         ModalHandler.open({
-            component: () => import("@/components/projects/modals/TagCreateModal.vue")
+            component: () => import("@/components/projects/modals/TagModifyModal.vue")
         });
     }
 }
