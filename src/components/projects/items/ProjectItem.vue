@@ -40,11 +40,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
-import ProjectTag from "@/components/projects/ProjectTag.vue";
 import { ColorUtil } from "@/util/ColorUtil";
+import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
-import { ContextMenuLink } from "@/types/ContextMenuLink";
-import { ModalHandler } from "@/util/modal/ModalHandler";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
 
 @Component({

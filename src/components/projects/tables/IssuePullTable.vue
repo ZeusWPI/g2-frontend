@@ -146,7 +146,6 @@ import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 import { Project } from "@/api/models/Project";
 import { Issue } from "@/api/models/Issue";
 import { Pull } from "@/api/models/Pull";
-import { Repository } from "@/api/models/Repository";
 import IssuePullItem from "@/components/projects/items/IssuePullItem.vue";
 
 @Component({
