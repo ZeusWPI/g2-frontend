@@ -84,7 +84,14 @@ export const i18n = {
          * @param state Vuex state.
          */
         language(state: any): Language {
-            return languages.find(language => language.code === state.language)!!;
+            const language = languages.find(language => language.code === state.language);
+
+            // Throw error when language is null.
+            if (!language) {
+                throw new Error("No language found with the set code!");
+            }
+
+            return language;
         },
 
         /**
@@ -92,7 +99,11 @@ export const i18n = {
          * @param state Vuex state.
          */
         languageInput(state: any): { text: string; value: string } {
-            const language = languages.find(language => language.code === state.language)!!;
+            const language = languages.find(language => language.code === state.language);
+
+            if (!language) {
+                throw new Error("No language found with the set code!");
+            }
 
             return {
                 text: language.name,
