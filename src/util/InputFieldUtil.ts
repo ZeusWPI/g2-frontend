@@ -6,7 +6,7 @@ export class InputFieldUtil {
      * @param fields Object containing all the different InputField-objects
      */
     static getValues(fields: InputFields): any {
-        return Object.fromEntries(Object.entries(fields).map(([key, _]) => [key, fields[key].value]));
+        return Object.fromEntries(Object.entries(fields).map(([key]) => [key, fields[key].value]));
     }
 
     /**
@@ -14,7 +14,7 @@ export class InputFieldUtil {
      * @param fields Object containing all the different InputField-objects
      */
     static clear(fields: InputFields) {
-        Object.entries(fields).forEach(([key, _]) => {
+        Object.entries(fields).forEach(([key]) => {
             fields[key].value = "";
             fields[key].error = "";
         });
