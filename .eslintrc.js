@@ -16,5 +16,13 @@ module.exports = {
     rules: {
         "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
         "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off"
-    }
+    },
+    overrides: [
+        {
+            files: ["src/api/services/*.ts"],
+            rules: {
+                "@typescript-eslint/no-unused-vars": "off"
+            }
+        }
+    ]
 };
