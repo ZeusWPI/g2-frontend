@@ -49,9 +49,6 @@ import { Pull } from "@/api/models/Pull";
 import ProjectLabel from "@/components/projects/ProjectLabel.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
-import { ContextMenuLink } from "@/types/ContextMenuLink";
-import { ModalHandler } from "@/util/modal/ModalHandler";
-import { Project } from "@/api/models/Project";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
 
 @Component({

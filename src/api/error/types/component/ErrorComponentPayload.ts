@@ -1,4 +1,3 @@
-import { EchoError } from "echofetch";
 import { CustomErrorOptions } from "@/api/error/types/CustomErrorOptions";
 import { CustomError } from "@/api/error/types/CustomError";
 

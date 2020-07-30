@@ -80,7 +80,6 @@ import { ModalHandler } from "@/util/modal/ModalHandler";
 import { EchoPromise } from "echofetch";
 import { Tag } from "@/api/models/Tag";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
-import { RouterUtil } from "@/util/RouterUtil";
 import { ErrorHandler } from "@/api/error/ErrorHandler";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";

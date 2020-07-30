@@ -43,9 +43,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HomeHero from "@/components/home/HomeHero.vue";
-import { EchoPromise } from "echofetch";
-import { Project } from "@/api/models/Project";
-import ProjectService from "@/api/services/ProjectService";
 import HomeProjects from "@/components/home/HomeProjects.vue";
 
 @Component({

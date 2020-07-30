@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from "vue";
 import { EchoPromise } from "echofetch";
 import { createDecorator, VueDecorator } from "vue-class-component";
@@ -8,7 +9,7 @@ export function LateRequest<T>(reqOptions: {
      * Request to complete
      * @param value
      */
-    request: (...args: any[]) => EchoPromise<T>;
+    request: (...args: unknown[]) => EchoPromise<T>;
 
     /**
      * Arguments to pass to the request.

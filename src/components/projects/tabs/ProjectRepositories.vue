@@ -41,7 +41,6 @@ import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
 import { ModalHandler } from "@/util/modal/ModalHandler";
 import { Repository } from "@/api/models/Repository";
-import ProjectService from "@/api/services/ProjectService";
 import RepositoriesTable from "@/components/projects/tables/RepositoriesTable.vue";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 
