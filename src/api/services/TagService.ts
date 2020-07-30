@@ -1,4 +1,4 @@
-import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH, Path, POST, Query } from "echofetch";
+import { Body, DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, PATCH, Path, POST } from "echofetch";
 import { Tag } from "@/api/models/Tag";
 import { TagCreateWrapper } from "@/api/wrappers/TagCreateWrapper";
 

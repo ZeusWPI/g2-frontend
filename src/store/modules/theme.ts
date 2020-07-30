@@ -53,10 +53,7 @@ export const theme = {
             }
 
             // If the dark theme CSS media query is provided, use that.
-            else if (
-                window.matchMedia &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches
-            ) {
+            else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
                 context.commit("SET_DARK", true);
             }
         }

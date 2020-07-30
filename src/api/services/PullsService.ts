@@ -1,5 +1,4 @@
-import { DELETE, EchoPromise, EchoService, EchoServiceBuilder, GET, Path, POST, Query } from "echofetch";
-import { Tag } from "@/api/models/Tag";
+import { DELETE, EchoPromise, EchoService, EchoServiceBuilder, Path, POST } from "echofetch";
 
 /**
  * Service for managing pull requests.
