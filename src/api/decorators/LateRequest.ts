@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from "vue";
 import { EchoPromise } from "echofetch";
 import { createDecorator, VueDecorator } from "vue-class-component";
