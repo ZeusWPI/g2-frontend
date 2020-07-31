@@ -9,7 +9,7 @@ class PullsService extends EchoService {
      * @param id Id of the pull request.
      * @param tagId Id of the tag to link.
      */
-    @POST("/pulls/{id}/tags/{tagId}")
+    @POST("/pulls/{id}/link/{tagId}")
     linkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
@@ -19,7 +19,7 @@ class PullsService extends EchoService {
      * @param id Id of the pull request.
      * @param tagId Id of the tag to unlink.
      */
-    @DELETE("/pulls/{id}/tags/{tagId}")
+    @DELETE("/pulls/{id}/link/{tagId}")
     unlinkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }

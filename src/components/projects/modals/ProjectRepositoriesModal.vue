@@ -79,6 +79,7 @@ import { Repository } from "@/api/models/Repository";
 import { ArrayUtil } from "@/util/ArrayUtil";
 import { Project } from "@/api/models/Project";
 import RepositoryService from "@/api/services/RepositoryService";
+import ProjectService from "@/api/services/ProjectService";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import { ErrorHandler } from "@/api/error/ErrorHandler";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
@@ -171,7 +172,7 @@ export default class ProjectRepositoriesModal extends Vue {
         // Link the selected repositories.
         for (const repository of linkRepositories) {
             try {
-                await RepositoryService.linkProject(repository.id, this.payload.project.id);
+                await ProjectService.linkEntity(this.payload.project.id, repository.id);
             } catch (error) {
                 ErrorHandler.handle(error, {
                     style: "SNACKBAR"
@@ -183,10 +184,10 @@ export default class ProjectRepositoriesModal extends Vue {
             }
         }
 
-        // Link the selected repositories.
+        // Unlink the selected repositories.
         for (const repository of unlinkRepositories) {
             try {
-                await RepositoryService.unlinkProject(repository.id, this.payload.project.id);
+                await ProjectService.unlinkEntity(this.payload.project.id, repository.id);
             } catch (error) {
                 ErrorHandler.handle(error, {
                     style: "SNACKBAR"

@@ -35,7 +35,7 @@ class ProjectService extends EchoService {
     }
 
     /**
-     * Create a new projects.
+     * Create a new project.
      * @param body Body containing the projects data.
      */
     @POST("/projects")
@@ -117,7 +117,7 @@ class ProjectService extends EchoService {
     }
 
     /**
-     * Get a list with featured items for a given project..
+     * Get a list with featured items for a given project.
      * @param id Id of the project.
      */
     @GET("/projects/{id}/features")
@@ -135,22 +135,22 @@ class ProjectService extends EchoService {
     }
 
     /**
-     * Link a tag to a given project.
+     * Link an entity to a given project.
      * @param id Id of the project.
-     * @param tagId Id of the tag to link.
+     * @param entityId Id of the entity to link.
      */
-    @POST("/projects/{id}/tags/{tagId}")
-    linkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
+    @POST("/projects/{id}/link/{entityId}")
+    linkEntity(@Path("id") id: number, @Path("entityId") entityId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
 
     /**
-     * Unlink a tag to a given project.
+     * Unlink a entity from a given project.
      * @param id Id of the project.
-     * @param tagId Id of the tag to unlink.
+     * @param entityId Id of the entity to unlink.
      */
-    @DELETE("/projects/{id}/tags/{tagId}")
-    unlinkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
+    @DELETE("/projects/{id}/link/{entityId}")
+    unlinkEntity(@Path("id") id: number, @Path("entityId") entityId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
 
