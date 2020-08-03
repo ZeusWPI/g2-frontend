@@ -24,5 +24,6 @@ jobs:
         skip_cleanup: true
         local_dir: dist/
         keep_history: true
+        fqdn: "g2-project.ga"
         on:
           branch: master
