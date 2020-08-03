@@ -21,26 +21,6 @@ class RepositoryService extends EchoService {
     get(@Path("id") id: number): EchoPromise<Repository> {
         return {} as EchoPromise<Repository>;
     }
-
-    /**
-     * Link a repository to a projects.
-     * @param id Repository id.
-     * @param projectId Project id.
-     */
-    @POST("/repositories/{id}/link/{pid}")
-    linkProject(@Path("id") id: number, @Path("pid") projectId: number): EchoPromise<void> {
-        return {} as EchoPromise<void>;
-    }
-
-    /**
-     * Unlink a repository from a projects.
-     * @param id Repository id.
-     * @param projectId Project id.
-     */
-    @POST("/repositories/{id}/unlink/{pid}")
-    unlinkProject(@Path("id") id: number, @Path("pid") projectId: number): EchoPromise<void> {
-        return {} as EchoPromise<void>;
-    }
 }
 
 export default new EchoServiceBuilder().setBaseUrl(process.env.VUE_APP_BACKEND_URL).build(RepositoryService);

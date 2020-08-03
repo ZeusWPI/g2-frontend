@@ -173,7 +173,7 @@ export default class EditTagsModal extends Vue {
 
                 // Project
                 else if (this.payload.type === "project") {
-                    await ProjectService.linkTag(this.payload.item.id, tag.id);
+                    await ProjectService.linkEntity(this.payload.item.id, tag.id);
                 }
             } catch (error) {
                 ErrorHandler.handle(error, {
@@ -206,7 +206,7 @@ export default class EditTagsModal extends Vue {
 
                 // Project
                 else if (this.payload.type === "project") {
-                    await ProjectService.unlinkTag(this.payload.item.id, tag.id);
+                    await ProjectService.unlinkEntity(this.payload.item.id, tag.id);
                 }
             } catch (error) {
                 ErrorHandler.handle(error, {

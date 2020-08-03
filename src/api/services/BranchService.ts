@@ -9,7 +9,7 @@ class BranchService extends EchoService {
      * @param id Id of the branch.
      * @param tagId Id of the tag to link.
      */
-    @POST("/branches/{id}/tags/{tagId}")
+    @POST("/branches/{id}/link/{tagId}")
     linkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
@@ -19,7 +19,7 @@ class BranchService extends EchoService {
      * @param id Id of the branch.
      * @param tagId Id of the tag to unlink.
      */
-    @DELETE("/branches/{id}/tags/{tagId}")
+    @DELETE("/branches/{id}/link/{tagId}")
     unlinkTag(@Path("id") id: number, @Path("tagId") tagId: number): EchoPromise<void> {
         return {} as EchoPromise<void>;
     }
