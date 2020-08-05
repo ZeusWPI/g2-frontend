@@ -5,10 +5,12 @@
     "cancel": "Annuleren",
     "confirm": "Bevestigen",
     "edit": "Bewerken",
+    "save": "Opslaan",
 
     "navigation": {
         "home": "Home",
         "projects": "Projecten",
+        "tags":"tags",
         "search": "Zoeken",
         "login": "Inloggen"
     },
@@ -103,6 +105,28 @@
         },
         "unmatched": {
             "title": "Geen pull requests gevonden voor de gegeven parameters",
+            "desc": "Probeer een een aantal parameters aan te passen."
+        }
+    },
+
+    "tags": {
+        "search": "Zoek voor een tag",
+        "delete": "Ben je zeker dat je deze tag wil verwijderen? Dit kan niet ongedaan gemaakt worden!",
+        "create": {
+            "button": "Nieuwe tag",
+            "title": "Maak een nieuwe tag",
+            "desc": "Todo: een uitleg hier"
+        },
+        "info": {
+            "title": "Beschikbare tags",
+            "desc": "Todo: een uitleg hier"
+        },
+        "empty": {
+            "title": "Geen tags beschikbaar",
+            "desc": "Wanneer tags beschikbaar worden zullen ze hier komen."
+        },
+        "unmatched": {
+            "title": "Geen tags gevonden voor de gegeven parameters",
             "desc": "Probeer een een aantal parameters aan te passen."
         }
     },
