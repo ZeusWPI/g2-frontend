@@ -25,6 +25,10 @@
                 <v-list-item-title>
                     {{ searchValue }}
                 </v-list-item-title>
+
+                <v-list-item-action-text>
+                    Global search
+                </v-list-item-action-text>
             </v-list-item>
         </template>
 
