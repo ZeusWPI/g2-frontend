@@ -4,12 +4,14 @@
         :search-input.sync="searchValue"
         :items="searchEntries"
         :loading="searchLoading"
+        :menu-props="{ closeOnContentClick: true }"
         label="Search or jump to..."
         auto-select-first
         return-object
         flat
         solo-inverted
         hide-details
+        :autofocus="autofocus"
     >
         <!-- Prepend (default search entry) -->
         <template v-slot:prepend-item>
@@ -40,13 +42,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import SearchService from "@/api/services/SearchService";
 import { Project } from "@/api/models/Project";
 import { RouterUtil } from "@/util/RouterUtil";
 
 @Component
 export default class SearchBar extends Vue {
+    /**
+     * Should the search bar be automatically in focus when the item is created.
+     */
+    @Prop({ default: false })
+    autofocus: boolean;
+
     /**
      * Value from the searchbar.
      */
@@ -59,6 +67,7 @@ export default class SearchBar extends Vue {
 
     /**
      * Search entries
+     * This is the list with projects received from the server when typing a search query.
      */
     searchEntries: Array<{ text: string; value: Project }> = [];
 
@@ -71,6 +80,9 @@ export default class SearchBar extends Vue {
      * Go to the search page with given query parameter.
      */
     openSearch() {
+        // Emit that an item from search has been selected.
+        this.$emit("searchSelected");
+
         this.$router.push({
             name: "Search",
             query: {
@@ -94,6 +106,7 @@ export default class SearchBar extends Vue {
 
         // Create a copy of the search value.
         // This is to make sure that when the result is returned from the search it is the latest & correct value.
+        // Sometimes certain requests get handles slower than more recent requests, causing incorrect search behavior.
         const searchValueCopy = this.searchValue;
 
         // Execute the search.
@@ -117,10 +130,13 @@ export default class SearchBar extends Vue {
     }
 
     /**
-     * Handle when clicked on a search result.
+     * Handle when clicked on a project search result.
      */
     @Watch("searchSelected")
     handleSearch() {
+        // Emit that an item from search has been selected.
+        this.$emit("searchSelected");
+
         // Go to the selected project.
         this.$router.push(`/projects/${this.searchSelected?.value.id}`);
     }

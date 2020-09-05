@@ -25,15 +25,17 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { EchoError } from "echofetch";
+import { CustomErrorOptions } from "@/api/error/types/CustomErrorOptions";
+import { Optional } from "@/types/Optional";
+import { ModalHandler } from "@/util/modal/ModalHandler";
 import Navigation from "@/components/layout/Navigation.vue";
 import Footer from "@/components/layout/Footer.vue";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import ErrorBus from "@/api/error/ErrorBus";
-import { EchoError } from "echofetch";
-import { CustomErrorOptions } from "@/api/error/types/CustomErrorOptions";
-import { Optional } from "@/types/Optional";
 import ModalPlaceholder from "@/components/layout/placeholders/ModalPlaceholder.vue";
 import SnackbarPlaceholder from "@/components/layout/placeholders/SnackbarPlaceholder.vue";
+import SearchModal from "@/components/search/SearchModal.vue";
 
 @Component({
     components: {
@@ -68,6 +70,19 @@ export default class App extends Vue {
 
         // Fetch dark theme preferences.
         this.$store.dispatch("theme/fetchDark");
+
+        // Listen to the CTRL + K keyboard event and open up the search modal.
+        document.addEventListener("keydown", event => {
+            // Encoding for CTRL + K
+            if (event.ctrlKey && event.code === "KeyK") {
+                ModalHandler.open({
+                    component: SearchModal
+                });
+
+                // Prevent any default browser behavior linked to this shortcut.
+                event.preventDefault();
+            }
+        });
 
         // Create a listener that will show an error when it is spawned.
         ErrorBus.$on("error", (error: EchoError, options: CustomErrorOptions) => {
