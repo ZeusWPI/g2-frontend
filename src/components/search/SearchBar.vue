@@ -115,6 +115,9 @@ export default class SearchBar extends Vue {
      * @param projectScoped If the search should be scoped to the current project.
      */
     openSearch(projectScoped = false) {
+        // Emit the "searchSelected" event because a search entry has been selected.
+        this.$emit("searchSelected");
+
         // Scoped search to the current project.
         if (projectScoped) {
             SearchUtil.openSearch(this.$router, {
@@ -169,6 +172,9 @@ export default class SearchBar extends Vue {
      */
     @Watch("searchSelected")
     handleProjectSelected() {
+        // Emit the "searchSelected" event because a search entry has been selected.
+        this.$emit("searchSelected");
+
         // Go to the selected project.
         this.$router.push({
             name: "Project",
