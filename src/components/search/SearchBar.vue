@@ -18,7 +18,7 @@
             <!-- Project search -->
             <v-list-item
                 v-if="searchValue && searchValue.length > 0 && currentProject && currentProject.isSuccess()"
-                @click="openSearch"
+                @click="openSearch(true)"
             >
                 <v-list-item-icon class="mr-3">
                     <v-icon>
@@ -36,7 +36,7 @@
             </v-list-item>
 
             <!-- Global search -->
-            <v-list-item v-if="searchValue && searchValue.length > 0" @click="openSearch">
+            <v-list-item v-if="searchValue && searchValue.length > 0" @click="openSearch(false)">
                 <v-list-item-icon class="mr-3">
                     <v-icon>
                         mdi-magnify
@@ -114,7 +114,7 @@ export default class SearchBar extends Vue {
      * Go to the search page with given query parameter.
      * @param projectScoped If the search should be scoped to the current project.
      */
-    openSearch(projectScoped = false) {
+    openSearch(projectScoped: boolean) {
         // Emit the "searchSelected" event because a search entry has been selected.
         this.$emit("searchSelected");
 
