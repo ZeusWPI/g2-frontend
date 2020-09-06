@@ -1,8 +1,40 @@
 <template>
     <v-card>
-        <v-card-title>
-            <search-bar :autofocus="true" @searchSelected="close" />
+        <v-card-title class="modal__title">
+            Search or jump to...
         </v-card-title>
+
+        <v-card-subtitle>
+            <v-row>
+                <v-col cols="auto">
+                    <v-icon>
+                        mdi-keyboard-return
+                    </v-icon>
+
+                    to select
+                </v-col>
+
+                <v-col cols="auto">
+                    <v-icon>
+                        mdi-swap-vertical
+                    </v-icon>
+
+                    to navigate
+                </v-col>
+
+                <v-col cols="auto">
+                    <v-icon>
+                        mdi-keyboard-esc
+                    </v-icon>
+
+                    to close
+                </v-col>
+            </v-row>
+        </v-card-subtitle>
+
+        <v-card-text>
+            <search-bar :autofocus="true" @searchSelected="close" />
+        </v-card-text>
     </v-card>
 </template>
 
