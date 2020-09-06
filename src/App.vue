@@ -95,6 +95,13 @@ export default class App extends Vue {
         this.$router.afterEach(() => {
             this.error = null;
         });
+
+        // Clear the current project when no longer on the project page.
+        this.$router.afterEach(to => {
+            if (to.name !== "Project") {
+                this.$store.dispatch("project/setCurrentProject", null);
+            }
+        });
     }
 }
 </script>

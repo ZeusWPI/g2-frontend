@@ -142,6 +142,14 @@ export default class ProjectView extends Vue {
      * Repositories to display.
      */
     repositories: EchoPromise<Repository[]> = ProjectService.repositories(this.id);
+
+    /**
+     * When the component is created.
+     */
+    created() {
+        // Update the current project.
+        this.$store.dispatch("project/setCurrentProject", this.project);
+    }
 }
 </script>
 

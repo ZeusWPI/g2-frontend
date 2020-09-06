@@ -15,6 +15,27 @@
     >
         <!-- Prepend (default search entry) -->
         <template v-slot:prepend-item>
+            <!-- Project search -->
+            <v-list-item
+                v-if="searchValue && searchValue.length > 0 && currentProject && currentProject.isSuccess()"
+                @click="openSearch"
+            >
+                <v-list-item-icon class="mr-3">
+                    <v-icon>
+                        mdi-magnify
+                    </v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-title>
+                    {{ searchValue }}
+                </v-list-item-title>
+
+                <v-list-item-action-text>
+                    In this project
+                </v-list-item-action-text>
+            </v-list-item>
+
+            <!-- Global search -->
             <v-list-item v-if="searchValue && searchValue.length > 0" @click="openSearch">
                 <v-list-item-icon class="mr-3">
                     <v-icon>
@@ -47,9 +68,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import SearchService from "@/api/services/SearchService";
 import { Project } from "@/api/models/Project";
-import { RouterUtil } from "@/util/RouterUtil";
+import { StoreGetter } from "@/store/decorators/StoreGetter";
+import { Optional } from "@/types/Optional";
+import { EchoPromise } from "echofetch";
+import { SearchUtil } from "@/util/SearchUtil";
+import SearchService from "@/api/services/SearchService";
 
 @Component
 export default class SearchBar extends Vue {
@@ -58,6 +82,12 @@ export default class SearchBar extends Vue {
      */
     @Prop({ default: false })
     autofocus: boolean;
+
+    /**
+     * Project the user is currently viewing.
+     */
+    @StoreGetter("project/currentProject")
+    currentProject: Optional<EchoPromise<Project>>;
 
     /**
      * Value from the searchbar.
@@ -82,21 +112,22 @@ export default class SearchBar extends Vue {
 
     /**
      * Go to the search page with given query parameter.
+     * @param projectScoped If the search should be scoped to the current project.
      */
-    openSearch() {
-        // Emit that an item from search has been selected.
-        this.$emit("searchSelected");
+    openSearch(projectScoped = false) {
+        // Scoped search to the current project.
+        if (projectScoped) {
+            SearchUtil.openSearch(this.$router, {
+                strings: this.searchValue,
+                projects: [this.currentProject?.requireData().name]
+            });
+        }
 
-        this.$router.push({
-            name: "Search",
-            query: {
-                q: this.searchValueEncoded
-            }
-        });
-
-        // Refresh the current route when already on the search page.
-        if (this.$route.name === "Search") {
-            RouterUtil.reload(this.$router);
+        // Global search.
+        else {
+            SearchUtil.openSearch(this.$router, {
+                strings: this.searchValue
+            });
         }
     }
 
@@ -137,19 +168,9 @@ export default class SearchBar extends Vue {
      * Handle when clicked on a project search result.
      */
     @Watch("searchSelected")
-    handleSearch() {
-        // Emit that an item from search has been selected.
-        this.$emit("searchSelected");
-
+    handleProjectSelected() {
         // Go to the selected project.
         this.$router.push(`/projects/${this.searchSelected?.value.id}`);
-    }
-
-    /**
-     * Convert the search value to a url string.
-     */
-    get searchValueEncoded(): string {
-        return encodeURI(this.searchValue ?? "");
     }
 }
 </script>
