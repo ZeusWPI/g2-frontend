@@ -170,7 +170,12 @@ export default class SearchBar extends Vue {
     @Watch("searchSelected")
     handleProjectSelected() {
         // Go to the selected project.
-        this.$router.push(`/projects/${this.searchSelected?.value.id}`);
+        this.$router.push({
+            name: "Project",
+            params: {
+                id: this.searchSelected?.value.id
+            }
+        });
     }
 }
 </script>

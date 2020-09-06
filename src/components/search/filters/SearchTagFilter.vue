@@ -69,7 +69,7 @@ export default class SearchTagFilter extends Vue {
         this._filters = filters;
 
         // Update the selected based on the given filters.
-        this.selected = filters.map(filter => filter.replace("tag:", "").replace('"', ""));
+        this.selected = filters.map(filter => filter.replace("tag:", "").replace(/"/g, ""));
     }
 
     /**
