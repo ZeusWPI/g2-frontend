@@ -121,8 +121,8 @@ export default class SearchBar extends Vue {
         // Scoped search to the current project.
         if (projectScoped) {
             SearchUtil.openSearch(this.$router, {
-                strings: this.searchValue,
-                projects: [this.currentProject?.requireData().name]
+                strings: this.searchValue ?? "",
+                projects: [this.currentProject?.requireData().name ?? ""]
             });
         }
 
@@ -179,7 +179,7 @@ export default class SearchBar extends Vue {
         this.$router.push({
             name: "Project",
             params: {
-                id: this.searchSelected?.value.id
+                id: this.searchSelected?.value.id ?? ""
             }
         });
     }
