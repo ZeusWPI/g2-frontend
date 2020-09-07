@@ -48,6 +48,7 @@ import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
 import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
 import ProjectItem from "@/components/projects/items/ProjectItem.vue";
+
 @Component({
     components: { ProjectItem, ErrorPlaceholder }
 })
