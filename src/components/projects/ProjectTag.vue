@@ -1,5 +1,5 @@
 <template>
-    <v-tooltip top>
+    <v-tooltip :disabled="!tag.description" top>
         <template v-slot:activator="{ on, attrs }">
             <v-chip
                 :to="searchLink"

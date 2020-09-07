@@ -6,7 +6,7 @@
             </v-chip>
         </template>
 
-        <span>{{ label.description }}</span>
+        <span :disabled="!tag.description">{{ label.description }}</span>
     </v-tooltip>
 </template>
 
