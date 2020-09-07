@@ -1,30 +1,44 @@
 <template>
     <div>
         <v-card-title>
-            Sub projects
+            Subprojects
 
-            <v-chip class="ml-2" small>
-                1
+            <v-chip v-if="subprojects.isSuccess()" class="ml-2" small>
+                {{ subprojects.data.length }}
             </v-chip>
         </v-card-title>
 
-        <v-list flat color="transparent">
-            <v-list-item>
-                <v-list-item-avatar>
-                    <img src="https://zeus.gent/assets/images/Logos_Tab.svg" />
-                </v-list-item-avatar>
+        <v-card-text>
+            <!-- Loading -->
+            <template v-if="subprojects.isLoading()">
+                <v-progress-circular class="py-8" size="40" width="3" color="primary" indeterminate />
+            </template>
 
-                <v-list-item-content>
-                    <v-list-item-title>
-                        Some subproject
-                    </v-list-item-title>
+            <!-- Data -->
+            <template v-else-if="subprojects.isSuccess()">
+                <!-- Data available -->
+                <template v-if="subprojects.data.length >= 0">
+                    <v-row no-gutters>
+                        <project-item
+                            v-for="(subproject, index) of subprojects.data"
+                            :key="index"
+                            :project="subproject"
+                            :show-tags="false"
+                        />
+                    </v-row>
+                </template>
 
-                    <v-list-item-subtitle>
-                        Some description about a subproject
-                    </v-list-item-subtitle>
-                </v-list-item-content>
-            </v-list-item>
-        </v-list>
+                <!-- Data empty -->
+                <template v-else>
+                    No subprojects available.
+                </template>
+            </template>
+
+            <!-- Error -->
+            <template v-else-if="subprojects.isError()">
+                <error-placeholder :error="subprojects.error" :options="{ style: 'SECTION' }" />
+            </template>
+        </v-card-text>
     </div>
 </template>
 
@@ -32,8 +46,11 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { EchoPromise } from "echofetch";
 import { Project } from "@/api/models/Project";
-
-@Component
+import ErrorPlaceholder from "@/components/error/ErrorPlaceholder.vue";
+import ProjectItem from "@/components/projects/items/ProjectItem.vue";
+@Component({
+    components: { ProjectItem, ErrorPlaceholder }
+})
 export default class ProjectSubprojects extends Vue {
     /**
      * List with subprojects.

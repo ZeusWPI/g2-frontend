@@ -16,7 +16,7 @@
                 <project-contributors :contributors="contributors" />
 
                 <!-- Subprojects -->
-                <project-subprojects />
+                <project-subprojects :subprojects="subprojects" />
 
                 <!-- Tags -->
                 <project-tags :project="project" />
@@ -72,5 +72,10 @@ export default class ProjectOverview extends Vue {
      * Project features.
      */
     features: EchoPromise<Feature[]> = ProjectService.features(this.project.id);
+
+    /**
+     * Project subprojects.
+     */
+    subprojects: EchoPromise<Project[]> = ProjectService.subprojects(this.project.id);
 }
 </script>
