@@ -18,9 +18,17 @@
 
             <!-- Data -->
             <template v-else-if="maintainers.isSuccess()">
-                <v-row no-gutters>
-                    <author-item v-for="(author, index) of maintainers.data" :key="index" :author="author" />
-                </v-row>
+                <!-- Data available -->
+                <template v-if="maintainers.data.length >= 0">
+                    <v-row no-gutters>
+                        <author-item v-for="(author, index) of maintainers.data" :key="index" :author="author" />
+                    </v-row>
+                </template>
+
+                <!-- Data empty -->
+                <template v-else>
+                    No maintainers available.
+                </template>
             </template>
 
             <!-- Error -->
