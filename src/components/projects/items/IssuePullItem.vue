@@ -38,6 +38,11 @@
                     {{ timeSince }}
                 </div>
             </v-col>
+
+            <!-- Repository -->
+            <v-col cols="auto">
+                <item-repository-badge :repository="item.repository" />
+            </v-col>
         </v-row>
     </item-context-menu>
 </template>
@@ -50,9 +55,10 @@ import ProjectLabel from "@/components/projects/ProjectLabel.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
+import ItemRepositoryBadge from "@/components/projects/items/context/ItemRepositoryBadge.vue";
 
 @Component({
-    components: { ItemContextMenu, ContextMenu, ProjectTag, ProjectLabel }
+    components: { ItemRepositoryBadge, ItemContextMenu, ContextMenu, ProjectTag, ProjectLabel }
 })
 export default class IssuePullItem extends Vue {
     /**
