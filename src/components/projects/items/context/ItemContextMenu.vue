@@ -23,6 +23,7 @@ import PullsService from "@/api/services/PullsService";
 import BranchService from "@/api/services/BranchService";
 import { EchoError } from "echofetch";
 import { RouterUtil } from "@/util/RouterUtil";
+import { FeatureUtil } from "@/util/projects/FeatureUtil";
 
 @Component({
     components: { ContextMenu }
@@ -62,66 +63,7 @@ export default class ItemContextMenu extends Vue {
             {
                 text: !this.item.featured ? "Feature item" : "Unfeature item",
                 icon: !this.item.featured ? "mdi-star" : "mdi-star-off",
-                action: () => {
-                    // Retreive the correct service for the given item type.
-                    let service: { feature: Function; unfeature: Function };
-
-                    switch (this.type) {
-                        case "issue": {
-                            service = IssueService;
-                            break;
-                        }
-
-                        case "pull": {
-                            service = PullsService;
-                            break;
-                        }
-
-                        case "branch": {
-                            service = BranchService;
-                            break;
-                        }
-
-                        case "project": {
-                            service = ProjectService;
-                            break;
-                        }
-                    }
-
-                    ModalHandler.open({
-                        component: ConfirmModal,
-                        componentPayload: {
-                            message: !this.item.featured
-                                ? "Are you sure you want to feature this item?"
-                                : "Are you sure you want to unfeature this item?",
-                            action: (modifications: ConfirmModalModifications) => {
-                                modifications.loading = true;
-
-                                // Function for featuring/unfeaturing.
-                                const serviceFunction = !this.item.featured ? service.feature : service.unfeature;
-
-                                // Feature the item.
-                                serviceFunction(this.item.id)
-                                    .then(() => {
-                                        ModalHandler.close();
-                                        RouterUtil.reload(this.$router);
-
-                                        // Success message.
-                                        SnackbarHandler.open({
-                                            message: "Item is now featured.",
-                                            color: "success"
-                                        });
-                                    })
-                                    .catch((error: EchoError) => {
-                                        ErrorHandler.handle(error, {
-                                            style: "SNACKBAR"
-                                        });
-                                    })
-                                    .finally(() => (modifications.loading = false));
-                            }
-                        }
-                    });
-                }
+                action: () => FeatureUtil.toggleFeatured(this.item, this.type, true)
             }
         ];
     }
