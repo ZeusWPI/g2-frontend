@@ -26,6 +26,7 @@
             <!-- Actions -->
             <v-col cols="auto">
                 <item-feature-button :item="branch" type="branch" />
+                <item-tags-button :item="branch" type="branch" />
             </v-col>
         </v-row>
     </item-context-menu>
@@ -38,9 +39,10 @@ import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
 import ItemFeatureButton from "@/components/projects/items/context/ItemFeatureButton.vue";
+import ItemTagsButton from "@/components/projects/items/context/ItemTagsButton.vue";
 
 @Component({
-    components: { ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag }
+    components: { ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag }
 })
 export default class BranchItem extends Vue {
     /**
