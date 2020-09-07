@@ -18,9 +18,17 @@
 
             <!-- Data -->
             <template v-else-if="contributors.isSuccess()">
-                <v-row no-gutters>
-                    <author-item v-for="(author, index) of contributors.data" :key="index" :author="author" />
-                </v-row>
+                <!-- Data available -->
+                <template v-if="contributors.data.length >= 0">
+                    <v-row no-gutters>
+                        <author-item v-for="(author, index) of contributors.data" :key="index" :author="author" />
+                    </v-row>
+                </template>
+
+                <!-- Data empty -->
+                <template v-else>
+                    No contributors available.
+                </template>
             </template>
 
             <!-- Error -->
