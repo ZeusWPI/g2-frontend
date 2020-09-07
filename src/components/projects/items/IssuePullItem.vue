@@ -40,7 +40,7 @@
             </v-col>
 
             <!-- Repository -->
-            <v-col cols="auto">
+            <v-col>
                 <item-repository-badge :repository="item.repository" />
             </v-col>
 
