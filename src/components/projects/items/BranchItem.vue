@@ -23,6 +23,11 @@
                 </div>
             </v-col>
 
+            <!-- Repository -->
+            <v-col>
+                <item-repository-badge :repository="branch.repository" />
+            </v-col>
+
             <!-- Actions -->
             <v-col cols="auto">
                 <item-feature-button :item="branch" type="branch" />
@@ -40,9 +45,10 @@ import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
 import ItemFeatureButton from "@/components/projects/items/context/ItemFeatureButton.vue";
 import ItemTagsButton from "@/components/projects/items/context/ItemTagsButton.vue";
+import ItemRepositoryBadge from "@/components/projects/items/context/ItemRepositoryBadge.vue";
 
 @Component({
-    components: { ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag }
+    components: { ItemRepositoryBadge, ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag }
 })
 export default class BranchItem extends Vue {
     /**
