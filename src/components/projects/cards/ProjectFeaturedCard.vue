@@ -7,7 +7,7 @@
         <v-col>
             <b>{{ feature.author.name }}</b> has featured a {{ feature.type }} in <b>{{ project.name }}</b>
 
-            <v-card class="mt-3" outlined>
+            <v-card class="mt-3" :outlined="$vuetify.theme.dark">
                 <!-- Issue -->
                 <template v-if="feature.type === 'issue'">
                     <issue-pull-item class="px-3" type="issue" :item="feature.data.issue" />

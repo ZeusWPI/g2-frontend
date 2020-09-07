@@ -3,8 +3,8 @@
         <div class="project">
             <v-row no-gutters align="center">
                 <v-col cols="auto">
-                    <v-list-item-avatar class="repository__image">
-                        <v-img :src="project.image" width="auto" height="100%" class="repository__image">
+                    <v-list-item-avatar>
+                        <v-img :src="project.image" width="auto" height="100%">
                             <template v-slot:placeholder>
                                 <v-avatar :color="color" size="90%">
                                     {{ project.name.toUpperCase().charAt(0) }}

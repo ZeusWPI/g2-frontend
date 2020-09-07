@@ -1,5 +1,5 @@
 <template>
-    <v-card outlined>
+    <v-card :outlined="$vuetify.theme.dark">
         <v-data-table
             :items="branches"
             :headers="tableHeaders"

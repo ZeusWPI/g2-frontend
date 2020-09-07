@@ -1,5 +1,5 @@
 <template>
-    <v-card outlined>
+    <v-card :outlined="$vuetify.theme.dark">
         <v-row class="px-2">
             <!-- Open/closed switch -->
             <v-col>
