@@ -129,7 +129,7 @@ export default class SearchBar extends Vue {
         // Global search.
         else {
             SearchUtil.openSearch(this.$router, {
-                strings: this.searchValue
+                strings: this.searchValue ?? ""
             });
         }
     }
@@ -179,7 +179,7 @@ export default class SearchBar extends Vue {
         this.$router.push({
             name: "Project",
             params: {
-                id: this.searchSelected?.value.id ?? ""
+                id: this.searchSelected?.value.id.toString() ?? ""
             }
         });
     }

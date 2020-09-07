@@ -8,7 +8,7 @@ export class SearchUtil {
      */
     static async openSearch(
         router: VueRouter,
-        options: { strings: string; keywords: string[]; projects: string[]; tags: string[] }
+        options: { strings?: string; keywords?: string[]; projects?: string[]; tags?: string[] }
     ): Promise<Route> {
         let query = "";
 
