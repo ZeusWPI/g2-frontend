@@ -89,7 +89,6 @@
             :items-per-page="25"
             hide-default-header
             mobile-breakpoint="0"
-            @click:row="openItem"
         >
             <!-- Issue -->
             <template v-slot:item.item="{ item }">
@@ -310,17 +309,6 @@ export default class IssuePullTable extends Vue {
                 // Filter the items that have the same status as the given status.
                 .filter(item => item.status === status).length
         );
-    }
-
-    /**
-     * Open the selected item.
-     * Only used on mobile.
-     * @param item Item to open.
-     */
-    openItem(item: Issue | Pull) {
-        if (this.$vuetify.breakpoint.smAndDown) {
-            window.open(item.url, "_blank");
-        }
     }
 }
 </script>

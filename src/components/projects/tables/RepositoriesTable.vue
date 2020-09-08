@@ -6,7 +6,6 @@
             :search="tableSearch"
             :items-per-page="25"
             mobile-breakpoint="0"
-            @click:row="openRepository"
         >
             <!-- Image -->
             <template v-slot:item.image="{ item }">
@@ -108,16 +107,6 @@ export default class RepositoriesTable extends Vue {
             value: "name"
         }
     ];
-
-    /**
-     * Open the selected repository.
-     * @param repository Repository to open.
-     */
-    openRepository(repository: Repository) {
-        if (this.$vuetify.breakpoint.smAndDown) {
-            window.open(repository.url, "_blank");
-        }
-    }
 
     /**
      * Get the color for a given repository based on the name.
