@@ -1,6 +1,6 @@
 <template>
     <item-context-menu :item="item" :type="type">
-        <v-row align="center">
+        <v-row align="center" justify="center">
             <!-- Status -->
             <v-col cols="auto" class="item__icon">
                 <!-- Open -->

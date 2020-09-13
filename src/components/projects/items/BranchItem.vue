@@ -24,7 +24,7 @@
             </v-col>
 
             <!-- Repository -->
-            <v-col>
+            <v-col cols="auto">
                 <item-repository-badge :repository="branch.repository" />
             </v-col>
 
