@@ -1,8 +1,8 @@
 <template>
     <v-card :outlined="$vuetify.theme.dark">
-        <v-row class="px-2">
+        <v-row class="px-2" justify="space-between">
             <!-- Open/closed switch -->
-            <v-col>
+            <v-col cols="auto">
                 <v-btn
                     text
                     :class="tableFilters.status === 'open' ? 'text--bold' : 'text--secondary'"
@@ -28,8 +28,8 @@
                 </v-btn>
             </v-col>
 
-            <!-- Author selection -->
-            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+            <v-col cols="auto" class="d-flex">
+                <!-- Author selection -->
                 <v-select
                     v-model="tableFilters.authors"
                     :items="tableAuthors"
@@ -46,10 +46,8 @@
                         <span v-if="index === 1">, ...</span>
                     </template>
                 </v-select>
-            </v-col>
 
-            <!-- Repository selection -->
-            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+                <!-- Repository selection -->
                 <v-select
                     v-model="tableFilters.repositories"
                     :items="tableRepositories"
@@ -66,10 +64,8 @@
                         <span v-if="index === 1">, ...</span>
                     </template>
                 </v-select>
-            </v-col>
 
-            <!-- Sort options -->
-            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+                <!-- Sort options -->
                 <v-select
                     v-model="tableFilters.sort"
                     :items="tableFilters.sortOptions"
