@@ -1,6 +1,6 @@
 <template>
     <v-card :outlined="$vuetify.theme.dark">
-        <v-row class="px-2" justify="space-between">
+        <v-row class="px-2">
             <!-- Open/closed switch -->
             <v-col cols="auto">
                 <v-btn
@@ -28,13 +28,14 @@
                 </v-btn>
             </v-col>
 
-            <v-col cols="auto" class="d-flex">
-                <!-- Author selection -->
+            <!-- Author selection -->
+            <v-col cols="12" md="">
                 <v-select
                     v-model="tableFilters.authors"
                     :items="tableAuthors"
                     :menu-props="{ bottom: true, offsetY: true }"
                     label="Author"
+                    hide-details
                     flat
                     solo
                     dense
@@ -46,13 +47,16 @@
                         <span v-if="index === 1">, ...</span>
                     </template>
                 </v-select>
+            </v-col>
 
-                <!-- Repository selection -->
+            <!-- Repository selection -->
+            <v-col cols="12" md="">
                 <v-select
                     v-model="tableFilters.repositories"
                     :items="tableRepositories"
                     :menu-props="{ bottom: true, offsetY: true }"
                     label="Repository"
+                    hide-details
                     flat
                     solo
                     dense
@@ -64,13 +68,16 @@
                         <span v-if="index === 1">, ...</span>
                     </template>
                 </v-select>
+            </v-col>
 
-                <!-- Sort options -->
+            <!-- Sort options -->
+            <v-col cols="12" md="">
                 <v-select
                     v-model="tableFilters.sort"
                     :items="tableFilters.sortOptions"
                     :menu-props="{ bottom: true, offsetY: true }"
                     label="Sort"
+                    hide-details
                     flat
                     solo
                     dense
