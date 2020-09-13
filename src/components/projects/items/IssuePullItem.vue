@@ -37,15 +37,18 @@
                     <!-- Time ago -->
                     {{ timeSince }}
                 </div>
+
+                <!-- Repository (on smaller screens) -->
+                <item-repository-badge class="item__repository hidden-md-and-up" :repository="item.repository" />
             </v-col>
 
             <!-- Repository -->
-            <v-col>
+            <v-col cols="12" md="auto" class="hidden-sm-and-down">
                 <item-repository-badge :repository="item.repository" />
             </v-col>
 
             <!-- Actions -->
-            <v-col cols="auto">
+            <v-col cols="12" md="auto" class="d-flex justify-end">
                 <item-feature-button :item="item" :type="type" />
                 <item-tags-button :item="item" :type="type" />
             </v-col>
@@ -137,6 +140,10 @@ export default class IssuePullItem extends Vue {
     &__icon {
         padding: 0 15px;
         text-align: center;
+    }
+
+    &__repository {
+        margin-top: 15px;
     }
 }
 </style>

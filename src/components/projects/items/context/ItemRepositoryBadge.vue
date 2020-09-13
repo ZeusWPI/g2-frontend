@@ -1,5 +1,5 @@
 <template>
-    <v-chip :href="repository.url" :color="color" small dark>
+    <v-chip :href="repository.url" :color="color" small dark outlined>
         {{ repository.name }}
     </v-chip>
 </template>
@@ -11,6 +11,9 @@ import { Repository } from "@/api/models/Repository";
 
 @Component
 export default class ItemRepositoryBadge extends Vue {
+    /**
+     * Repository to display.
+     */
     @Prop({ required: true })
     repository: Repository;
 
