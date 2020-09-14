@@ -36,7 +36,7 @@
                 </v-col>
 
                 <!-- Actions -->
-                <v-col cols="auto">
+                <v-col v-if="showActions" cols="auto">
                     <item-feature-button :item="project" type="project" />
                     <item-tags-button :item="project" type="project" />
                 </v-col>
@@ -66,23 +66,33 @@ export default class ProjectItem extends Vue {
      */
     @Prop()
     project: Project;
+
     /**
      * Should the tags be displayed.
      */
     @Prop({ default: true })
     showTags: boolean;
+
+    /**
+     * Should the actions be displayed.
+     */
+    @Prop({ default: true })
+    showActions: boolean;
+
     /**
      * If true, the entire item will be clickable.
      * If false, only the project name will be clickable.
      */
     @Prop({ default: false })
     card: boolean;
+
     /**
      * Get the color for the project based on the name.
      */
     get color(): string {
         return ColorUtil.getColorFromString(this.project.name);
     }
+
     /**
      * Route for the current project.
      */

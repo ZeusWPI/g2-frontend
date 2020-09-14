@@ -23,6 +23,8 @@
                         :key="index"
                         :project="subproject"
                         :show-tags="false"
+                        :show-actions="false"
+                        :card="true"
                     />
                 </template>
 
