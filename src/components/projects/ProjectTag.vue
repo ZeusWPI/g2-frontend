@@ -8,7 +8,7 @@
                 small
                 v-bind="attrs"
                 v-on="on"
-                dark
+                :dark="$vuetify.theme.dark"
             >
                 {{ tag.name }}
             </v-chip>
