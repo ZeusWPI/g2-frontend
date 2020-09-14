@@ -1,5 +1,13 @@
 <template>
-    <v-chip :href="repository.url" :color="color" small dark outlined>
+    <v-chip
+        class="badge"
+        :href="repository.url"
+        :color="color"
+        :text-color="$vuetify.theme.dark ? 'white' : ''"
+        small
+        dark
+        outlined
+    >
         {{ repository.name }}
     </v-chip>
 </template>
