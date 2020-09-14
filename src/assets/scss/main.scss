@@ -54,13 +54,10 @@ a {
 }
 .hover {
     cursor: pointer;
-
-    &.rounded {
-        border-radius: 4px;
-    }
+    transition: background-color ease 250ms;
 
     &:hover {
-        background-color: #eeeeee;
+        background-color: #eeeeee !important;
     }
 
     &.theme--dark:hover {
