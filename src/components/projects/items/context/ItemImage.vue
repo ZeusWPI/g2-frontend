@@ -1,10 +1,13 @@
 <template>
-    <v-list-item-avatar>
+    <v-list-item-avatar :color="color">
+        <!-- Image -->
         <v-img :src="item.image" width="auto" height="100%">
             <template v-slot:placeholder>
-                <v-avatar :color="color" size="90%">
-                    {{ item.name.toUpperCase().charAt(0) }}
-                </v-avatar>
+                <div class="image__placeholder">
+                    <span class="white--text headline">
+                        {{ item.name.toUpperCase().charAt(0) }}
+                    </span>
+                </div>
             </template>
         </v-img>
     </v-list-item-avatar>
@@ -32,3 +35,15 @@ export default class ItemImage extends Vue {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.image {
+    &__placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+}
+</style>

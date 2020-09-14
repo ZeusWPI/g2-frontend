@@ -53,19 +53,15 @@ a {
     }
 }
 
-.rounded {
-    border-radius: 4px;
-}
-
 .hover {
     cursor: pointer;
-    transition: background-color ease-in 250ms;
+    transition: background-color ease 250ms;
 
     &:hover {
-        background-color: #eeeeee;
+        background-color: #eeeeee !important;
     }
 
-    & .theme--dark:hover {
+    &.theme--dark:hover {
         background-color: #616161 !important;
     }
 }

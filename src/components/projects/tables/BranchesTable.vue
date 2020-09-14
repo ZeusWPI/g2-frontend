@@ -1,12 +1,11 @@
 <template>
-    <v-card outlined>
+    <v-card :outlined="$vuetify.theme.dark">
         <v-data-table
             :items="branches"
             :headers="tableHeaders"
             :search="tableSearch"
             :items-per-page="25"
             mobile-breakpoint="0"
-            @click:row="openBranch"
         >
             <template v-slot:item.name="{ item }">
                 <branch-item :branch="item" />
@@ -63,15 +62,5 @@ export default class BranchesTable extends Vue {
             value: "name"
         }
     ];
-
-    /**
-     * Open the selected branch.
-     * @param branch Branch to open.
-     */
-    openBranch(branch: Branch) {
-        if (this.$vuetify.breakpoint.smAndDown) {
-            window.open(branch.url, "_blank");
-        }
-    }
 }
 </script>

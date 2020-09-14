@@ -11,16 +11,22 @@
         <v-card-text>
             <!-- Loading -->
             <template v-if="contributors.isLoading()">
-                <v-row no-gutters>
-                    <author-item v-for="index in 3" :key="index" :loading="true" />
-                </v-row>
+                <v-progress-circular class="py-8" size="40" width="3" color="primary" indeterminate />
             </template>
 
             <!-- Data -->
             <template v-else-if="contributors.isSuccess()">
-                <v-row no-gutters>
-                    <author-item v-for="(author, index) of contributors.data" :key="index" :author="author" />
-                </v-row>
+                <!-- Data available -->
+                <template v-if="contributors.data.length >= 0">
+                    <v-row no-gutters>
+                        <author-item v-for="(author, index) of contributors.data" :key="index" :author="author" />
+                    </v-row>
+                </template>
+
+                <!-- Data empty -->
+                <template v-else>
+                    No contributors available.
+                </template>
             </template>
 
             <!-- Error -->

@@ -5,7 +5,7 @@
         <v-card-text>
             <!-- Loading -->
             <template v-if="features.isLoading()">
-                <v-skeleton-loader v-for="index of 4" :key="index" type="article" />
+                <v-skeleton-loader class="mb-6" v-for="index of 4" :key="index" type="article" />
             </template>
 
             <!-- Data -->

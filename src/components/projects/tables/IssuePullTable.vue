@@ -1,8 +1,8 @@
 <template>
-    <v-card outlined>
+    <v-card :outlined="$vuetify.theme.dark">
         <v-row class="px-2">
             <!-- Open/closed switch -->
-            <v-col>
+            <v-col cols="auto">
                 <v-btn
                     text
                     :class="tableFilters.status === 'open' ? 'text--bold' : 'text--secondary'"
@@ -29,12 +29,13 @@
             </v-col>
 
             <!-- Author selection -->
-            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+            <v-col cols="12" md="">
                 <v-select
                     v-model="tableFilters.authors"
                     :items="tableAuthors"
                     :menu-props="{ bottom: true, offsetY: true }"
                     label="Author"
+                    hide-details
                     flat
                     solo
                     dense
@@ -49,12 +50,13 @@
             </v-col>
 
             <!-- Repository selection -->
-            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+            <v-col cols="12" md="">
                 <v-select
                     v-model="tableFilters.repositories"
                     :items="tableRepositories"
                     :menu-props="{ bottom: true, offsetY: true }"
                     label="Repository"
+                    hide-details
                     flat
                     solo
                     dense
@@ -69,12 +71,13 @@
             </v-col>
 
             <!-- Sort options -->
-            <v-col :hidden="$vuetify.breakpoint.smAndDown">
+            <v-col cols="12" md="">
                 <v-select
                     v-model="tableFilters.sort"
                     :items="tableFilters.sortOptions"
                     :menu-props="{ bottom: true, offsetY: true }"
                     label="Sort"
+                    hide-details
                     flat
                     solo
                     dense
@@ -89,7 +92,6 @@
             :items-per-page="25"
             hide-default-header
             mobile-breakpoint="0"
-            @click:row="openItem"
         >
             <!-- Issue -->
             <template v-slot:item.item="{ item }">
@@ -310,17 +312,6 @@ export default class IssuePullTable extends Vue {
                 // Filter the items that have the same status as the given status.
                 .filter(item => item.status === status).length
         );
-    }
-
-    /**
-     * Open the selected item.
-     * Only used on mobile.
-     * @param item Item to open.
-     */
-    openItem(item: Issue | Pull) {
-        if (this.$vuetify.breakpoint.smAndDown) {
-            window.open(item.url, "_blank");
-        }
     }
 }
 </script>

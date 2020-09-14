@@ -19,7 +19,7 @@
             </v-col>
 
             <!-- Actions -->
-            <v-col cols="auto" class="d-flex align-center">
+            <v-col class="d-flex align-center justify-end">
                 <v-btn color="error" text @click="openDelete">
                     <v-icon left>mdi-delete</v-icon>
 

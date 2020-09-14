@@ -1,25 +1,40 @@
 <template>
     <item-context-menu :item="branch" type="branch">
-        <div class="branch">
-            <!-- Name -->
-            <div class="branch__name">
-                <a class="no-decoration" :href="branch.url">{{ branch.name }}</a>
-            </div>
+        <item :href="card ? branch.url : null" :href-new-tab="card" :hover="card">
+            <v-row align="center">
+                <!-- Content -->
+                <v-col>
+                    <!-- Name -->
+                    <div class="branch__name">
+                        <!-- Item name (when card) -->
+                        <template v-if="card">
+                            {{ branch.name }}
+                        </template>
 
-            <!-- Tags -->
-            <div class="branch__tags">
-                <project-tag v-for="(tag, index) of branch.tags" :key="index" :tag="tag" />
-            </div>
+                        <!-- Item link (when not card) -->
+                        <template v-else>
+                            <a class="no-decoration" :href="branch.url" target="_blank">{{ branch.name }}</a>
+                        </template>
+                    </div>
 
-            <!-- Repository -->
-            <div class="branch__description text--secondary">
-                <b>Repository:</b>
+                    <!-- Tags -->
+                    <div class="branch__tags">
+                        <project-tag v-for="(tag, index) of branch.tags" :key="index" :tag="tag" />
+                    </div>
+                </v-col>
 
-                <a class="no-decoration" :href="branch.repository.url">
-                    {{ branch.repository.name }}
-                </a>
-            </div>
-        </div>
+                <!-- Repository -->
+                <v-col cols="auto">
+                    <item-repository-badge :repository="branch.repository" />
+                </v-col>
+
+                <!-- Actions -->
+                <v-col cols="auto">
+                    <item-feature-button :item="branch" type="branch" />
+                    <item-tags-button :item="branch" type="branch" />
+                </v-col>
+            </v-row>
+        </item>
     </item-context-menu>
 </template>
 
@@ -29,9 +44,21 @@ import { Branch } from "@/api/models/Branch";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
+import ItemFeatureButton from "@/components/projects/items/context/ItemFeatureButton.vue";
+import ItemTagsButton from "@/components/projects/items/context/ItemTagsButton.vue";
+import ItemRepositoryBadge from "@/components/projects/items/context/ItemRepositoryBadge.vue";
+import Item from "@/components/projects/items/context/Item.vue";
 
 @Component({
-    components: { ItemContextMenu, ContextMenu, ProjectTag }
+    components: {
+        Item,
+        ItemRepositoryBadge,
+        ItemTagsButton,
+        ItemFeatureButton,
+        ItemContextMenu,
+        ContextMenu,
+        ProjectTag
+    }
 })
 export default class BranchItem extends Vue {
     /**
@@ -39,13 +66,18 @@ export default class BranchItem extends Vue {
      */
     @Prop()
     branch: Branch;
+
+    /**
+     * If true, the entire item will be clickable.
+     * If false, only the project name will be clickable.
+     */
+    @Prop({ default: false })
+    card: boolean;
 }
 </script>
 
 <style lang="scss" scoped>
 .branch {
-    padding: 15px;
-
     &__name {
         font-weight: bold;
         font-size: 1.2em;
@@ -54,7 +86,6 @@ export default class BranchItem extends Vue {
     &__tags {
         margin-top: 5px;
         padding-top: 0.5em;
-        padding-bottom: 0.5em;
     }
 
     &__description {
