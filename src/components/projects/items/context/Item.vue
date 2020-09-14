@@ -47,5 +47,8 @@ export default class VItem extends Vue {
 .item {
     padding-left: 12px;
     padding-right: 12px;
+
+    /* Prevent visual bug with corner roundings on flat cards */
+    box-shadow: none !important;
 }
 </style>
