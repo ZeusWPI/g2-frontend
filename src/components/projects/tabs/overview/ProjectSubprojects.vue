@@ -18,14 +18,12 @@
             <template v-else-if="subprojects.isSuccess()">
                 <!-- Data available -->
                 <template v-if="subprojects.data.length >= 0">
-                    <v-row no-gutters>
-                        <project-item
-                            v-for="(subproject, index) of subprojects.data"
-                            :key="index"
-                            :project="subproject"
-                            :show-tags="false"
-                        />
-                    </v-row>
+                    <project-item
+                        v-for="(subproject, index) of subprojects.data"
+                        :key="index"
+                        :project="subproject"
+                        :show-tags="false"
+                    />
                 </template>
 
                 <!-- Data empty -->
