@@ -6,7 +6,7 @@
         </template>
 
         <!-- Data -->
-        <v-card v-else-if="project" class="fill-height" :to="`/projects/${project.id}`">
+        <v-card v-else-if="project" class="fill-height d-flex flex-column" :to="`/projects/${project.id}`">
             <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" />
 
             <v-card-title>
@@ -16,6 +16,8 @@
             <v-card-subtitle>
                 {{ project.description }}
             </v-card-subtitle>
+
+            <v-spacer />
 
             <v-card-actions>
                 <v-spacer />
