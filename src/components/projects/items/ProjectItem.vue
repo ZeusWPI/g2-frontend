@@ -4,15 +4,7 @@
             <v-row align="center">
                 <!-- Image -->
                 <v-col cols="auto">
-                    <v-list-item-avatar>
-                        <v-img :src="project.image" width="auto" height="100%">
-                            <template v-slot:placeholder>
-                                <v-avatar :color="color" size="90%">
-                                    {{ project.name.toUpperCase().charAt(0) }}
-                                </v-avatar>
-                            </template>
-                        </v-img>
-                    </v-list-item-avatar>
+                    <item-image :item="project" />
                 </v-col>
 
                 <!-- Content -->
@@ -63,9 +55,10 @@ import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu
 import ItemFeatureButton from "@/components/projects/items/context/ItemFeatureButton.vue";
 import ItemTagsButton from "@/components/projects/items/context/ItemTagsButton.vue";
 import Item from "@/components/projects/items/context/Item.vue";
+import ItemImage from "@/components/projects/items/context/ItemImage.vue";
 
 @Component({
-    components: { Item, ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag }
+    components: { ItemImage, Item, ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag }
 })
 export default class ProjectItem extends Vue {
     /**
