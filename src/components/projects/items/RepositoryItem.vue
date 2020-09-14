@@ -3,15 +3,7 @@
         <v-row no-gutters align="center">
             <!-- Image -->
             <v-col cols="auto">
-                <v-list-item-avatar class="repository__image">
-                    <v-img :src="repository.image" width="auto" height="100%" class="repository__image">
-                        <template v-slot:placeholder>
-                            <v-avatar :color="color" size="90%">
-                                {{ repository.name.toUpperCase().charAt(0) }}
-                            </v-avatar>
-                        </template>
-                    </v-img>
-                </v-list-item-avatar>
+                <item-image :item="repository" />
             </v-col>
 
             <!-- Content -->
@@ -37,9 +29,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { ColorUtil } from "@/util/ColorUtil";
 import { Repository } from "@/api/models/Repository";
 import Item from "@/components/projects/items/context/Item.vue";
+import ItemImage from "@/components/projects/items/context/ItemImage.vue";
 
 @Component({
-    components: { Item }
+    components: { ItemImage, Item }
 })
 export default class RepositoryItem extends Vue {
     /**
