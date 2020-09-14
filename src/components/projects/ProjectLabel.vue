@@ -1,8 +1,8 @@
 <template>
     <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
-            <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on" dark>
-                l: {{ label.name }}
+            <v-chip :color="label.color" class="mr-2 mb-2" small v-bind="attrs" v-on="on" dark outlined>
+                {{ label.name }}
             </v-chip>
         </template>
 
