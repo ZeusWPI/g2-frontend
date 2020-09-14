@@ -5,6 +5,7 @@ import store from "./store/store";
 import vuetify from "./plugins/vuetify";
 
 import "./plugins/i18n";
+import "./assets/scss/main.scss";
 
 new Vue({
     router,
