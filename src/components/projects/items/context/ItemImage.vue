@@ -1,5 +1,5 @@
 <template>
-    <v-avatar class="image" :color="color">
+    <v-avatar class="image" size="40" :color="color">
         <!-- Image -->
         <v-img :src="item.image" width="auto" height="100%">
             <template v-slot:placeholder>
@@ -38,9 +38,6 @@ export default class ItemImage extends Vue {
 
 <style lang="scss" scoped>
 .image {
-    width: 50px !important;
-    height: 50px !important;
-
     &__placeholder {
         display: flex;
         justify-content: center;
