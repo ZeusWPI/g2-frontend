@@ -1,25 +1,26 @@
 <template>
     <item-context-menu :item="project" type="project">
-        <div class="project">
+        <v-list-item>
             <v-row no-gutters align="center">
                 <v-col cols="auto">
-                    <v-list-item-avatar class="repository__image">
-                        <v-img :src="project.image" width="auto" height="100%" class="repository__image">
-                            <template v-slot:placeholder>
-                                <v-avatar :color="color" size="90%">
-                                    {{ project.name.toUpperCase().charAt(0) }}
-                                </v-avatar>
-                            </template>
-                        </v-img>
-                    </v-list-item-avatar>
+                    <!-- Image -->
+                    <item-image :item="project" />
                 </v-col>
 
                 <v-col>
                     <!-- Name -->
                     <div class="project__name">
-                        <router-link class="no-decoration" :to="`/projects/${project.id}`">
+                        <!-- Regular text when 'isCard' is true -->
+                        <template v-if="isCard">
                             {{ project.name }}
-                        </router-link>
+                        </template>
+
+                        <!-- Link when 'isCard' is false -->
+                        <template v-else>
+                            <router-link class="no-decoration" :to="`/projects/${project.id}`">
+                                {{ project.name }}
+                            </router-link>
+                        </template>
                     </div>
 
                     <!-- Tags -->
@@ -33,7 +34,7 @@
                     </div>
                 </v-col>
             </v-row>
-        </div>
+        </v-list-item>
     </item-context-menu>
 </template>
 
@@ -44,29 +45,30 @@ import { ColorUtil } from "@/util/ColorUtil";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
+import ItemImage from "@/components/projects/items/image/ItemImage.vue";
 
 @Component({
-    components: { ItemContextMenu, ContextMenu, ProjectTag }
+    components: { ItemImage, ItemContextMenu, ContextMenu, ProjectTag }
 })
 export default class ProjectItem extends Vue {
     /**
      * Project to display
      */
-    @Prop()
+    @Prop({ required: true })
     project: Project;
+
+    /**
+     * If true, the entire item will be clickable.
+     * If false, only the project name will be clickable.
+     */
+    @Prop({ default: false })
+    isCard: boolean;
 
     /**
      * Should the tags be displayed.
      */
     @Prop({ default: true })
     showTags: boolean;
-
-    /**
-     * Get the color for the project based on the name.
-     */
-    get color(): string {
-        return ColorUtil.getColorFromString(this.project.name);
-    }
 }
 </script>
 
