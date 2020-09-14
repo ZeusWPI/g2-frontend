@@ -1,6 +1,6 @@
 <template>
     <item :href="card ? repository.url : null" :href-new-tab="card" :hover="card">
-        <v-row no-gutters align="center">
+        <v-row align="center">
             <!-- Image -->
             <v-col cols="auto">
                 <item-image :item="repository" />
