@@ -6,11 +6,13 @@
     "confirm": "Bevestigen",
     "edit": "Bewerken",
     "save": "Opslaan",
+    "refresh": "Herladen",
+    "overview": "Overzicht",
 
     "navigation": {
         "home": "Home",
         "projects": "Projecten",
-        "tags":"tags",
+        "tags": "Tags",
         "search": "Zoeken",
         "login": "Inloggen"
     },
@@ -21,13 +23,16 @@
 
     "home": {
         "projects": "Populaire projecten",
+        "issues": "Recente issues",
+        "pulls": "Recente pull requests",
         "hero": {
             "title": "Welkom bij G2",
-            "desc": "De gateway naar succes! Dit is de plaats waar we alle Zeus projecten managen"
+            "desc": "De gateway naar succes! Dit is de plaats waar we alle Zeus projecten managen."
         }
     },
 
     "projects": {
+        "name": "Projecten",
         "more": "Meer informatie",
         "new": "Nieuw project",
         "search": "Zoek naar een project",
@@ -47,36 +52,45 @@
 
         "table": {
             "desc": "Geopend door"
+        },
+
+        "tags": {
+            "edit": "Pas tags aan",
+            "empty": "Nog geen tags gelinkt"
         }
     },
 
     "issues": {
-        "search": "Zoek een nieuwe issue",
+        "name": "Issues",
+        "search": "Zoek een issue",
+        "open": "Open",
+        "closed": "Gesloten",
         "new": {
             "button": "Nieuwe issue",
             "title": "Maak een nieuwe issue",
-            "desc": "Maak een nieuwe issue voor een van de gelinkte projecten"
+            "desc": "Maak een nieuwe issue voor een van de gelinkte projecten."
         },
         "empty": {
             "title": "Geen issues beschikbaar",
-            "desc": "Issues worden gebruikt om todos, bugs, feature aanvragen en meer bij te houden. Als issues gemaakt worden, zullen ze voorkomen in een zoekbare en filterbare lijst."
+            "desc": "Issues worden gebruikt om todos, bugs, feature aanvragen en meer bij te houden. Als er issues gemaakt worden, zullen ze hier verschijnen in een zoek- en filterbare lijst."
         },
         "unmatched": {
             "title": "Geen issues gevonden voor de gegeven parameters",
-            "desc": "Probeer een een aantal parameters aan te passen"
+            "desc": "Probeer een een aantal parameters aan te passen."
         }
     },
 
     "pulls": {
+        "name": "Pull requests",
         "search": "Zoek een pull request",
         "new": {
             "button": "Nieuw pull request",
             "title": "Maak een nieuwe pull request",
-            "desc": "Maak een nieuwe pull request voor een van de gelinkte projecten"
+            "desc": "Maak een nieuwe pull request voor een van de gelinkte projecten."
         },
         "empty": {
             "title": "Geen pull requests beschikbaar",
-            "desc": "Pull requests helpen je om samen met anderen aan code te werken. Als pull requests gemaakt worden, zullen ze voorkomen in een zoekbare en filterbare lijst."
+            "desc": "Pull requests helpen je om samen met anderen aan code te werken. Als er pull requests gemaakt worden, zullen ze hier verschijnen in een zoek- en filterbare lijst."
         },
         "unmatched": {
             "title": "Geen pull requests gevonden voor de gegeven parameters",
@@ -85,10 +99,11 @@
     },
 
     "branches": {
+        "name": "Branches",
         "search": "Zoek een branch",
         "empty": {
             "title": "Geen branches beschikbaar",
-            "desc": "Als branches aangemaakt worden zullen ze hier komen."
+            "desc": "Als branches aangemaakt worden zullen ze hier verschijnen."
         },
         "unmatched": {
             "title": "Geen branches gevonden voor de gegeven parameters",
@@ -97,25 +112,51 @@
     },
 
     "repositories": {
+        "name": "Repositories",
         "search": "Zoek een repository",
         "empty": {
             "title": "Geen repositories beschikbaar",
-            "desc": "Click de knop hieronder om repositories te linken aan dit project.",
+            "desc": "Klik de knop hieronder om repositories te linken aan dit project.",
             "button": "Link repositories"
         },
         "unmatched": {
             "title": "Geen pull requests gevonden voor de gegeven parameters",
             "desc": "Probeer een een aantal parameters aan te passen."
+        },
+        "manager": {
+            "title": "Repository Manager",
+            "success": "Repositories zijn succesvol bijgewerkt"
         }
     },
 
     "tags": {
-        "search": "Zoek voor een tag",
+        "name": "Tags",
+        "search": "Zoek naar een tag",
         "delete": "Ben je zeker dat je deze tag wil verwijderen? Dit kan niet ongedaan gemaakt worden!",
         "create": {
-            "button": "Nieuwe tag",
-            "title": "Maak een nieuwe tag",
-            "desc": "Todo: een uitleg hier"
+            "button": "Nieuwe tag"
+        },
+        "modify": {
+            "title": "Tag aanpassen",
+            "desc": "Maak een nieuwe globale G2 tag.",
+            "preview": {
+                "name": "Tag voorbeeld",
+                "desc": "Dit is een voorbeeld van een tag"
+            },
+            "fields": {
+                "name": {
+                    "label": "Naam",
+                    "placeholder": "Naam van de tag"
+                },
+                "color": {
+                    "label": "Kleur",
+                    "placeholder": "Kleur van de tag"
+                },
+                "description": {
+                    "label": "Bescrijving",
+                    "placeholder": "Bescrijving van de tag"
+                }
+            }
         },
         "info": {
             "title": "Beschikbare tags",
@@ -123,11 +164,54 @@
         },
         "empty": {
             "title": "Geen tags beschikbaar",
-            "desc": "Wanneer tags beschikbaar worden zullen ze hier komen."
+            "desc": "Wanneer tags beschikbaar worden zullen ze hier verschijnen."
         },
         "unmatched": {
             "title": "Geen tags gevonden voor de gegeven parameters",
             "desc": "Probeer een een aantal parameters aan te passen."
+        },
+        "edit": {
+            "title": "Tags aanpassen",
+            "desc": "Tags aanpassen voor:",
+            "success": "Tags zijn succesvol gelinkt"
+        }
+    },
+
+    "contributors": {
+        "title": "Contributors",
+        "empty": "Geen contributors beschikbaar."
+    },
+
+    "maintainers": {
+        "title": "Maintainers",
+        "empty": "Geen maintainers beschikbaar."
+    },
+
+    "featured": {
+        "title": "Uitgelicht"
+    },
+
+    "item": {
+        "context": {
+            "feature": "Start met uitlichten",
+            "unfeature": "Stop met uitlichten",
+            "tags": "Tags aanpassen"
+        }
+    },
+
+    "search": {
+        "label": "Zoek of spring naar...",
+        "project": "In dit project",
+        "global": "Globaal",
+        "action": {
+            "select": "Om te selecteren",
+            "navigate": "Om te navigeren",
+            "close": "Om te sluiten"
+        },
+        "filters": {
+            "keywords": "Keywords",
+            "projects": "Projecten",
+            "tags": "Tags"
         }
     },
 
@@ -136,5 +220,34 @@
         "desc": "Kies een van de volgende opties om verder te gaan.",
         "zeus": "Inloggen met Zeus WPI",
         "github": "Inloggen met Github"
+    },
+
+    "errors": {
+        "home": "Naar homepage",
+
+        "401": {
+            "message": "Je bent niet ingelogd",
+            "description": "Je bent op dit moment niet ingelogd. Log in en probeer opnieuw."
+        },
+
+        "404": {
+            "message": "Pagina niet gevonden",
+            "description": "We kunnen de pagina die je zoekt niet vinden. De pagina is niet meer beschikbaar of is verplaatst naar een andere plek."
+        },
+
+        "500": {
+            "message": "Interne server error",
+            "description": "We hebben problemen met de server. Probeer later opnieuw."
+        },
+
+        "502": {
+            "message": "Server is op dit moment offline",
+            "description": "We hebben problemen met de server. Probeer later opnieuw."
+        },
+
+        "network": {
+            "message": "We kunnen geen verbinding maken met de server",
+            "description": "We kunnen op dit moment geen verbinding maken met de server om informatie op te halen. Verifieer of je een werkende connectie hebt met het internet of probeer later opnieuw."
+        }
     }
 }
