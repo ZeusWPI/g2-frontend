@@ -5,7 +5,7 @@
         :items="searchEntries"
         :loading="searchLoading"
         :menu-props="{ closeOnContentClick: true }"
-        label="Search or jump to..."
+        :label="t('search.label')"
         auto-select-first
         return-object
         flat
@@ -31,7 +31,7 @@
                 </v-list-item-title>
 
                 <v-list-item-action-text>
-                    In this project
+                    {{ t("search.project") }}
                 </v-list-item-action-text>
             </v-list-item>
 
@@ -48,7 +48,7 @@
                 </v-list-item-title>
 
                 <v-list-item-action-text>
-                    Global search
+                    {{ t("search.global") }}
                 </v-list-item-action-text>
             </v-list-item>
         </template>

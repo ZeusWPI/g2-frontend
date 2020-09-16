@@ -199,6 +199,22 @@
         }
     },
 
+    "search": {
+        "label": "Search or jump to...",
+        "project": "In this project",
+        "global": "Global",
+        "action": {
+            "select": "To select",
+            "navigate": "To navigate",
+            "close": "To close"
+        },
+        "filters": {
+            "keywords": "Keywords",
+            "projects": "Projects",
+            "tags": "Tags"
+        }
+    },
+
     "login": {
         "title": "Login",
         "desc": "Choose one of the following options to continue.",

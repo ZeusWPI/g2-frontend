@@ -7,7 +7,7 @@
                 :items="items"
                 :menu-props="{ bottom: true, offsetY: true }"
                 :loading="projects.isLoading()"
-                label="Projects"
+                :label="t('search.filters.projects')"
                 deletable-chips
                 chips
                 small-chips

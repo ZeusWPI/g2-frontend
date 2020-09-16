@@ -1,5 +1,5 @@
 <template>
-    <v-text-field v-model="value" label="Keywords" outlined />
+    <v-text-field v-model="value" :label="t('search.filters.keywords')" outlined />
 </template>
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title class="modal__title">
-            Search or jump to...
+            {{ t("search.label") }}
         </v-card-title>
 
         <v-card-subtitle>
@@ -11,7 +11,7 @@
                         mdi-keyboard-return
                     </v-icon>
 
-                    to select
+                    {{ t("search.action.select") }}
                 </v-col>
 
                 <v-col cols="auto">
@@ -19,7 +19,7 @@
                         mdi-swap-vertical
                     </v-icon>
 
-                    to navigate
+                    {{ t("search.action.navigate") }}
                 </v-col>
 
                 <v-col cols="auto">
@@ -27,7 +27,7 @@
                         mdi-keyboard-esc
                     </v-icon>
 
-                    to close
+                    {{ t("search.action.close") }}
                 </v-col>
             </v-row>
         </v-card-subtitle>
