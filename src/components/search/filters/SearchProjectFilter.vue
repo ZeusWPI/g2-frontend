@@ -4,10 +4,9 @@
         <template v-if="projects.isLoading() || projects.isSuccess()">
             <v-select
                 v-model="selected"
-                :items="projects.isSuccess() ? projects.data : []"
+                :items="items"
                 :menu-props="{ bottom: true, offsetY: true }"
                 :loading="projects.isLoading()"
-                item-text="name"
                 label="Projects"
                 deletable-chips
                 chips
@@ -69,7 +68,21 @@ export default class SearchProjectFilter extends Vue {
         this._filters = filters;
 
         // Update the selected based on the given filters.
-        this.selected = filters.map(filter => filter.replace("project:", "").replace('"', ""));
+        this.selected = filters.map(filter => filter.replace("project:", "").replace(/"/g, ""));
+    }
+
+    /**
+     * Get the items to display inside the selection menu.
+     */
+    get items(): string[] {
+        // Concatenate the projects with the provided projects that are not in the project list.
+        // This is to allow searching for projects that don't exists to prevent confusion with search.
+        return this.projects.isSuccess()
+            ? this.projects
+                  .requireData()
+                  .map(project => project.name)
+                  .concat(this.selected)
+            : this.selected;
     }
 
     /**
