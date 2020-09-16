@@ -6,13 +6,13 @@
                 <v-icon>mdi-close</v-icon>
             </v-btn>
 
-            <v-toolbar-title>Repository Manager</v-toolbar-title>
+            <v-toolbar-title>{{ t("repositories.manager.title") }}</v-toolbar-title>
 
             <v-spacer />
 
             <v-toolbar-items>
                 <v-btn dark text @click="save" :disabled="loading" :loading="loading">
-                    Save
+                    {{ t("save") }}
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
@@ -42,7 +42,7 @@
                     <v-col cols="12" sm="" align-self="center">
                         <v-text-field
                             v-model="tableSearch"
-                            label="Search for repository"
+                            :label="t('repositories.search')"
                             append-icon="mdi-magnify"
                             hide-details
                             outlined
@@ -203,7 +203,7 @@ export default class ProjectRepositoriesModal extends Vue {
 
         // Send success snackbar.
         SnackbarHandler.open({
-            message: "Linked repositories have been updated",
+            message: this.t("repositories.manager.success"),
             color: "success"
         });
 
