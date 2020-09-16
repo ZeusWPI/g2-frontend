@@ -52,6 +52,11 @@
 
         "table": {
             "desc": "Opened by"
+        },
+
+        "tags": {
+            "edit": "Edit tags",
+            "empty": "No tags linked yet"
         }
     },
 
@@ -125,13 +130,14 @@
     },
 
     "tags": {
+        "name": "Tags",
         "search": "Search for a tag",
         "delete": "Are you sure you want to delete this tag? This cannot be undone!",
         "create": {
             "button": "New tag"
         },
         "modify": {
-            "title": "New tag",
+            "title": "Edit tag",
             "desc": "Create a new global G2 tag.",
             "preview": {
                 "name": "Tag preview",
@@ -174,6 +180,11 @@
     "contributors": {
         "title": "Contributors",
         "empty": "No contributors available."
+    },
+
+    "maintainers": {
+        "title": "Maintainers",
+        "empty": "No maintainers available."
     },
 
     "featured": {
