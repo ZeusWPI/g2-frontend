@@ -137,6 +137,11 @@
         "unmatched": {
             "title": "No tags found for the given parameters",
             "desc": "Try changing some parameters."
+        },
+        "edit": {
+            "title": "Edit tags",
+            "desc": "Edit tags for:",
+            "success": "Tags have been successfully linked"
         }
     },
 

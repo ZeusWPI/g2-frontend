@@ -1,7 +1,7 @@
 <template>
     <v-card :tile="$vuetify.breakpoint.smAndDown">
         <v-card-title class="modal__title">
-            Edit tags
+            {{ t("tags.edit.title") }}
 
             <v-spacer />
 
@@ -11,7 +11,7 @@
         </v-card-title>
 
         <v-card-subtitle>
-            Edit the tags for:
+            {{ t("tags.edit.desc") }}
         </v-card-subtitle>
 
         <v-card-text>
@@ -27,7 +27,7 @@
                 <!-- Search -->
                 <v-text-field
                     v-model="tableSearch"
-                    label="Search for a tag"
+                    :label="t('tags.search')"
                     append-icon="mdi-magnify"
                     hide-details
                     outlined
@@ -223,7 +223,7 @@ export default class EditTagsModal extends Vue {
 
         // Send success snackbar.
         SnackbarHandler.open({
-            message: "Linked tags have been updated",
+            message: this.t("tags.edit.success"),
             color: "success"
         });
 
