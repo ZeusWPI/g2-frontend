@@ -12,5 +12,5 @@ export class ContextMenuLink {
     /**
      * Action to execute when clicking on the item.
      */
-    action: () => void;
+    action: () => unknown;
 }

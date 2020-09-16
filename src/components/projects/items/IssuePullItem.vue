@@ -38,6 +38,12 @@
                     {{ timeSince }}
                 </div>
             </v-col>
+
+            <!-- Actions -->
+            <v-col cols="auto">
+                <item-feature-button :item="item" :type="type" />
+                <item-tags-button :item="item" :type="type" />
+            </v-col>
         </v-row>
     </item-context-menu>
 </template>
@@ -50,9 +56,11 @@ import ProjectLabel from "@/components/projects/ProjectLabel.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
+import ItemFeatureButton from "@/components/projects/items/context/ItemFeatureButton.vue";
+import ItemTagsButton from "@/components/projects/items/context/ItemTagsButton.vue";
 
 @Component({
-    components: { ItemContextMenu, ContextMenu, ProjectTag, ProjectLabel }
+    components: { ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag, ProjectLabel }
 })
 export default class IssuePullItem extends Vue {
     /**
