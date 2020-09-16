@@ -21,6 +21,8 @@
 
     "home":{
         "projects": "Popular projects",
+        "issues": "Recent issues",
+        "pulls": "Recent pull requests",
         "hero": {
             "title": "Welcome to G2",
             "desc": "The gateway to success! This is a place where we manage all Zeus projects."
