@@ -176,6 +176,10 @@
         "empty": "No contributors available."
     },
 
+    "featured": {
+        "title": "Featured"
+    },
+
     "item": {
         "context": {
             "feature": "Feature",
