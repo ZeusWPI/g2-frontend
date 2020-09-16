@@ -9,7 +9,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class VItem extends Vue {
+export default class Item extends Vue {
     /**
      * If the item should change color when hovering.
      */
