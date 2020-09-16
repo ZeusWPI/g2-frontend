@@ -1,6 +1,5 @@
 # G2 Front-end
 ![https://travis-ci.org/github/ZeusWPI/g2-frontend](https://img.shields.io/travis/ZeusWPI/g2-frontend) 
-![https://libraries.io/github/ZeusWPI/g2-frontend](https://img.shields.io/librariesio/github/ZeusWPI/g2-frontend) 
 ![https://mattermost.zeus.gent](https://img.shields.io/badge/chat-mattermost-blue) 
 
 The goal of this part of G2 is to provide a front-end application which interacts with a JSON back-end and renders beautiful pages.
