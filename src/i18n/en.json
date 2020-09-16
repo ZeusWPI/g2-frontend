@@ -6,6 +6,7 @@
     "confirm": "Confirm",
     "edit": "Edit",
     "save": "Save",
+    "refresh": "Refresh",
     "overview": "Overview",
 
     "navigation": {
@@ -147,6 +148,8 @@
     },
 
     "errors": {
+        "home": "To homepage",
+
         "401": {
             "message": "You are not logged in",
             "description": "You are currently nog logged in. Please login and try again!"

@@ -18,12 +18,12 @@
         <!-- Home button (only if fullscreen) -->
         <div class="error-section__actions">
             <v-btn color="primary" depressed to="/">
-                Home Page
+                {{ t("error.home") }}
                 <v-icon right>mdi-home</v-icon>
             </v-btn>
 
             <v-btn depressed @click="reloadRoute()">
-                Refresh
+                {{ t("refresh") }}
                 <v-icon right>mdi-refresh</v-icon>
             </v-btn>
         </div>
@@ -63,7 +63,7 @@ export default class ErrorSection extends Vue {
         display: flex;
         justify-content: center;
         > * {
-            margin: 0px 8px;
+            margin: 0 8px;
         }
     }
     &__message {

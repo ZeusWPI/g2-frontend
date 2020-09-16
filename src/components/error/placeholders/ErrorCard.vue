@@ -18,12 +18,12 @@
         <!-- Home button (only if fullscreen) -->
         <v-card-actions class="error-card__actions">
             <v-btn color="primary" depressed to="/">
-                Home Page
+                {{ t("error.home") }}
                 <v-icon right>mdi-home</v-icon>
             </v-btn>
 
             <v-btn depressed @click="reloadRoute($router)">
-                Refresh
+                {{ t("refresh") }}
                 <v-icon right>mdi-refresh</v-icon>
             </v-btn>
         </v-card-actions>
