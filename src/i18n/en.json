@@ -136,5 +136,32 @@
         "desc": "Choose one of the following options to continue.",
         "zeus": "Login with Zeus WPI",
         "github": "Login with Github"
+    },
+
+    "errors": {
+        "401": {
+            "message": "You are not logged in",
+            "description": "You are currently nog logged in. Please login and try again!"
+        },
+
+        "404": {
+            "message": "Page not found",
+            "description": "We cannot find the page you are looking for. The page is no longer available or was moved to a different location."
+        },
+
+        "500": {
+            "message": "Internal server error",
+            "description": "We are having issues with the server. Please try again later."
+        },
+
+        "502": {
+            "message": "Server is currently offline",
+            "description": "We are having issues with the server. Please try again later."
+        },
+
+        "network": {
+            "message": "Unable to connect to server",
+            "description": "We are unable to connect to the server to retrieve information. Please check if you have a valid internet connection & try again later."
+        }
     }
 }

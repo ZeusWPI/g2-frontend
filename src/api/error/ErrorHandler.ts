@@ -5,6 +5,7 @@ import { CustomErrorOptions } from "@/api/error/types/CustomErrorOptions";
 import { InputFields } from "@/types/fields/InputFields";
 import { InputFieldError } from "@/types/fields/InputFieldError";
 import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
+import { t } from "@/plugins/i18n";
 import ErrorBus from "@/api/error/ErrorBus";
 
 /**
@@ -13,33 +14,31 @@ import ErrorBus from "@/api/error/ErrorBus";
 const globalCustomMessages: Array<CustomErrorMessage> = [
     {
         code: "401",
-        message: "You are not logged in",
-        description: "You are currently nog logged in. Please login and try again!"
+        message: t("errors.401.message"),
+        description: t("errors.401.description")
     },
     {
         code: "404",
-        message: "Page not found",
-        description:
-            "We cannot find the page you are looking for. The page is no longer available or was moved to a different location."
+        message: t("errors.404.message"),
+        description: t("errors.404.description")
     },
 
     {
         code: "500",
-        message: "Internal server error.",
-        description: "We are having issues with the server. Please try again later."
+        message: t("errors.500.message"),
+        description: t("errors.500.description")
     },
 
     {
         code: "502",
-        message: "Server is currently offline.",
-        description: "We are having issues with the server. Please try again later."
+        message: t("errors.502.message"),
+        description: t("errors.502.description")
     },
 
     {
         code: "network_error",
-        message: "Unable to connect to server",
-        description:
-            "We are unable to connect to the server to retrieve information. Please check if you have a valid internet connection & try again later."
+        message: t("errors.network.message"),
+        description: t("errors.network.description")
     }
 ];
 

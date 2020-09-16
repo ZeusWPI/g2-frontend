@@ -1,4 +1,5 @@
 import Vue from "vue";
+import store from "@/store/store";
 
 /**
  * Available languages.
@@ -28,6 +29,33 @@ function getPathValue(path: string, object: any) {
 }
 
 /**
+ * Translate function.
+ * @param path Path to the key to translate.
+ * @param params Optional parameters (counting from $0).
+ */
+export function t(path: string, ...params: unknown[]) {
+    const language = store.getters["i18n/language"];
+    const defaultLanguage = languages.find(language => language.default);
+
+    // Convert a dotted path to a nested property selector of an object.
+    let value = getPathValue(path, language.locale) ?? null;
+
+    // Default fallback: default language.
+    if (!value && defaultLanguage) {
+        value = getPathValue(path, defaultLanguage.locale);
+    }
+
+    // Replace the optional params if available.
+    for (const index in params) {
+        const param = params[index];
+
+        value = value.replace(new RegExp(`\\$${index}`, "g"), param);
+    }
+
+    return value;
+}
+
+/**
  * Mixin for translation.
  */
 Vue.mixin({
@@ -37,26 +65,8 @@ Vue.mixin({
          * @param path Path to the key to translate.
          * @param params Optional parameters (counting from $0).
          */
-        t(path: string, ...params: [unknown]) {
-            const language = this.$store.getters["i18n/language"];
-            const defaultLanguage = languages.find(language => language.default);
-
-            // Convert a dotted path to a nested property selector of an object.
-            let value = getPathValue(path, language.locale) ?? null;
-
-            // Default fallback: default language.
-            if (!value && defaultLanguage) {
-                value = getPathValue(path, defaultLanguage.locale);
-            }
-
-            // Replace the optional params if available.
-            for (const index in params) {
-                const param = params[index];
-
-                value = value.replace(new RegExp(`\\$${index}`, "g"), param);
-            }
-
-            return value;
+        t(path: string, ...params: unknown[]) {
+            return t(path, ...params);
         }
     }
 });
