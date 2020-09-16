@@ -47,6 +47,13 @@ function getTranslation(store: Store<unknown>, path: string, ...params: unknown[
         value = getPathValue(path, defaultLanguage.locale);
     }
 
+    // Make sure the value is not null.
+    if (!value) {
+        console.warn(`No translation for ${language.name} for key '${path}'.`);
+
+        value = "";
+    }
+
     // Replace the optional params if available.
     for (const index in params) {
         const param = params[index];
