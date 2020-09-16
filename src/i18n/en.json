@@ -171,6 +171,11 @@
         }
     },
 
+    "contributors": {
+        "title": "Contributors",
+        "empty": "No contributors available."
+    },
+
     "item": {
         "context": {
             "feature": "Feature",
