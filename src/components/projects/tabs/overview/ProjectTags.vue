@@ -19,7 +19,15 @@
         </v-card-title>
 
         <v-card-text>
-            <project-tag v-for="(tag, index) of project.tags" :key="index" :tag="tag" />
+            <!-- Data available -->
+            <template v-if="project.tags.length >= 0">
+                <project-tag v-for="(tag, index) of project.tags" :key="index" :tag="tag" />
+            </template>
+
+            <!-- Data empty -->
+            <template v-else>
+                No tags available.
+            </template>
         </v-card-text>
     </div>
 </template>

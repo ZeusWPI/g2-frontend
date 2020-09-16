@@ -1,13 +1,13 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "@/views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
     {
         path: "*",
-        component: () => import("../views/404.vue")
+        component: () => import("@/views/404.vue")
     },
 
     {
@@ -19,13 +19,13 @@ const routes: Array<RouteConfig> = [
     {
         path: "/login",
         name: "Login",
-        component: () => import("../views/Login.vue")
+        component: () => import("@/views/Login.vue")
     },
 
     {
         path: "/projects",
         name: "Projects",
-        component: () => import("../views/Projects.vue")
+        component: () => import("@/views/Projects.vue")
     },
 
     {
@@ -36,20 +36,20 @@ const routes: Array<RouteConfig> = [
     {
         path: "/projects/:id/:tab?",
         name: "Project",
-        component: () => import("../views/projects/Project.vue"),
+        component: () => import("@/views/projects/Project.vue"),
         props: true
     },
 
     {
         path: "/search",
         name: "Search",
-        component: () => import("../views/Search.vue")
+        component: () => import("@/views/Search.vue")
     },
 
     {
         path: "/tags",
         name: "Tags",
-        component: () => import("../views/Tags.vue")
+        component: () => import("@/views/Tags.vue")
     }
 ];
 

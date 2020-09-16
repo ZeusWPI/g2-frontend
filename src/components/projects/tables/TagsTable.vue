@@ -9,14 +9,14 @@
             <!-- Actions -->
             <template v-slot:item.actions="{ item }">
                 <!-- Modify -->
-                <v-btn color="info" icon @click="modifyTag(item)">
+                <v-btn color="info" text @click="modifyTag(item)">
                     <v-icon>
                         mdi-pencil
                     </v-icon>
                 </v-btn>
 
                 <!-- Delete -->
-                <v-btn color="error" icon @click="deleteTag(item)">
+                <v-btn color="error" text @click="deleteTag(item)">
                     <v-icon>
                         mdi-delete
                     </v-icon>
@@ -77,7 +77,13 @@ export default class TagsTable extends Vue {
     tableHeaders = [
         {
             text: "Tag",
-            value: "tag"
+            value: "tag",
+            width: "0"
+        },
+
+        {
+            text: "Description",
+            value: "description"
         },
 
         {

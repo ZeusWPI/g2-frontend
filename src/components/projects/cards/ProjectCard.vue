@@ -6,8 +6,12 @@
         </template>
 
         <!-- Data -->
-        <v-card v-else-if="project" class="fill-height" :to="`/projects/${project.id}`">
-            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" />
+        <v-card v-else-if="project" class="fill-height d-flex flex-column" :to="`/projects/${project.id}`">
+            <v-img :src="project.image" height="200px">
+                <template v-slot:placeholder>
+                    <img class="project__image" src="@/assets/img/logo--primary.svg" :alt="project.name" />
+                </template>
+            </v-img>
 
             <v-card-title>
                 {{ project.name }}
@@ -16,6 +20,8 @@
             <v-card-subtitle>
                 {{ project.description }}
             </v-card-subtitle>
+
+            <v-spacer />
 
             <v-card-actions>
                 <v-spacer />
@@ -47,3 +53,17 @@ export default class ProjectCard extends Vue {
     project: Project;
 }
 </script>
+
+<style lang="scss" scoped>
+.project {
+    &__image {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.05);
+
+        path {
+            fill: var(--v-primary-base);
+        }
+    }
+}
+</style>
