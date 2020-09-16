@@ -58,6 +58,8 @@
     "issues": {
         "name": "Issues",
         "search": "Search for an issue",
+        "open": "Open",
+        "closed": "Closed",
         "new": {
             "button": "New issue",
             "title": "Create a new issue",
