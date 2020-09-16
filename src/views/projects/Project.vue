@@ -21,13 +21,13 @@
                 <!-- Overview -->
                 <v-tab to="overview">
                     <v-icon left>mdi-view-dashboard-outline</v-icon>
-                    Overview
+                    {{ t("overview") }}
                 </v-tab>
 
                 <!-- Issues -->
                 <v-tab to="issues">
                     <v-icon left>mdi-alert-circle-outline</v-icon>
-                    Issues
+                    {{ t("issues.name") }}
 
                     <v-chip class="ml-2" x-small>
                         {{ project.data.statistics.issuesCount }}
@@ -37,7 +37,7 @@
                 <!-- Pull Requests -->
                 <v-tab to="pulls">
                     <v-icon left>mdi-source-pull</v-icon>
-                    Pull Requests
+                    {{ t("pulls.name") }}
 
                     <v-chip class="ml-2" x-small>
                         {{ project.data.statistics.pullsCount }}
@@ -47,13 +47,13 @@
                 <!-- Branches -->
                 <v-tab to="branches">
                     <v-icon left>mdi-source-branch</v-icon>
-                    Branches
+                    {{ t("branches.name") }}
                 </v-tab>
 
                 <!-- Repositories -->
                 <v-tab to="repositories">
                     <v-icon left>mdi-source-repository</v-icon>
-                    Repositories
+                    {{ t("repositories.name") }}
                 </v-tab>
             </v-tabs>
 
