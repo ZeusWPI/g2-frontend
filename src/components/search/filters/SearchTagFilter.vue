@@ -4,7 +4,7 @@
         <template v-if="tags.isLoading() || tags.isSuccess()">
             <v-select
                 v-model="selected"
-                :items="tags.isSuccess() ? tags.data : []"
+                :items="items"
                 :menu-props="{ bottom: true, offsetY: true }"
                 :loading="tags.isLoading()"
                 item-text="name"
@@ -69,7 +69,21 @@ export default class SearchTagFilter extends Vue {
         this._filters = filters;
 
         // Update the selected based on the given filters.
-        this.selected = filters.map(filter => filter.replace("tag:", "").replace('"', ""));
+        this.selected = filters.map(filter => filter.replace("tag:", "").replace(/"/g, ""));
+    }
+
+    /**
+     * Get the items to display inside the selection menu.
+     */
+    get items(): string[] {
+        // Concatenate the tags with the provided tags that are not in the tag list.
+        // This is to allow searching for tags that don't exists to prevent confusion with search.
+        return this.tags.isSuccess()
+            ? this.tags
+                  .requireData()
+                  .map(tag => tag.name)
+                  .concat(this.selected)
+            : this.selected;
     }
 
     /**
