@@ -30,6 +30,7 @@
     },
 
     "projects": {
+        "name": "Projects",
         "more": "More info",
         "new": "New project",
         "search": "Search for a project",
@@ -53,6 +54,7 @@
     },
 
     "issues": {
+        "name": "Issues",
         "search": "Search for an issue",
         "new": {
             "button": "New issue",
@@ -70,6 +72,7 @@
     },
 
     "pulls": {
+        "name": "Pull requests",
         "search": "Search for a pull request",
         "new": {
             "button": "New pull request",
@@ -87,6 +90,7 @@
     },
 
     "branches": {
+        "name": "Branches",
         "search": "Search for a branch",
         "empty": {
             "title": "No branches available",
@@ -99,6 +103,7 @@
     },
 
     "repositories": {
+        "name": "Repositories",
         "search": "Search for a repository",
         "empty": {
             "title": "No repositories available",

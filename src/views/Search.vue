@@ -29,7 +29,7 @@
             <v-tabs v-model="tab" vertical background-color="transparent">
                 <v-tab href="#projects">
                     <v-icon left>mdi-account</v-icon>
-                    Projects
+                    {{ t("projects.name") }}
 
                     <v-chip class="ml-2" small>
                         {{ searchValue.data.projects.length }}
@@ -38,7 +38,7 @@
 
                 <v-tab href="#issues">
                     <v-icon left>mdi-alert-circle-outline</v-icon>
-                    Issues
+                    {{ t("issues.name") }}
 
                     <v-chip class="ml-2" small>
                         {{ searchValue.data.issues.length }}
@@ -47,7 +47,7 @@
 
                 <v-tab href="#pulls">
                     <v-icon left>mdi-source-pull</v-icon>
-                    Pulls
+                    {{ t("pulls.name") }}
 
                     <v-chip class="ml-2" small>
                         {{ searchValue.data.pulls.length }}
@@ -56,7 +56,7 @@
 
                 <v-tab href="#branches">
                     <v-icon left>mdi-source-branch</v-icon>
-                    Branches
+                    {{ t("Branches.name") }}
 
                     <v-chip class="ml-2" small>
                         {{ searchValue.data.branches.length }}
