@@ -1,5 +1,6 @@
 import Vue from "vue";
 import store from "@/store/store";
+import { Store } from "vuex";
 
 /**
  * Available languages.
@@ -30,10 +31,11 @@ function getPathValue(path: string, object: any) {
 
 /**
  * Translate function.
+ * @param store Vuex store instance.
  * @param path Path to the key to translate.
  * @param params Optional parameters (counting from $0).
  */
-export function t(path: string, ...params: unknown[]) {
+function getTranslation(store: Store<unknown>, path: string, ...params: unknown[]) {
     const language = store.getters["i18n/language"];
     const defaultLanguage = languages.find(language => language.default);
 
@@ -56,6 +58,15 @@ export function t(path: string, ...params: unknown[]) {
 }
 
 /**
+ * Translate function.
+ * @param path Path to the key to translate.
+ * @param params Optional parameters (counting from $0).
+ */
+export function t(path: string, ...params: unknown[]) {
+    return getTranslation(store, path, params);
+}
+
+/**
  * Mixin for translation.
  */
 Vue.mixin({
@@ -66,7 +77,7 @@ Vue.mixin({
          * @param params Optional parameters (counting from $0).
          */
         t(path: string, ...params: unknown[]) {
-            return t(path, ...params);
+            return getTranslation(this.$store, path, params);
         }
     }
 });

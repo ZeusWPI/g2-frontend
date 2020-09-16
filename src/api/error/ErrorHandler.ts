@@ -8,40 +8,6 @@ import { SnackbarHandler } from "@/util/snackbar/SnackbarHandler";
 import { t } from "@/plugins/i18n";
 import ErrorBus from "@/api/error/ErrorBus";
 
-/**
- * List with custom error messages for certain response codes/messages
- */
-const globalCustomMessages: Array<CustomErrorMessage> = [
-    {
-        code: "401",
-        message: t("errors.401.message"),
-        description: t("errors.401.description")
-    },
-    {
-        code: "404",
-        message: t("errors.404.message"),
-        description: t("errors.404.description")
-    },
-
-    {
-        code: "500",
-        message: t("errors.500.message"),
-        description: t("errors.500.description")
-    },
-
-    {
-        code: "502",
-        message: t("errors.502.message"),
-        description: t("errors.502.description")
-    },
-
-    {
-        code: "network_error",
-        message: t("errors.network.message"),
-        description: t("errors.network.description")
-    }
-];
-
 export class ErrorHandler {
     /**
      * Handle an error.
@@ -91,6 +57,40 @@ export class ErrorHandler {
      * @param options Error options
      */
     static handleCustomMessage(customError: CustomError, options: CustomErrorOptions) {
+        /**
+         * List with custom error messages for certain response codes/messages
+         */
+        const globalCustomMessages: Array<CustomErrorMessage> = [
+            {
+                code: "401",
+                message: t("errors.401.message"),
+                description: t("errors.401.description")
+            },
+            {
+                code: "404",
+                message: t("errors.404.message"),
+                description: t("errors.404.description")
+            },
+
+            {
+                code: "500",
+                message: t("errors.500.message"),
+                description: t("errors.500.description")
+            },
+
+            {
+                code: "502",
+                message: t("errors.502.message"),
+                description: t("errors.502.description")
+            },
+
+            {
+                code: "network_error",
+                message: t("errors.network.message"),
+                description: t("errors.network.description")
+            }
+        ];
+
         // Stitch the given global & given custom error messages together.
         // The given messages have a higher priority.
         const messages = [...globalCustomMessages, ...(options.customMessages || [])];
