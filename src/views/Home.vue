@@ -1,5 +1,5 @@
 <template>
-    <div :class="`home__${$vuetify.theme.isDark ? 'dark' : 'light'}`">
+    <div :class="`home__${$vuetify.theme.dark ? 'dark' : 'light'}`">
         <!-- Hero -->
         <home-hero />
 
