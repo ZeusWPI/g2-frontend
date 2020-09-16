@@ -1,0 +1,70 @@
+.text {
+    &--bold {
+        font-weight: bold;
+    }
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 120px;
+
+    &--small {
+        max-width: 1250px;
+        margin: auto;
+    }
+}
+
+.divider {
+    &--vertical {
+        margin: 15px;
+    }
+}
+
+.v-navigation-drawer {
+    z-index: 1000;
+}
+
+.modal {
+    &__title {
+        color: var(--v-primary-base);
+        margin-bottom: 10px;
+    }
+}
+
+/**
+ * Prevent space between the page border & tabs.
+ * The space should be there according to the material specs, but it looks strange.
+ */
+.v-slide-group__prev {
+    display: none !important;
+}
+
+/**
+ * No decorations for a.
+ */
+a {
+    &.no-decoration {
+        text-decoration: none !important;
+        color: inherit !important;
+
+        &:hover {
+            color: var(--v-primary-base) !important;
+        }
+    }
+}
+.hover {
+    cursor: pointer;
+    transition: background-color ease 250ms;
+
+    &:hover {
+        background-color: #eeeeee !important;
+    }
+
+    &.theme--dark:hover {
+        background-color: #616161 !important;
+    }
+}
+
+.transparent {
+    background: transparent !important;
+}

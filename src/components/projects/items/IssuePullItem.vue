@@ -1,50 +1,68 @@
 <template>
     <item-context-menu :item="item" :type="type">
-        <v-row align="center">
-            <!-- Status -->
-            <v-col cols="auto" class="item__icon">
-                <!-- Open -->
-                <v-icon v-if="item.status === 'open'" color="success">
-                    mdi-alert-circle-outline
-                </v-icon>
+        <item :href="card ? item.url : null" :href-new-tab="card" :hover="card">
+            <v-row align="center" justify="center">
+                <!-- Status -->
+                <v-col cols="auto" class="item__icon">
+                    <!-- Open -->
+                    <v-icon v-if="item.status === 'open'" color="success">
+                        mdi-alert-circle-outline
+                    </v-icon>
 
-                <!-- Closed -->
-                <v-icon v-else color="error">
-                    mdi-alert-circle-check-outline
-                </v-icon>
-            </v-col>
+                    <!-- Closed -->
+                    <v-icon v-else color="error">
+                        mdi-alert-circle-check-outline
+                    </v-icon>
+                </v-col>
 
-            <!-- Content -->
-            <v-col>
-                <!-- Title -->
-                <div class="item__title">
-                    <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
-                </div>
+                <!-- Content -->
+                <v-col>
+                    <!-- Title -->
+                    <div class="item__title">
+                        <!-- Item name (when card) -->
+                        <template v-if="card">
+                            {{ item.title }}
+                        </template>
 
-                <!-- Labels -->
-                <div class="item__labels">
-                    <project-tag v-for="tag of item.tags" :key="tag.name" :tag="tag" />
-                    <project-label v-for="label of item.labels" :key="label.name" :label="label" />
-                </div>
+                        <!-- Item link (when not card) -->
+                        <template v-else>
+                            <a class="no-decoration" :href="item.url" target="_blank">{{ item.title }}</a>
+                        </template>
+                    </div>
 
-                <!-- Description -->
-                <div class="item__description text--secondary">
-                    {{ t("projects.table.desc") }}
+                    <!-- Labels -->
+                    <div class="item__labels">
+                        <project-tag v-for="tag of item.tags" :key="tag.name" :tag="tag" />
+                        <project-label v-for="label of item.labels" :key="label.name" :label="label" />
+                    </div>
 
-                    <!-- Author -->
-                    <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
+                    <!-- Description -->
+                    <div class="item__description text--secondary">
+                        {{ t("projects.table.desc") }}
 
-                    <!-- Time ago -->
-                    {{ timeSince }}
-                </div>
-            </v-col>
+                        <!-- Author -->
+                        <a class="no-decoration" :href="item.author.url">{{ item.author.name }}</a> ,
 
-            <!-- Actions -->
-            <v-col cols="auto">
-                <item-feature-button :item="item" :type="type" />
-                <item-tags-button :item="item" :type="type" />
-            </v-col>
-        </v-row>
+                        <!-- Time ago -->
+                        {{ timeSince }}
+                    </div>
+
+                    <!-- Repository (on smaller screens) -->
+                    <item-repository-badge class="item__repository hidden-md-and-up" :repository="item.repository" />
+                </v-col>
+
+                <!-- Repository -->
+                <v-col cols="12" md="auto" class="hidden-sm-and-down">
+                    <item-repository-badge :repository="item.repository" />
+                </v-col>
+
+                <!-- Actions -->
+                <v-col cols="12" md="auto" class="d-flex justify-end">
+                    <item-feature-button :item="item" :type="type" />
+                    <item-tags-button :item="item" :type="type" />
+                </v-col>
+            </v-row>
+        </item>
     </item-context-menu>
 </template>
 
@@ -56,11 +74,22 @@ import ProjectLabel from "@/components/projects/ProjectLabel.vue";
 import ProjectTag from "@/components/projects/ProjectTag.vue";
 import ContextMenu from "@/components/util/ContextMenu.vue";
 import ItemContextMenu from "@/components/projects/items/context/ItemContextMenu.vue";
+import ItemRepositoryBadge from "@/components/projects/items/context/ItemRepositoryBadge.vue";
 import ItemFeatureButton from "@/components/projects/items/context/ItemFeatureButton.vue";
 import ItemTagsButton from "@/components/projects/items/context/ItemTagsButton.vue";
+import Item from "@/components/projects/items/context/Item.vue";
 
 @Component({
-    components: { ItemTagsButton, ItemFeatureButton, ItemContextMenu, ContextMenu, ProjectTag, ProjectLabel }
+    components: {
+        Item,
+        ItemTagsButton,
+        ItemFeatureButton,
+        ItemRepositoryBadge,
+        ItemContextMenu,
+        ContextMenu,
+        ProjectTag,
+        ProjectLabel
+    }
 })
 export default class IssuePullItem extends Vue {
     /**
@@ -74,6 +103,13 @@ export default class IssuePullItem extends Vue {
      */
     @Prop({ required: true })
     type: "issue" | "pull";
+
+    /**
+     * If true, the entire item will be clickable.
+     * If false, only the project name will be clickable.
+     */
+    @Prop({ default: false })
+    card: boolean;
 
     /**
      * Get the time since the creation as a formatted string.
@@ -123,6 +159,10 @@ export default class IssuePullItem extends Vue {
     &__icon {
         padding: 0 15px;
         text-align: center;
+    }
+
+    &__repository {
+        margin-top: 15px;
     }
 }
 </style>

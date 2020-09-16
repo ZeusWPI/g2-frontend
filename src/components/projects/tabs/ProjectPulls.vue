@@ -76,9 +76,9 @@ export default class ProjectIssues extends Vue {
             component: NewIssuePullModal,
             componentPayload: {
                 type: "pulls",
-                repositories: this.repositories,
-                responsive: true
-            }
+                repositories: this.repositories
+            },
+            responsive: true
         });
     }
 }
