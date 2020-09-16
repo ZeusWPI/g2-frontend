@@ -140,6 +140,14 @@
         }
     },
 
+    "item": {
+        "context": {
+            "feature": "Feature",
+            "unfeature": "Unfeature",
+            "tags": "Edit tags"
+        }
+    },
+
     "login": {
         "title": "Login",
         "desc": "Choose one of the following options to continue.",
