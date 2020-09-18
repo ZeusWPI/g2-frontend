@@ -36,7 +36,7 @@
                 </v-col>
 
                 <!-- Actions -->
-                <v-col cols="auto">
+                <v-col v-if="showActions" cols="auto">
                     <item-feature-button :item="project" type="project" />
                     <item-tags-button :item="project" type="project" />
                 </v-col>
@@ -74,6 +74,12 @@ export default class ProjectItem extends Vue {
     showTags: boolean;
 
     /**
+     * Should the actions be displayed.
+     */
+    @Prop({ default: true })
+    showActions: boolean;
+
+    /**
      * If true, the entire item will be clickable.
      * If false, only the project name will be clickable.
      */
@@ -107,13 +113,11 @@ export default class ProjectItem extends Vue {
         font-weight: bold;
         font-size: 1.2em;
     }
-
     &__tags {
         margin-top: 5px;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
     }
-
     &__description {
         font-size: 0.9em;
     }

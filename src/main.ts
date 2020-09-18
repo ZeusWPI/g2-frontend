@@ -7,6 +7,8 @@ import vuetify from "./plugins/vuetify";
 import "./plugins/i18n";
 import "./assets/scss/main.scss";
 
+import "./assets/scss/main.scss";
+
 new Vue({
     router,
     store,

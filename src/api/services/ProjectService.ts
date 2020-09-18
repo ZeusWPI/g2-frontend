@@ -135,6 +135,14 @@ class ProjectService extends EchoService {
     }
 
     /**
+     * Get a list with subprojects for a given project.
+     */
+    @GET("/projects/{id}/subprojects")
+    subprojects(@Path("id") id: number): EchoPromise<Project[]> {
+        return {} as EchoPromise<Project[]>;
+    }
+
+    /**
      * Link an entity to a given project.
      * @param id Id of the project.
      * @param entityId Id of the entity to link.
