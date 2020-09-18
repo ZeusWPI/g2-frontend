@@ -1,7 +1,7 @@
 <template>
     <v-card :tile="$vuetify.breakpoint.smAndDown">
         <v-card-title class="modal__title">
-            {{ t("tags.create.title") }}
+            {{ t(`tags.${type}.title`) }}
 
             <v-spacer />
 
@@ -11,7 +11,7 @@
         </v-card-title>
 
         <v-card-subtitle>
-            {{ t("tags.create.desc") }}
+            {{ t(`tags.${type}.desc`) }}
         </v-card-subtitle>
 
         <v-card-text>
@@ -26,8 +26,8 @@
                     v-model="fields.name.value"
                     :rules="fields.name.rules"
                     :error-messages="fields.name.error"
-                    label="Name"
-                    placeholder="Name of the tag"
+                    :label="t('tags.modify.fields.name.label')"
+                    :placeholder="t('tags.modify.fields.name.placeholder')"
                     outlined
                     required
                 />
@@ -39,8 +39,8 @@
                             v-model="fields.color.value"
                             :rules="fields.color.rules"
                             :error-messages="fields.color.error"
-                            label="Color"
-                            placeholder="Color of the tag"
+                            :label="t('tags.modify.fields.color.label')"
+                            :placeholder="t('tags.modify.fields.color.placeholder')"
                             outlined
                             required
                         />
@@ -58,8 +58,8 @@
                     v-model="fields.description.value"
                     :rules="fields.description.rules"
                     :error-messages="fields.description.error"
-                    label="Description"
-                    placeholder="Description of the tag"
+                    :label="t('tags.modify.fields.description.label')"
+                    :placeholder="t('tags.modify.fields.description.placeholder')"
                     outlined
                     required
                 />
@@ -135,10 +135,21 @@ export default class ModifyTagModal extends Vue {
      */
     get previewTag(): Tag {
         return {
-            name: this.fields.name.value || "Tag preview",
-            description: this.fields.description.value || "This is a preview tag",
+            name: this.fields.name.value || this.t("tags.modify.preview.name"),
+            description: this.fields.description.value || this.t("tags.modify.preview.description"),
             color: this.fields.color.value
         } as Tag;
+    }
+
+    /**
+     * If the modal is used for "create" or "modify".
+     */
+    get type() {
+        if (this.payload.tag) {
+            return "modify";
+        } else {
+            return "create";
+        }
     }
 
     /**

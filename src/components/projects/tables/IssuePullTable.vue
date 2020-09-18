@@ -12,7 +12,7 @@
                         mdi-alert-circle-outline
                     </v-icon>
 
-                    {{ getStatusAmount("open") }} open
+                    {{ getStatusAmount("open") }} {{ t("issues.open") }}
                 </v-btn>
 
                 <v-btn
@@ -24,7 +24,7 @@
                         mdi-alert-circle-check-outline
                     </v-icon>
 
-                    {{ getStatusAmount("closed") }} closed
+                    {{ getStatusAmount("closed") }} {{ t("issues.closed") }}
                 </v-btn>
             </v-col>
 

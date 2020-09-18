@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card-title>
-            Tags
+            {{ t("tags.name") }}
 
             <v-chip class="ml-2" small>
                 {{ project.tags.length }}
@@ -14,7 +14,7 @@
                     mdi-tag-multiple-outline
                 </v-icon>
 
-                Edit tags
+                {{ t("project.tags.edit") }}
             </v-btn>
         </v-card-title>
 
@@ -26,7 +26,7 @@
 
             <!-- Data empty -->
             <template v-else>
-                No tags available.
+                {{ t("project.tags.empty") }}
             </template>
         </v-card-text>
     </div>

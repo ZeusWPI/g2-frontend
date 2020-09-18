@@ -44,8 +44,8 @@
 <script lang="ts">
 import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 import { Repository } from "@/api/models/Repository";
-import { ColorUtil } from "@/util/ColorUtil";
 import RepositoryItem from "@/components/projects/items/RepositoryItem.vue";
+
 @Component({
     components: { RepositoryItem }
 })
@@ -77,14 +77,6 @@ export default class RepositoriesTable extends Vue {
             value: "name"
         }
     ];
-
-    /**
-     * Get the color for a given repository based on the name.
-     * @param repository Repository
-     */
-    getRepositoryColor(repository: Repository): string {
-        return ColorUtil.getColorFromString(repository.name);
-    }
 }
 </script>
 

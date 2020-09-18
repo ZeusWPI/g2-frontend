@@ -6,6 +6,8 @@
     "confirm": "Confirm",
     "edit": "Edit",
     "save": "Save",
+    "refresh": "Refresh",
+    "overview": "Overview",
 
     "navigation": {
         "home": "Home",
@@ -21,6 +23,8 @@
 
     "home":{
         "projects": "Popular projects",
+        "issues": "Recent issues",
+        "pulls": "Recent pull requests",
         "hero": {
             "title": "Welcome to G2",
             "desc": "The gateway to success! This is a place where we manage all Zeus projects."
@@ -28,6 +32,7 @@
     },
 
     "projects": {
+        "name": "Projects",
         "more": "More info",
         "new": "New project",
         "search": "Search for a project",
@@ -47,11 +52,19 @@
 
         "table": {
             "desc": "Opened by"
+        },
+
+        "tags": {
+            "edit": "Edit tags",
+            "empty": "No tags linked yet"
         }
     },
 
     "issues": {
+        "name": "Issues",
         "search": "Search for an issue",
+        "open": "Open",
+        "closed": "Closed",
         "new": {
             "button": "New issue",
             "title": "Create a new issue",
@@ -68,6 +81,7 @@
     },
 
     "pulls": {
+        "name": "Pull requests",
         "search": "Search for a pull request",
         "new": {
             "button": "New pull request",
@@ -85,6 +99,7 @@
     },
 
     "branches": {
+        "name": "Branches",
         "search": "Search for a branch",
         "empty": {
             "title": "No branches available",
@@ -97,6 +112,7 @@
     },
 
     "repositories": {
+        "name": "Repositories",
         "search": "Search for a repository",
         "empty": {
             "title": "No repositories available",
@@ -106,16 +122,41 @@
         "unmatched": {
             "title": "No repositories found for the given parameters",
             "desc": "Try changing some parameters."
+        },
+        "manager": {
+            "title": "Repository Manager",
+            "success": "Repositories have been successfully updated"
         }
     },
 
     "tags": {
+        "name": "Tags",
         "search": "Search for a tag",
         "delete": "Are you sure you want to delete this tag? This cannot be undone!",
         "create": {
-            "button": "New tag",
-            "title": "Create a new tag",
-            "desc": "Todo: some description here"
+            "button": "New tag"
+        },
+        "modify": {
+            "title": "Edit tag",
+            "desc": "Create a new global G2 tag.",
+            "preview": {
+                "name": "Tag preview",
+                "desc": "This is a preview tag"
+            },
+            "fields": {
+                "name": {
+                    "label": "Name",
+                    "placeholder": "Name of the tag"
+                },
+                "color": {
+                    "label": "Color",
+                    "placeholder": "Color of the tag"
+                },
+                "description": {
+                    "label": "Description",
+                    "placeholder": "Description of the tag"
+                }
+            }
         },
         "info": {
             "title": "Available tags",
@@ -128,6 +169,49 @@
         "unmatched": {
             "title": "No tags found for the given parameters",
             "desc": "Try changing some parameters."
+        },
+        "edit": {
+            "title": "Edit tags",
+            "desc": "Edit tags for:",
+            "success": "Tags have been successfully linked"
+        }
+    },
+
+    "contributors": {
+        "title": "Contributors",
+        "empty": "No contributors available."
+    },
+
+    "maintainers": {
+        "title": "Maintainers",
+        "empty": "No maintainers available."
+    },
+
+    "featured": {
+        "title": "Featured"
+    },
+
+    "item": {
+        "context": {
+            "feature": "Feature",
+            "unfeature": "Unfeature",
+            "tags": "Edit tags"
+        }
+    },
+
+    "search": {
+        "label": "Search or jump to...",
+        "project": "In this project",
+        "global": "Global",
+        "action": {
+            "select": "To select",
+            "navigate": "To navigate",
+            "close": "To close"
+        },
+        "filters": {
+            "keywords": "Keywords",
+            "projects": "Projects",
+            "tags": "Tags"
         }
     },
 
@@ -136,5 +220,34 @@
         "desc": "Choose one of the following options to continue.",
         "zeus": "Login with Zeus WPI",
         "github": "Login with Github"
+    },
+
+    "errors": {
+        "home": "To homepage",
+
+        "401": {
+            "message": "You are not logged in",
+            "description": "You are currently nog logged in. Please login and try again!"
+        },
+
+        "404": {
+            "message": "Page not found",
+            "description": "We cannot find the page you are looking for. The page is no longer available or was moved to a different location."
+        },
+
+        "500": {
+            "message": "Internal server error",
+            "description": "We are having issues with the server. Please try again later."
+        },
+
+        "502": {
+            "message": "Server is currently offline",
+            "description": "We are having issues with the server. Please try again later."
+        },
+
+        "network": {
+            "message": "Unable to connect to server",
+            "description": "We are unable to connect to the server to retrieve information. Please check if you have a valid internet connection & try again later."
+        }
     }
 }

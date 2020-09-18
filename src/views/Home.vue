@@ -1,5 +1,5 @@
 <template>
-    <div :class="`home__${$vuetify.theme.isDark ? 'dark' : 'light'}`">
+    <div :class="`home__${$vuetify.theme.dark ? 'dark' : 'light'}`">
         <!-- Hero -->
         <home-hero />
 
@@ -12,7 +12,7 @@
             <v-row>
                 <v-col cols="12" md="6">
                     <v-card>
-                        <v-card-title>Recent issues</v-card-title>
+                        <v-card-title>{{ t("home.issues") }}</v-card-title>
 
                         <v-skeleton-loader
                             v-for="index of 3"
@@ -25,7 +25,7 @@
 
                 <v-col cols="12" md="6">
                     <v-card>
-                        <v-card-title>Recent pull requests</v-card-title>
+                        <v-card-title>{{ t("home.pulls") }}</v-card-title>
 
                         <v-skeleton-loader
                             v-for="index of 3"

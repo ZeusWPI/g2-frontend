@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card-title>
-            Maintainers
+            {{ t("maintainers.title") }}
 
             <v-chip v-if="maintainers.isSuccess()" class="ml-2" small>
                 {{ maintainers.data.length }}
@@ -25,7 +25,7 @@
 
                 <!-- Data empty -->
                 <template v-else>
-                    No maintainers available.
+                    {{ t("maintainers.empty") }}
                 </template>
             </template>
 

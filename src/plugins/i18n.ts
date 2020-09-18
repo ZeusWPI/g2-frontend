@@ -1,4 +1,6 @@
 import Vue from "vue";
+import store from "@/store/store";
+import { Store } from "vuex";
 
 /**
  * Available languages.
@@ -28,6 +30,50 @@ function getPathValue(path: string, object: any) {
 }
 
 /**
+ * Translate function.
+ * @param store Vuex store instance.
+ * @param path Path to the key to translate.
+ * @param params Optional parameters (counting from $0).
+ */
+function getTranslation(store: Store<unknown>, path: string, ...params: unknown[]) {
+    const language = store.getters["i18n/language"];
+    const defaultLanguage = languages.find(language => language.default);
+
+    // Convert a dotted path to a nested property selector of an object.
+    let value = getPathValue(path, language.locale) ?? null;
+
+    // Default fallback: default language.
+    if (!value && defaultLanguage) {
+        value = getPathValue(path, defaultLanguage.locale);
+    }
+
+    // Make sure the value is not null.
+    if (!value) {
+        console.warn(`No translation for ${language.name} for key '${path}'.`);
+
+        value = "";
+    }
+
+    // Replace the optional params if available.
+    for (const index in params) {
+        const param = params[index];
+
+        value = value.replace(new RegExp(`\\$${index}`, "g"), param);
+    }
+
+    return value;
+}
+
+/**
+ * Translate function.
+ * @param path Path to the key to translate.
+ * @param params Optional parameters (counting from $0).
+ */
+export function t(path: string, ...params: unknown[]) {
+    return getTranslation(store, path, params);
+}
+
+/**
  * Mixin for translation.
  */
 Vue.mixin({
@@ -37,26 +83,8 @@ Vue.mixin({
          * @param path Path to the key to translate.
          * @param params Optional parameters (counting from $0).
          */
-        t(path: string, ...params: [unknown]) {
-            const language = this.$store.getters["i18n/language"];
-            const defaultLanguage = languages.find(language => language.default);
-
-            // Convert a dotted path to a nested property selector of an object.
-            let value = getPathValue(path, language.locale) ?? null;
-
-            // Default fallback: default language.
-            if (!value && defaultLanguage) {
-                value = getPathValue(path, defaultLanguage.locale);
-            }
-
-            // Replace the optional params if available.
-            for (const index in params) {
-                const param = params[index];
-
-                value = value.replace(new RegExp(`\\$${index}`, "g"), param);
-            }
-
-            return value;
+        t(path: string, ...params: unknown[]) {
+            return getTranslation(this.$store, path, params);
         }
     }
 });

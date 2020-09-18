@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card-title>
-            Contributors
+            {{ t("contributors.title") }}
 
             <v-chip v-if="contributors.isSuccess()" class="ml-2" small>
                 {{ contributors.data.length }}
@@ -25,7 +25,7 @@
 
                 <!-- Data empty -->
                 <template v-else>
-                    No contributors available.
+                    {{ t("contributors.empty") }}
                 </template>
             </template>
 

@@ -8,7 +8,7 @@
                 :menu-props="{ bottom: true, offsetY: true }"
                 :loading="tags.isLoading()"
                 item-text="name"
-                label="Tags"
+                :label="t('search.filters.tags')"
                 deletable-chips
                 chips
                 small-chips

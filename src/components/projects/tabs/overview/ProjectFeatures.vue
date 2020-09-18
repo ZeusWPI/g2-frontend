@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card-title>Featured</v-card-title>
+        <v-card-title>{{ t("featured.title") }}</v-card-title>
 
         <v-card-text>
             <!-- Loading -->
