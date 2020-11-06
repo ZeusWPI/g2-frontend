@@ -1,7 +1,6 @@
 version: '3.7'
 
 services:
-
   g2-frontend-prod:
     container_name: g2-frontend-prod
     build:
