@@ -1,0 +1,16 @@
+FROM node:lts-alpine as build-stage
+
+# Make the 'app' folder the current working directory
+WORKDIR /app
+
+# Add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# Copy package json
+COPY package.json /app/package.json
+
+# Install project dependencies
+RUN yarn install
+
+# Start development server
+CMD ["yarn", "dev"]
