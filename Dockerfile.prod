@@ -14,7 +14,7 @@ WORKDIR /app
 COPY . .
 
 # Install project dependencies
-RUN yarn install
+RUN yarn install --production=false
 
 # Build app for production with minification
 RUN yarn build
