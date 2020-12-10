@@ -5,7 +5,8 @@ FROM node:lts-alpine as build-stage
 
 # Environment
 ENV NODE_ENV=production \
-    VUE_APP_BACKEND_URL=https://g2-api.zeus.gent
+    VUE_APP_BACKEND_URL=https://g2-api.zeus.gent \
+    VUE_APP_ROUTER_MODE=hash
 
 # Make the 'app' folder the current working directory
 WORKDIR /app
@@ -14,7 +15,7 @@ WORKDIR /app
 COPY . .
 
 # Install project dependencies
-RUN yarn install --production=false
+RUN yarn install
 
 # Build app for production with minification
 RUN yarn build
