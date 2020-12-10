@@ -54,7 +54,7 @@ const routes: Array<RouteConfig> = [
 ];
 
 const router = new VueRouter({
-    mode: process.env.VUE_APP_ROUTER_MODE,
+    mode: process.env.VUE_APP_ROUTER_MODE || "history",
     base: process.env.BASE_URL,
     routes
 });

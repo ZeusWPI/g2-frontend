@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+    g2-frontend-prod:
+        container_name: g2-frontend-prod
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+        ports:
+            - "4201:80"

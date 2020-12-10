@@ -1,0 +1,33 @@
+############################
+# Build stage
+############################
+FROM node:lts-alpine as build-stage
+
+# Environment
+ENV NODE_ENV=production \
+    VUE_APP_BACKEND_URL=https://g2-api.zeus.gent
+
+# Make the 'app' folder the current working directory
+WORKDIR /app
+
+# Copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
+
+# Install project dependencies
+RUN yarn install
+
+# Build app for production with minification
+RUN yarn build
+
+############################
+# Production stage
+############################
+FROM nginx:stable-alpine as production-stage
+
+# Copy the files from the build stage to the production stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+# Expose ports
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
